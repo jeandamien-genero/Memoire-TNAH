@@ -1,8 +1,8 @@
-# Plan de mémoire TNAH
+# Valoriser le traitement automatique des données : le cas des *Ouvriers des deux mondes*
 
-Jean-Damien Généro, 6 juillet 2020.
+Plan détaillé du mémoire TNAH de Jean-Damien Généro, 6 juillet 2020.
 
-## Valoriser le traitement automatique des données : le cas des *Ouvriers des deux mondes*
+---
 
 ### Introduction : le projet Time Us
 
@@ -13,6 +13,8 @@ Jean-Damien Généro, 6 juillet 2020.
 - Étude de plusieurs corpus, dont les *Ouvriers des deux mondes*.
 
 - Les *Ouvriers des deux mondes* : des enquêtes sociologiques initiées par Frédéric Le Play et la Société internationale des études pratiques d'économie sociale.
+
+---
 
 ### I. Un corpus déjà structuré
 
@@ -35,6 +37,8 @@ Jean-Damien Généro, 6 juillet 2020.
   - Fonctionnement du script LSE-OD2M : segmentation, transcription, structuration.
   
   - Sortie : 13 fichiers XML source, séparés en 222 fichiers XML, structurés en XML-TEI.
+  
+---
   
 ### II. Une structuration à reprendre : des tâches manuelles et semi-automatiques
 
@@ -60,6 +64,8 @@ Jean-Damien Généro, 6 juillet 2020.
   
   - Script de validation des fichiers au regard des guidelines TEI, lancé sur le cluster RIOC d'INRIA.
   
+---
+
 ### III. Un corpus à valoriser : quelle place pour l'automatisation ?
 
 - Quelles images conserver ? 
@@ -83,6 +89,8 @@ Jean-Damien Généro, 6 juillet 2020.
   - Comment ? Librairies Grammalecte ou pyspellchecker ?
   
 - (Si je peux le faire avant la fin du stage) Implémentation d'une DTS pour permettre une citation de passage précis.
+
+---
 
 ### Conclusion : perspectives d'améliorations.
 
