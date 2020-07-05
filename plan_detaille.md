@@ -42,9 +42,7 @@ Jean-Damien Généro, 6 juillet 2020.
 
 - Méthodologie de travail : 
 
-  - GitLab INRIA ;
-  
-  - Sharedocs ;
+  - GitLab INRIA et Sharedocs ;
   
   - Feuille de route (issues) (description des missions fixées).
 
@@ -56,4 +54,52 @@ Jean-Damien Généro, 6 juillet 2020.
 
 - Niveau fichier : réparation des erreurs d'implémentation de la structure logique (`<div>` et `<head>`).
 
-  -
+  - Typologie des erreurs et causes probables (distance d'édition trop faible entre certains mots des titres ? + problème de détection des figures de type image ou tableau) ;
+  
+  - Impossibilité d'automatiser complètement la correction des erreurs (script Python avec des regex pour reconstruire les `<div>` + ) ;
+  
+  - Cette opération a mis en évidence un autre problème : la transcription d'en-tête, de base de page, de numéros de page ou de numéros de cahier autour des `<pb>`, qu'il faut là encore supprimer afin de garantir une bonne reconstitution des paragraphes dans l'hypothèse d'une publication.
+  
+  - Script de validation des fichiers au regard des guidelines TEI, lancé sur le cluster RIOC d'INRIA.
+  
+### III. Un corpus à valoriser : quelle place pour l'automatisation ?
+
+- Quelles images conserver ? 
+
+  - Choix de ne garder que le lien vers les images d'Internet Archive et de supprimer celles stockées localement.
+  
+  - Script de substitution automatique (https://timeus.hypotheses.org/645).
+
+- Indexer les individus :
+
+  - Constitution automatique d'un fichier XML d'index à partir d'un tableau prosopographique.
+  
+  - Impossibilité d'implémenter les balises d'indexage (`<persName>`) dans les fichiers du fait de la qualité des transcriptions.
+  
+- Corriger les transcriptions ?
+
+  - Dans le cadre d'une exploitation de données, peu d'intérêt d'avoir une transcription parfaite. Or possibilité au minimum de mettre à disposition des fichiers XML au mieux sur de publier les textes (par ex. sur Wikisource).
+  
+  - Projet Time Us : intérêt pour les les §2 et §8 des monographies. Corrections pourrait se concentrer sur ces paragraphes.
+  
+  - Comment ? Librairie Grammalecte ou pyspellchecker.
+  
+- (Si je peux le faire avant la fin du stage) Implémentation d'une DTS pour permettre une citation de passage précis.
+
+### Conclusion.
+
+- Perspectives d'améliorations : 
+
+  - (Si je n'ai pas le temps) DTS ;
+  
+  - Index des figures ;
+  
+  - Intégrer l'histoire matérielle des fascicule au sein du `<teiHeader>`;
+  
+  - Base de données prosopographique à partir de l'index ;
+  
+  - Relever les renvois entre monogrpahie et leur donner une réalité au sein de la TEI.
+  
+  - Édition en ligne ?
+
+  
