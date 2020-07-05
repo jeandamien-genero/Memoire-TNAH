@@ -92,7 +92,7 @@ Plan détaillé du mémoire TNAH de Jean-Damien Généro, 6 juillet 2020.
 
 ---
 
-### Conclusion : perspectives d'améliorations.
+### Conclusion : perspectives d'amélioration.
 
 - (Si je n'ai pas le temps) DTS ;
   
