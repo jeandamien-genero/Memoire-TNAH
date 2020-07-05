@@ -20,15 +20,13 @@ Jean-Damien Généro, 6 juillet 2020.
 
   - Une publication sur 60 ans (1857-1928).
   
-  - Une structure qui se maintient par-delà les années ?
+  - Une structure qui se maintient par-delà les années ? Continuité et discontinuité dans la structure logique des monographies.
 
 - Des numérisations multiples.
 
-  - Gallica (texte + images) ;
+  - Gallica (texte + images) et Internet Archives (formats multiples) ;
   
-  - Internet Archives (formats multiples) ;
-  
-  - Caractère incomplet de ces numérisations au regard du corpus global.
+  - Caractère incomplet de ces numérisations au regard du corpus global (monographie manquante).
 
 - Encodage automatique à partir de la numérisation d'Internet Archive. 
 
@@ -44,21 +42,21 @@ Jean-Damien Généro, 6 juillet 2020.
 
   - GitLab INRIA et Sharedocs ;
   
-  - Feuille de route (issues) (description des missions fixées).
+  - Feuille de route (issues : description des missions fixées).
 
-- Niveau corpus : contrôle qualité du découpage des fichiers sources
+- Niveau du corpus : contrôle qualité du découpage des fichiers source.
 
-  - Interventions manuelles pour réparer les erreurs (vérification des fichiers) ;
+  - Interventions manuelles pour corriger les erreurs (vérification des fichiers) ;
   
   - Débouché de l'opération : constitution d'un fichier de mapping avec les id des fichiers + implémentation automatique des ces id dans des `@xml:id`.
 
-- Niveau fichier : réparation des erreurs d'implémentation de la structure logique (`<div>` et `<head>`).
+- Niveau du fichier : correction des erreurs d'implémentation de la structure logique (`<div>` et `<head>`).
 
   - Typologie des erreurs et causes probables (distance d'édition trop faible entre certains mots des titres ? + problème de détection des figures de type image ou tableau) ;
   
-  - Impossibilité d'automatiser complètement la correction des erreurs (script Python avec des regex pour reconstruire les `<div>` + ) ;
+  - Impossibilité d'automatiser complètement la correction des erreurs (script Python avec des regex pour reconstruire les `<div>` + script pour contrôler la structure logique = pas efficace à 100% en raison d'un nombre de cas particuliers très élevés ) ;
   
-  - Cette opération a mis en évidence un autre problème : la transcription d'en-tête, de base de page, de numéros de page ou de numéros de cahier autour des `<pb>`, qu'il faut là encore supprimer afin de garantir une bonne reconstitution des paragraphes dans l'hypothèse d'une publication.
+  - Cette opération a mis en évidence un autre problème : la transcription d'en-tête, de bas de page, de numéros de page ou de numéros de cahier autour avant ou après les `<pb>`, qu'il faut là encore supprimer afin de garantir une bonne reconstitution des paragraphes dans l'hypothèse d'une publication.
   
   - Script de validation des fichiers au regard des guidelines TEI, lancé sur le cluster RIOC d'INRIA.
   
@@ -74,32 +72,28 @@ Jean-Damien Généro, 6 juillet 2020.
 
   - Constitution automatique d'un fichier XML d'index à partir d'un tableau prosopographique.
   
-  - Impossibilité d'implémenter les balises d'indexage (`<persName>`) dans les fichiers du fait de la qualité des transcriptions.
+  - Impossibilité d'implémenter les balises d'indexation (`<persName>`) dans les fichiers du fait de la qualité des transcriptions.
   
 - Corriger les transcriptions ?
 
-  - Dans le cadre d'une exploitation de données, peu d'intérêt d'avoir une transcription parfaite. Or possibilité au minimum de mettre à disposition des fichiers XML au mieux sur de publier les textes (par ex. sur Wikisource).
+  - Dans le cadre d'une exploitation de données, peu d'intérêt d'avoir une transcription parfaite. Or possibilité au minimum de mettre à disposition des fichiers XML au mieux sur de publier les textes (par ex. sur Wikisource). Comment parvenir un état qui permet deux exploitation différentes (niveau données, niveau texte) ?
   
-  - Projet Time Us : intérêt pour les les §2 et §8 des monographies. Corrections pourrait se concentrer sur ces paragraphes.
+  - Projet Time Us : intérêt pour les les §2 et §8 des monographies. Corrections pourraient se concentrer sur ces paragraphes.
   
-  - Comment ? Librairie Grammalecte ou pyspellchecker.
+  - Comment ? Librairies Grammalecte ou pyspellchecker ?
   
 - (Si je peux le faire avant la fin du stage) Implémentation d'une DTS pour permettre une citation de passage précis.
 
-### Conclusion.
+### Conclusion : perspectives d'améliorations.
 
-- Perspectives d'améliorations : 
-
-  - (Si je n'ai pas le temps) DTS ;
+- (Si je n'ai pas le temps) DTS ;
   
-  - Index des figures ;
+- Index des figures ;
   
-  - Intégrer l'histoire matérielle des fascicule au sein du `<teiHeader>`;
+- Intégrer l'histoire matérielle des fascicule au sein du `<teiHeader>`;
   
-  - Base de données prosopographique à partir de l'index ;
+- Base de données prosopographique à partir de l'index ;
   
-  - Relever les renvois entre monogrpahie et leur donner une réalité au sein de la TEI.
+- Relever les renvois entre monographie et leur donner une réalité au sein de la TEI.
   
-  - Édition en ligne ?
-
-  
+- Édition en ligne ?
