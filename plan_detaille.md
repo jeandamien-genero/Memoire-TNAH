@@ -82,7 +82,7 @@ Plan détaillé du mémoire TNAH de Jean-Damien Généro, 6 juillet 2020.
   
 - Corriger les transcriptions ?
 
-  - Dans le cadre d'une exploitation de données, peu d'intérêt d'avoir une transcription parfaite. Or possibilité au minimum de mettre à disposition des fichiers XML au mieux sur de publier les textes (par ex. sur Wikisource). Comment parvenir un état qui permet deux exploitation différentes (niveau données, niveau texte) ?
+  - Dans le cadre d'une exploitation de données, peu d'intérêt d'avoir une transcription parfaite. Or possibilité au minimum de mettre à disposition des fichiers XML au mieux de publier les textes (par ex. sur Wikisource). Comment parvenir un état qui permet deux exploitations différentes (niveau données, niveau texte) ?
   
   - Projet Time Us : intérêt pour les les §2 et §8 des monographies. Corrections pourraient se concentrer sur ces paragraphes.
   
