@@ -62,7 +62,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
 #### B. Niveau du corpus : contrôle qualité du découpage des fichiers source.
 
-*À lire : (Best Practices for TEI in Libraries)[https://tei-c.org/extra/teiinlibraries/4.0.0/bptl-driver.html].*
+*À lire : [Best Practices for TEI in Libraries](https://tei-c.org/extra/teiinlibraries/4.0.0/bptl-driver.html).*
 
   - Vérification de la cohérence documentaire par rapport à l'unité codicologique d'origine : la structure a-t-elle été bien retranscrite ? Quels sont les cas particuliers ? 
 
