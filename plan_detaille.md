@@ -1,6 +1,6 @@
 # Valoriser le traitement automatique des données : le cas des *Ouvriers des deux mondes*
 
-Plan détaillé du mémoire TNAH de Jean-Damien Généro, 6 juillet 2020.
+Plan détaillé du mémoire TNAH de Jean-Damien Généro, 17 juillet 2020.
 
 Réflexion : quelles sont les implications de la production d'un corpus semi-automatisée pour la recherche ?
 
