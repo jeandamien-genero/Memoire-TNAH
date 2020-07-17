@@ -14,13 +14,13 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
 - Étude de plusieurs corpus, dont les *Ouvriers des deux mondes*.
 
-- Les *Ouvriers des deux mondes* : des enquêtes sociologiques initiées par Frédéric Le Play et la Société internationale des études pratiques d'économie sociale, numérisées sur Internet et structurées en XML-TEI par le projet TIME US.
+- Les *Ouvriers des deux mondes* : des enquêtes sociologiques initiées par Frédéric Le Play et la Société internationale des études pratiques d'économie sociale, numérisées sur Internet Archive et structurées en XML-TEI par le projet TIME US.
 
 - Mon intervention : 
 
-  - Objectif (côté pro) : reprendre les fichiers XML et les valoriser de manière semi-automatique.
+  - Objectif côté pro : reprendre les fichiers XML et les valoriser de manière semi-automatique.
   
-  - Réflexion (côté recherche) : quelle est la valeur ajoutée de l'automatisation dans l'exploitation d'une documentation dans le cadre d'un projet de recherche ? 
+  - Objectif côté recherche : quelle est la valeur ajoutée de l'automatisation dans l'exploitation d'une documentation dans le cadre d'un projet de recherche ? 
   
 ---
 
@@ -32,19 +32,19 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   
   - Une structure qui se maintient par-delà les années ? Continuité et discontinuité dans la structure logique des monographies.
 
-#### B. Des numérisations multiples.
+#### B. Des numérisations multiples
 
   - Gallica (texte + images) et Internet Archives (formats multiples) ;
   
-  - Caractère incomplet de ces numérisations au regard du corpus global (monographie manquante).
+  - Caractère incomplet de ces numérisations au regard du corpus global (monographies manquantes).
 
-#### C. Encodage automatique à partir de la numérisation d'Internet Archive. 
+#### C. Encodage automatique à partir de la numérisation d'Internet Archive
 
   - Préparation des images.
 
-  - Fonctionnement du script LSE-OD2M : segmentation, transcription, structuration.
+  - Fonctionnement du script LSE-OD2M : segmentation, transcription, structuration ([billet d'Alix](https://timeus.hypotheses.org/626)).
   
-  - Sortie : 13 fichiers XML source, séparés en 222 fichiers XML, structurés en XML-TEI  (avec reprise d'éléments issus de LaTeX pour caractériser les divisions : chapter, section, subsection, subsubsection, etc).
+  - Sortie : 13 fichiers XML source, séparés en 222 fichiers XML, structurés en XML-TEI  (avec reprise d'éléments issus de LaTeX pour caractériser les divisions : *chapter*, *section*, *subsection*, *subsubsection*, etc).
   
   - Point d'entrée du stage : corpus structuré dans lequel plusieurs points ont été identifiés comme devant être re-travaillés. Corpus composé des enquêtes sociologiques (les monographies) et d'éléments de paratexte. Chercheurs intéressés uniquement par les premières, volonté de traiter l'ensemble lors du stage.
 
@@ -54,9 +54,9 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
 #### A. Gestion de projet : méthodologie de travail
 
-  - Mise en place d'outil de développement : GitLab INRIA (versionnage par commit, feuille de route dans les issues, merge request) ;
+  - Mise en place d'outils de développement : GitLab INRIA (versionnage par commits, feuille de route dans les issues, merge requests, Pylint pour l'intégration continue) ;
   
-  - Mise en place d'espace de discussion : GitLab INRIA (issue et merge request), MatterMost, Zoom (conséquence du télé-travail) ;
+  - Mise en place d'espaces de discussion : GitLab INRIA (issues et merge requests), MatterMost, Zoom (conséquence du télé-travail) ;
   
   - Typologie des points/erreurs à reprendre.
 
@@ -68,7 +68,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
   - Interventions manuelles pour corriger les erreurs (vérification des fichiers) ;
   
-  - Débouché de l'opération : constitution d'un fichier de mapping avec les id des fichiers + implémentation automatique des ces id dans des `@xml:id`.
+  - Débouché de l'opération : constitution d'un fichier de mapping avec les id des fichiers + implémentation automatique des ces id dans des `@xml:id` + fichier `master.xml` avec des `<xi:include>`.
 
 #### C. Niveau du fichier : correction des erreurs d'implémentation de la structure logique (`<div>` et `<head>`).
 
@@ -104,7 +104,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
   - Constitution automatique d'un fichier XML d'index à partir de ce tableau.
   
-  - Impossibilité d'implémenter les balises d'indexation (`<persName>`) dans les fichiers du fait de la qualité des transcriptions.
+  - Impossibilité d'implémenter les balises d'indexation (`<persName>`) dans les fichiers du fait de la qualité des transcriptions. Solution d'attente, implémentation d'un commentaire avec le individus et leurs id, mais cela constitue une dette technique pour plus tard.
   
 #### C. Corriger les transcriptions ?
 
@@ -124,7 +124,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   
   - Les scripts sont-ils réutilisables ?
   
-  - Dans quel état est le corpus ?
+  - Dans quel état est le corpus à la fin du stage ?
   
   - Que reste-il à faire ? Qu'est-ce qui peut être envisagé pour la suite ?
 
