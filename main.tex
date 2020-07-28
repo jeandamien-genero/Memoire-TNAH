@@ -11,11 +11,16 @@
 \usepackage{tocbibind}
 %\usepackage{lscape}
 
-
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{setspace}
 \setlength{\parindent}{1cm}
 \onehalfspacing
+
+\usepackage[backend=biber, sorting=nyt, style=enc]{biblatex}
+\usepackage[autostyle]{csquotes}
+
+\addbibresource{mybibliography.bib}
+
 
 %%%Pour les tableaux
 %\usepackage{multirow}
@@ -42,9 +47,6 @@
 %\renewcommand{\Rlineflag}{D}
 
 \hyphenation{}
-
-
-\usepackage[babel]{csquotes}
 
 \usepackage[backend=biber, sorting=nyt, style=enc]{biblatex}
 %\addbibresource{Biblio/demo.bib}
@@ -78,6 +80,10 @@
 \include{main/part1}
 
 \backmatter
+\part*{Bibliographie}
+\addcontentsline{toc}{part}{Bibliographie}
+\cite{inria}
+
 \tableofcontents
 
 \end{document}
