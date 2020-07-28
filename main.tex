@@ -1,0 +1,83 @@
+\documentclass[a4paper,twoside,12pt]{book}
+\usepackage[utf8]{inputenc}
+
+\usepackage[french]{babel}
+
+\usepackage{fontspec}
+
+\usepackage{hyperref}
+
+%Module d'usage facultatif permettant d'intégrer les tables, index, bibliographie, automatiquement à la table des matières
+\usepackage{tocbibind}
+%\usepackage{lscape}
+
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\setlength{\parindent}{1cm}
+\onehalfspacing
+
+%%%Pour les tableaux
+%\usepackage{multirow}
+
+
+%%% Les index
+%\usepackage{makeidx}
+%\usepackage{multind} %Ou splitidx
+%\usepackage{index} %…
+%\makeindex
+%\makeindex{edition}
+%\makeindex{texte}
+%\newindex{etude}{adx}{and}{Index de l'étude}
+%\newindex{edition}{bdx}{bnd}{Index de l'édition}
+
+
+
+%%%Édition critique
+%\usepackage{eledmac}
+%\usepackage{eledpar}
+
+%\footparagraph{A}
+
+%\renewcommand{\Rlineflag}{D}
+
+\hyphenation{}
+
+
+\usepackage[babel]{csquotes}
+
+\usepackage[backend=biber, sorting=nyt, style=enc]{biblatex}
+%\addbibresource{Biblio/demo.bib}
+%\nocite{lachin_i_2008}
+
+\usepackage{enumerate,lettrine}
+
+\title{Valoriser le traitement automatique des données : Le cas des Ouvriers des deux mondes}
+\author{Jean-Damien Généro}
+\date{Juillet 2020}
+
+\begin{document}
+
+\frontmatter
+\include{front/titlepage}
+\include{front/abstract}
+\clearpage
+\thispagestyle{empty}
+\cleardoublepage
+\include{front/abrev}
+\clearpage
+\thispagestyle{empty}
+\cleardoublepage
+\include{front/preface}
+\clearpage
+\thispagestyle{empty}
+\cleardoublepage
+\include{front/introduction}
+
+\mainmatter
+\include{main/part1}
+
+\backmatter
+\tableofcontents
+
+\end{document}
