@@ -274,4 +274,7 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+# Addenda
 .DS_Store
+OD2M.bib
