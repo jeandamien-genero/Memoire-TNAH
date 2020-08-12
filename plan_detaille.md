@@ -20,7 +20,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
   - Objectif côté pro : reprendre les fichiers XML et les valoriser de manière semi-automatique.
   
-  - Objectif côté recherche : quelle est la valeur ajoutée de l'automatisation dans l'exploitation d'une documentation dans le cadre d'un projet de recherche ? 
+  - Objectif côté recherche : quelle est la valeur ajoutée de l'automatisation pour l'exploitation d'une documentation dans le cadre d'un projet de recherche ? 
   
 ---
 
