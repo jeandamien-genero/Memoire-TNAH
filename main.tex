@@ -7,12 +7,6 @@
 
 \usepackage[colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
 
-\usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage{enumerate}
-% \usepackage{enumitem} 
-\usepackage{eurosym}
-
 %Module d'usage facultatif permettant d'intégrer les tables, index, bibliographie, automatiquement à la table des matières
 \usepackage{tocbibind}
 %\usepackage{lscape}
@@ -27,6 +21,16 @@
 
 \addbibresource{mybibliography.bib}
 \addbibresource{OD2M.bib}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{enumerate}
+% \usepackage{enumitem} 
+\usepackage{eurosym}
+\usepackage{url}
+
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
 
 %%%Pour les tableaux
 %\usepackage{multirow}
@@ -63,6 +67,7 @@
 \newcommand\cad{c'est-à-dire}
 \newcommand\fig{fig.}
 \newcommand\ia{\textit{Internet Archive}}
+\newcommand\lodm{\textit{Les Ouvriers des deux mondes}}
 \newcommand\odm{\textit{Ouvriers des deux mondes}}
 \newcommand\tnah{\og Technologies numériques appliquées à l'histoire \fg{}}
 \newcommand\timeus{\textit{Time~Us}}
@@ -91,35 +96,14 @@
 \thispagestyle{empty}
 \cleardoublepage
 \include{front/introduction}
+\cleardoublepage
+\include{front/biblio}
 
 \mainmatter
 \include{main/part1}
 
 \backmatter
-\part*{Bibliographie}
-\addcontentsline{toc}{part}{Bibliographie}
-
-\cite{inria}.
-
-\cite{baciocchi}.
-
-\cite{baciocchi2}.
-
-\cite{cardoni}.
-
-\cite{chague}.
-
-\cite{chenu}.
-
-\cite{hincker}.
-
-\cite{lefourner}
-
-\cite{lorry}.
-
-\cite{savoye}.
-
-\cite{savoye2}.
+\include{back/appendix}
 
 \tableofcontents
 
