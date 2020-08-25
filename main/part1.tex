@@ -122,21 +122,21 @@ Ces modulations dans l'application de la structure définie par Frédéric Le Pl
 
 \chapter{Des numérisations multiples}
 
-Avant de réfléchir à l'encodage des \odm, il est nécessaire de disposer d'une version digitale du corpus \og papier \fg{} pour réaliser une opération de transcription automatique. Or, comme nous l'avons déjà signalé, les \odm{} ont bénéficié des programmes de numérisations des ressources des bibliothèques.
+Avant de réfléchir à l'encodage des \odm, il est nécessaire de disposer d'une version digitale du corpus \og papier \fg{} pour réaliser une opération de transcription automatique. Or, comme nous l'avons déjà signalé, les \odm{} ont bénéficié des programmes de numérisation des ressources des bibliothèques.
 
-Un corpus se trouve notamment sur le site \textit{Google Books}, mais il n'est important que d'un \pov{} quantitatif et non pas qualitatif. En effet, les treize volumes ne sont pas accessibles dans leur intégralité : seul les quatre premiers le sont. Cet accès restreint est regrettable, dans la mesure où \textit{Google Books} n'a pas numérisé un seul corpus, mais plusieurs issus de bibliothèques italiennes, françaises et américaines. Disposer de tous ces exemplaires aurait permis un relevé plus fin des différences de composition.
+Un corpus se trouve notamment sur le site \textit{Google Books}, mais il n'est important que d'un \pov{} quantitatif et non pas qualitatif. En effet, les treize volumes ne sont pas accessibles dans leur intégralité : seul les quatre premiers le sont. Cet accès restreint est regrettable, dans la mesure où \textit{Google Books} n'a pas numérisé un seul corpus, mais plusieurs issus de bibliothèques italiennes, françaises et américaines (\ann{} \ref{numgb}). Disposer de tous ces exemplaires aurait permis un relevé plus fin des différences de composition.
 
-Le projet \timeus s'est donc orienté vers les deux seuls corpus complets, hébergé par la Bibliothèque nationale de France et le site \ia.
+Le projet \timeus{} s'est donc orienté vers les deux seuls corpus complets, hébergés par la Bibliothèque nationale de France et le site \ia.
 
 \section{Les volumes de la Bibliothèque nationale de France}
 
-Les trois séries des \odm{} ont été mis en ligne sur le site \textit{Gallica} de la Bibliothèque nationale de France le 15 octobre 2007\footnote{Notice de la numérisation : \url{https://gallica.bnf.fr/ark:/12148/cb32830863r/} (consulté le \today).}.
+Les trois séries des \odm{} ont été mises en ligne sur le site \textit{Gallica} de la Bibliothèque nationale de France le 15 octobre 2007\footnote{Notice de la numérisation : \url{https://gallica.bnf.fr/ark:/12148/cb32830863r/} (consulté le \today).}.
 
 Les volumes sont téléchargeables en trois formats :
 
 \begin{itemize}
     \item PDF (\textit{Portable Document Format}), qui préserve la mise en page du document telle qu'elle a été définie par son auteur ;
-    \item TXT, qui contient uniquement du texte brut, \cad{} des chaînes de caractères (ce qui n'intéresse pas le programme \timeus qui souhaite obtenir les images des pages de chaque volume) ;
+    \item TXT, qui contient uniquement du texte brut, \cad{} des chaînes de caractères (ce qui n'intéresse pas le programme \timeus, qui souhaite obtenir les images des pages de chaque volume) ;
     \item JPEG (\textit{Joint Photographic Experts Group}), qui permet de compresser les images avant de les enregistrer.
 \end{itemize}
 
@@ -148,7 +148,7 @@ Le corpus numérisé sur \textit{Gallica} n'est ainsi pas exploitable par le pro
 
 \ia{} est un organisme à but non lucratif fondé en 1996 par Brewster Kahle. Son objectif premier, tel qu'annoncé dans son \textit{manifeste}, est de \og collecter les données publiques sur Internet pour bâtir une bibliothèque digitale \fg{}\footnote{\og \textit{The Internet Archive is such a new organization that is collecting the public materials on the Internet to construct a digital library} \fg{} : \cite{Brewster1} (cité dans \cite{Brewster2}).}. Cet archivage du web est accessible grâce à l'outil \textit{Wayback Machine}, lancé en octobre 2001\footcite[p.344]{panos} mais prévu dès le lancement d'\ia\footnote{\textit{We possess the capability of supplying documents that are no longer available from the origi- nal publisher, an important function if the Web’s hypertext system is to become a medium for scholarly publishing. Such a service could also prove worthwhile for business research.} : \cite[p.83]{iamanifest}.}. À partir de 2000, l'organisation commence à archiver les programmes de télévision, les musiques et les films numériques~; en 2001, c'est au tour des livres de faire leur entrée sur ses serveurs\footcite[p. 3-4]{Brewster2}.
 
-\ia{} commence ses digitalisations en tant que participant au projet \textit{Million Book} de l'Université Carnegie-Mellon de Pittsburgh, et se met à digitaliser par lui-même en se rendant dans les bibliothèques universitaires à partir de 2005\footcite[p. 4]{Brewster2}. La digitilasation se fait au moyen de scanners\footcite[p. 4]{Brewster2}. Les livres ainsi numérisés sont accessibles  et téléchargeables librement, sans aucune restriction, ce qui constitue le principal avantage du site, à l'image de \textit{Gallica} et à l'inverse d'autres plates-formes comme \gb\footcite[p. 1]{Brewster2}.
+\ia{} commence ses digitalisations en tant que participant au projet \textit{Million Book} de l'Université Carnegie-Mellon de Pittsburgh, et se met à digitaliser par lui-même en se rendant dans les bibliothèques universitaires à partir de 2005\footcite[p. 4]{Brewster2}. La digitilasation est faite page par page au moyen de scanners\footcite[p. 4]{Brewster2}. Les livres ainsi numérisés sont accessibles  et téléchargeables librement, sans aucune restriction, ce qui constitue le principal avantage du site, à l'image de \textit{Gallica} et à l'inverse d'autres plates-formes comme \gb\footcite[p. 1]{Brewster2}.
 
 Les exemplaires des \odm{} numérisés sur \ia{} sont conservés à la \textit{John P. Robarts Research Library} de l'Université de Toronto. Leurs mises en ligne ont été réalisées en novembre 2008, mise à part le fascicule 17 bis de la série 3, ajouté en mars 2010.
 
@@ -158,18 +158,20 @@ Le principal apport d'\ia{} est qu'il permet des téléchargements de l'ensemble
 
 Le téléchargement depuis \ia{} permet d'obtenir un dossier contenant le fichier image de chaque page au format JPEG (en l'occurrence JPEG 2000, abrégé en JP2) avec une qualité maximale\footcite{chague2}. C'est donc pour ce corpus et ce format qu'a opté le programme \timeus.
 
-Ce choix n'est pas sans conséquence, notamment en raison du caractère incomplet du corpus d'\ia{}. Les fascicules contenant les six dernières monographies (n°~109 à 114) et les précis qui les accompagnent (n°~109bis à 111bis) n'ont en effet pas été numérisés.
+Ce choix n'est pas sans conséquence, notamment en raison du caractère incomplet du corpus d'\ia{}. Les fascicules contenant les six dernières monographies (n°~109 à 114) et les précis qui les accompagnent (n°~109~bis à 111~bis ) n'ont en effet pas été numérisés.
 
-Ce corpus comporte également divers biais liés à l'impression, dont des titres appartenant à la structure logique qui n'ont pas été imprimés (\ann{} \ref{titre-non-imprimes}), sans que l'on puisse déterminer s'il s'agit d'une erreur de composition ou d'une suppression volontaire par les éditeurs.
+Ce corpus comporte également divers biais liés à l'impression, dont des titres appartenant à la structure logique qui n'ont pas été imprimés (\ann{} \ref{titre-non-imprimes}), sans que l'on puisse déterminer s'il s'agit d'une erreur de composition ou d'une suppression volontaire par les éditeurs. Toutes les monographies relatives au textile et donc intéressant directement le programme \timeus{} sont néanmoins bel et bien présentes.
+
+Dès lors que le choix du corpus était effectué, les opérations de transcription et d'encodage pouvaient débuter.
 
 \chapter{Un encodage automatique}
 
-Le programme \timeus{} a choisi de procéder lui-même à la transcription des treize volumes des \odm{} et à l'encodage des textes bruts ainsi obtenus. 
+Le programme \timeus{} a choisi de procéder lui-même à la transcription des treize volumes des \odm{} et à l'encodage du texte brut ainsi obtenu. 
 
-Cela n'était pas envisagé au départ, un budget ayant été prévu pour externaliser les transcriptions et leurs structurations. Néanmoins, l'équipe ALMAnaCH d'INRIA a fait valoir les risques inhérents à une telle opération, et notamment la difficulté à rédiger un cahier des charges suffisamment rigide pour pouvoir contrôler les différentes étapes de réalisation.
+Cela n'était pas envisagé ainsi au départ, un budget ayant été prévu pour externaliser cette étape. Néanmoins, l'équipe ALMAnaCH d'INRIA a fait valoir les risques inhérents à une telle opération, et notamment la difficulté à rédiger un cahier des charges suffisamment rigide pour pouvoir contrôler les différentes étapes de réalisation.
 
-Le choix s'est donc porté sur une réalisation en interne avec la possibilité de la conduire manuellement (un humain réalise les transcriptions et l'encodage) ou automatiquement (un humain écrit un programme qui prend les images en entrée et fournit des fichiers XML en sortie)\footcite[p. 52]{chague}. Il semble que la première solution ait été envisagée dans un premier temps, notamment par le Centre Maurice-Halbwachs\footcite[p. 52]{chague}. 
+Le choix s'est donc porté sur une réalisation en interne avec la possibilité de la conduire manuellement (un humain réalise les transcriptions avant de les encoder) ou automatiquement (un humain écrit un programme qui prend les images en entrée et fournit des fichiers XML en sortie)\footcite[p. 52]{chague}. Il semble que la solution du travail manuel ait été envisagée dans un premier temps, notamment par le Centre Maurice-Halbwachs\footcite[p. 52]{chague}. 
 
-ALMAnaCH a cependant proposé de prendre en charge l'écriture du programme permettant d'automatiser l'opération, en insistant sur les apports méthodologiques et scientifiques que cela représenteraient pour le programme\footcite[p. 52]{chague}. Le succès d'une telle opération lui permettrait en effet de développer ses compétences dans l'acquisition et l'encodage automatique de texte imprimé.
+ALMAnaCH a cependant proposé de prendre en charge l'écriture du programme permettant d'automatiser l'opération, en insistant sur les apports méthodologiques et scientifiques que cela représenteraient pour le programme\footcite[p. 52]{chague}. Le succès d'une telle opération lui permettrait en effet de développer ses compétences dans l'acquisition et l'encodage automatique de texte imprimé. Ajoutons que cette proposition correspond à la dynamique interne dont nous avons constaté la prégnance sur les membres d'ALMAnaCH dès le début du stage. Une réflexion est systématiquement menée pour étudier l'opportunité d'automatiser les tâches dans un objectif évident de gain de temps, mais également de développement expérimental de nouvelles techniques de traitement des fichiers.
 
 \section[Le script LSE-OD2M]{Le script \textsc{LSE-OD2M} : segmentation, transcription, structuration}
