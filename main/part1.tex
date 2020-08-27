@@ -182,7 +182,7 @@ Dès lors que le corpus était nettoyé, les opérations de transcription et d'e
 \section{Choix de l'automatisation}
 Le programme \timeus{} a choisi de procéder lui-même à la transcription des treize volumes des \odm{} et à l'encodage du texte brut ainsi obtenu. 
 
-Cela n'était pas envisagé ainsi au départ, un budget ayant été prévu pour externaliser cette étape. Néanmoins, l'équipe ALMAnaCH d'INRIA a fait valoir les risques inhérents à une telle opération, et notamment la difficulté à rédiger un cahier des charges suffisamment rigide pour pouvoir contrôler les différentes étapes de réalisation.
+Cela n'était pas envisagé ainsi au départ, un budget ayant été prévu pour externaliser cette étape. Néanmoins, l'équipe ALMAnaCH d'Inria a fait valoir les risques inhérents à une telle opération, et notamment la difficulté à rédiger un cahier des charges suffisamment rigide pour pouvoir contrôler les différentes étapes de réalisation.
 
 Le choix s'est donc porté sur une réalisation en interne avec la possibilité de la conduire manuellement (un humain réalise les transcriptions avant de les encoder) ou automatiquement (un humain écrit un programme qui prend les images en entrée et fournit des fichiers XML en sortie)\footcite[p. 52]{chague}. Il semble que la solution du travail manuel ait été envisagée dans un premier temps, notamment par le Centre Maurice-Halbwachs\footcite[p. 52]{chague}. 
 
@@ -218,20 +218,27 @@ Il était dès lors possible de passer à la reconnaissance des caractères.
 
 La reconnaissance des caractères est la deuxième étape de l'\ocr. Il s'agit, pour le logiciel, de détecter le premier caractère de la zone segmentée, d'en reconnaître les signes distinctifs et, à partir de ceux-ci, de l'associer au symbole du modèle fourni avec qui il partage le plus de points communs\footcite[p.~3]{casey}. Cette séquence est répétée jusqu'à ce que plus aucun caractère ne soit détecté dans le segment, le logiciel réitérant alors l'opération sur le segment suivant jusqu'à arriver au dernier du document.
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=15cm]{img/schema_lse_od2m.png}
+    \caption{Schématisation des étapes suivies pour l’extraction du texte et des informations de mise en page (source : Alix Chagué, \url{https://timeus.hypotheses.org/626}).}
+    \label{fig:schema_lse_od2m}
+\end{figure}
+
 Cette étape nécessite donc d'établir un modèle contenant une \og vérité terrain \fg{} (\textit{ground truth}), \cad{} une transcription parfaite d'un échantillon du corpus. Le logiciel calcule ensuite le taux de similarité entre les formes qu'il détecte et celles qui se trouvent dans le modèle.
 
 Deux solutions étaient envisageables pour la reconnaissance des caractères des \odm. La première était l'usage de \transkribus{}, la seconde utilisait \kraken{}.
 
-\kraken{} est un logiciel libre développé en Python par Benjamin Kiessling\footnote{Chercheur du laboratoire d'humanités numériques \og Alexander von Humboldt \fg{} de l'Université de Leipzig (\textit{Leipzig  University’s  Alexander  von  Humboldt  Chair for Digital Humanities}).} à partir du système \textit{OCRopus}\footcite{kiessling}. Dans le processus d'\ocr, \kraken{} se passe de l'étape de la segmentation des mots et des caractères grâce à un \og réseau neuronal artificiel \fg{} qu'il utilise \og pour analyser l'image d'une ligne de texte, la séquence d'entrée, en une suite de caractère, la séquence de sortie \fg{}\footnote{\og \textit{[Kraken's] recognition engine operates as a segmentation-less sequence classifier using an artificial neural network to map an image of a single line of text, the input sequence, into a sequence of characters, the output sequence} : \cite{kiessling}.}. Ce point est l'apport principal de \kraken{} par rapport à tous les logiciels similaires tels que \transkribus{} : il peut analyser un nombre important d'écritures de toute époque, latines et même arabes\footcite{kiesslingarabe}.
+\kraken{} est un logiciel libre développé en Python par Benjamin Kiessling\footnote{Chercheur du laboratoire d'humanités numériques \og Alexander von Humboldt \fg{} de l'Université de Leipzig (\textit{Leipzig  University’s  Alexander  von  Humboldt  Chair for Digital Humanities}).} à partir du système \textit{OCRopus}\footcite{kiessling}. Dans le processus d'\ocr, \kraken{} se passe de l'étape de la segmentation des mots et des caractères grâce à un \og réseau neuronal artificiel \fg{} qu'il utilise \og pour analyser l'image d'une ligne de texte, la séquence d'entrée, en une suite de caractères, la séquence de sortie \fg{}\footnote{\og \textit{[Kraken's] recognition engine operates as a segmentation-less sequence classifier using an artificial neural network to map an image of a single line of text, the input sequence, into a sequence of characters, the output sequence} : \cite{kiessling}.}. Ce point est l'apport principal de \kraken{} par rapport à tous les logiciels similaires tels que \transkribus{} : il peut analyser un nombre important d'écritures de toute époque, latines et même arabes\footcite{kiesslingarabe}.
 
-\og En 2018 \fg, note cependant Alix Chagué, \og il n’était pas possible d’obtenir une analyse de la mise en page complète avec \kraken \fg{}\footcite{chague2}. Mais le logiciel permettait déjà à cette époque d'entraîner un modèle pour l'\ocr. Cela était également possible avec \transkribus, mais le fichier modèle ne peut pas être exporté depuis cette plate-forme, alors que l'opération est possible avec \kraken et donne de meilleurs résultats. L'équipe ALMAnaCH a donc choisi de recourir à \kraken{} pour la phase de transcription (entraînement du modèle puis reconnaissance des caractères)\footcite{chague2}.
+\og En 2018 \fg, note cependant Alix Chagué, \og il n’était pas possible d’obtenir une analyse de la mise en page complète avec \kraken \fg{}\footcite{chague2}. Mais le logiciel permettait déjà d'entraîner un modèle pour l'\ocr. Cela était également possible avec \transkribus, mais le fichier modèle ne peut pas être exporté depuis cette plate-forme, alors que l'opération est possible avec \kraken{}, qui donne de meilleurs résultats. L'équipe ALMAnaCH a donc choisi de recourir à \kraken{} pour la phase de transcription (entraînement du modèle puis reconnaissance des caractères)\footcite{chague2}.
 
-Le fichier \og vérité terrain \fg{} était composé des transcriptions de 1300 lignes (fichiers texte) et de leurs images (fichiers image). Pour s'entraîner, \kraken{} itère sur chaque couple de fichiers, transcrit le fichier image et compare le résultat au contenu du fichier texte. Le passage en revue de l'ensemble des données (ici, les 1300 couples) constitue une \textit{epoch}. Un taux de réussite (\textit{accuracy report}) est calculé à la fin de chaque itération. Il est composé de trois données numériques : le taux de réussite (positif ou négatif), le nombre de caractères contenus dans l'\textit{epoch} et les erreurs (\cad{} le nombre de caractères non-reconnus). Plusieurs dizaines d'\textit{epoch} sont nécessaires pour parvenir à un taux de réussite optimal et donc à un modèle fiable (\fig{} \ref{fig:kraken_training}).
+Le fichier \og vérité terrain \fg{} était composé des transcriptions de 1300 lignes (fichiers texte) et de leurs images (fichiers image). Pour s'entraîner, \kraken{} itère sur chaque couple de fichiers, transcrit le fichier image et compare le résultat au contenu du fichier texte. Le passage en revue de l'ensemble des données (ici, les 1300 couples) constitue une \textit{epoch}. Un taux de réussite (\textit{accuracy report}) est calculé à la fin de chaque itération. Il est composé de trois données numériques : le taux de réussite (positif ou négatif), le nombre de caractères contenus dans l'\textit{epoch} et les erreurs (\cad{} le nombre de caractères non-reconnus). Plusieurs dizaines d'\textit{epochs} sont nécessaires pour parvenir à un taux de réussite optimal et donc à un modèle fiable (\fig{} \ref{fig:kraken_training}).
 
 \begin{figure}
     \centering
     \includegraphics[width=15cm]{img/kraken_training.png}
-    \caption{Exemple d'un entraînement opéré par \kraken. Trois \textit{epoch} (n° 0 à 2) sont arrivées à leur terme, la quatrième étant en cours de chargement (n° 3). Le taux de réussite augmente à chaque nouvelle \textit{epoch} : de \citecode{-1.5951} pour la première (\citecode{9550} fautes sur... \citecode{3680} caractères détectés), il atteint \citecode{0.8445} pour la troisième (\citecode{545} fautes sur \citecode{3504} caractères détectés). Capture d'écran du site de \kraken{} (\url{http://kraken.re/training.html}, consulté le \today).}
+    \caption{Exemple d'un entraînement opéré par \kraken. Trois \textit{epochs} (n° 0 à 2) sont arrivées à leur terme, la quatrième étant en cours de chargement (n° 3). Le taux de réussite augmente à chaque nouvelle \textit{epoch} : de \citecode{-1.5951} pour la première (\citecode{9550} fautes sur... \citecode{3680} caractères détectés), il atteint \citecode{0.8445} pour la troisième (\citecode{545} fautes sur \citecode{3504} caractères détectés). Capture d'écran du site de \kraken{} (\url{http://kraken.re/training.html}, consulté le \today).}
     \label{fig:kraken_training}
 \end{figure}
 
@@ -250,13 +257,6 @@ Ces transcriptions relèvent du texte brut, \cad{} que la données n'y est pas s
 
 C'est à ce stade que l'analyse de la structure logique menée précédemment est prise en compte (\ann{} \ref{structure}).
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=15cm]{img/schema_lse_od2m.png}
-    \caption{Schématisation des étapes suivies pour l’extraction du texte et des informations de mise en page. L'action du script \lse{} se situe au niveau inférieur \og Agrégation des éléments \fg{} (source : Alix Chagué, \url{https://timeus.hypotheses.org/626}).}
-    \label{fig:schema_lse_od2m}
-\end{figure}
-
 \begin{enumerate}
     \item Les limites des chapitres (monographies et éléments de paratexte) sont identifiées en fonction des pages de titres qui marque le début de celui en cours et la fin du précédent.
     \item Les transcription sont rassemblées par chapitre.
@@ -269,4 +269,64 @@ C'est à ce stade que l'analyse de la structure logique menée précédemment es
     \end{itemize}
 \end{enumerate}
 
-Ces fichiers XML sont structurés avec un schéma TEI. Le \textit{Text Encoding Initiative} est
+\section{Les fichiers XML-TEI}
+
+Ces fichiers XML sont structurés avec un schéma TEI.
+
+XML (\textit{Extensible Markup Language}, en français \textit{langage de balisage extensible}) est un format de données conçu pour la description des documents textuels, ne possédant pas de jeu de balises prédéfini\footnote{Définition d'Ariane Pinche : \url{https://github.com/ArianePinche/coursTNAH_XML-TEI/blob/master/seance01/InitiationXML.md} (consulté le \today).}.
+
+La TEI (\textit{Text Encoding Initiative}) est un schéma de données XML commencé en 1987 dont le but est de \og fournir des recommandations pour la création et la gestion sous forme numérique de tout type de données créées et utilisées par les chercheurs en sciences humaines \fg\footcite[p. 9]{burnard}. Ses trois caractéristiques principales sont qu'il \og s’intéresse au sens du texte plutôt qu'à son apparence \fg, qu'il est \og indépendant de tout environnement logiciel particulier \fg{} et qu'il a été conçu par une communauté scientifique qui le maintient toujours aujourd'hui à travers le \textit{TEI Consortium} fondé en 2000\footcite[p. 9]{burnard}. 
+
+Ce format conjugue ainsi une certaine \og flexibilité et un intérêt centré sur les besoins scientifiques \fg\footcite[p. 10]{burnard}. L'utiliser pour encoder les transcriptions des \odm, c'est donc décrire de la meilleure manière possible l'organisation originale du texte dans les volumes imprimés tout en assurant la pérennité de la donnée ainsi produite.
+
+Un document XML peut être représenté sous une forme arborescente, \og l'arbre XML \fg{} (\fig{} \ref{fig:xmltree1}). Il débute par un élément racine (\citecode{<TEI>}) qui contient tous les autres.
+
+Les trois grandes sections de l'arbre sont le \citecode{<teiHeaer>}, les \citecode{<facsimile>} et le \citecode{<text>}. Le \citecode{<teiHeaer>} est l'en-tête où se trouvent les métadonnées du document. Il est ici réduit à son minimum, n'étant composé que d'une description bibliographique (\citecode{<fileDesc>}) : le titre et ses auteurs (\citecode{<titleStmt>}), l'organisation responsable de la publication, la date et le lieu de celle-ci (\citecode{<publicationStmt>}), et enfin une description sommaire des \odm{} (\citecode{<sourceDesc>})\footnote{\og Les \odm{} sont des recueils d'enquêtes sociologiques publiées pendant la deuxième moitié du \textsc{xix}\ieme{} siècle. Ces enquêtes ont été rassemblées sous la forme de 3 séries de plusieurs volumes. Accès aux fichiers images sources : \url{http://timeusage.paris.inria.fr/mediawiki/index.php/Aperçu_des_états\#Les_Ouvriers_des_Mondes} \fg.}. L'en-tête contient également un \citecode{<encodingDesc>} où le lien est fait avec le programme ANR ; l'action du script \lse{} est également mentionnée\footnote{\og Cette édition numérique des \odm{} a été réalisée dans le cadre du projet ANR \timeus{} (\url{http://larhra.ish-lyon.cnrs.fr/anr-time-us}). Elle est générée automatiquement grâce au programme \lse{} (\url{https://gitlab.inria.fr/almanach/time-us/LSE-OD2M}), développé par Alix Chagué, équipe Inria ALAMAnaCH \fg.}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{img/xml_tree_1.png}
+    \caption{Représentation de l'arbre XML utilisé par le script \lse{} pour encoder les transcriptions des monographies des \odm.}
+    \label{fig:xmltree1}
+\end{figure}
+
+Le document continue avec une succession de balises \citecode{<facsimile>} dont le but est de conserver le lien entre le texte et son segment dans l'image d'origine (\fig{} \ref{fig:facsimile})\footnote{\textit{TEI Guidelines, 11 Representation of Primary Sources, 11.1 Digital Facsimiles} (\url{https://tei-c.org/release/doc/tei-p5-doc/fr/html/PH.html\#PHFAX}, consulté le \today).}. L'élément suivant, \citecode{<surface>}, possède quatre attributs : \citecode{@ulx} et \citecode{@uly} qui ont pour valeurs l'abscisse \textit{x} et l'ordonnée \textit{y} du coin supérieur gauche du bloc de segmentation, et \citecode{@urx} et \citecode{@ury} contenant les valeurs de l'abscisse \textit{x} et de l'ordonnée \textit{y} du coin inférieur droit. Ces coordonnées sont directement reprises des fichiers XML ALTO obtenus avec \textit{FineReader}. On trouve ensuite un élément \citecode{<graphic>} avec un attribut \citecode{@url} ayant pour valeur le chemin local vers l'image de la page, et un élément \citecode{<zone>} contenant lui-même un ensemble de balises \citecode{<zone>}. Ces dernière contiennent les coordonnées des blocs de segmentation à l'intérieur du bloc supérieur définit par \citecode{<surface>} ; ces sous-blocs sont catégorisés par un attribut \citecode{@rendition} ayant pour valeur \citecode{paragraph} lorsqu'il s'agit de texte ou \citecode{table} pour un tableau.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{img/facsimile.png}
+    \caption{Exemple d'une ensemble \citecode{<facsimile>} dans le fichier source du troisième volume de la deuxième série.}
+    \label{fig:facsimile}
+\end{figure}
+
+Le \citecode{<teiHeaer>} et les éléments \citecode{<facsimile>} montrent que la structuration d'un texte brut issu d'une \ocr{} ne consiste pas simplement en l'encodage de la transcription. Il s'agit aussi de produire des métadonnées permettant de décrire le contenu du fichier.
+
+La dernière section de l'arbre, \citecode{<text>}, contient les transcriptions structurées au sein de son élément \citecode{<body>}. Notons que l'implémentation de la structure logique par \lse{} n'a pas donné de résultats satisfaisants et a fait l'objet d'une reprise majeure lors du stage. 
+
+Le principe retenu est le suivant : chaque division de la structure est enchâssée dans un élément \citecode{<div>} pour lequel la valeur de l'attribut \citecode{@type} vient préciser son niveau. Ces valeurs sont calquées sur les divisions des documents du langage de composition \LaTeX{} : \citecode{\textbackslash chapter\{\}}, \citecode{\textbackslash section\{\}}, \citecode{\textbackslash subsection\{\}}, \citecode{\textbackslash subsubsection\{\}}. Cela a pour but de faciliter une éventuelle transformation des documents XML-TEI au format \LaTeX\footcite[p. 52]{chague2}.
+
+La monographie correspond à une \citecode{<div>} de type \citecode{chapter}. Les ensemble de niveau~A (page de titre, \textit{Observations préliminaires} et \textit{Notes}) sont de type \citecode{section}, les titres de niveau~I \citecode{sub\_section} et les paragraphes \citecode{sub\_sub\_section} (\textit{cf.} \ann{} \ref{structure}). Dans chaque niveau, le titre en lui-même est encodé au sein d'un élément \citecode{<head>}, le texte se trouvant ensuite dans des \citecode{<p>} (\fig{} \ref{fig:ex_structure}).
+
+Pour les éléments de paratexte, tels que les avertissements liminaires de chaque volume, seul le niveau \citecode{chapter} a été utilisé, l'ensemble du texte se trouvant dans des \citecode{<p>}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{img/ex_structure.png}
+    \caption{Exemple de la structuration du début des \textit{Observations préliminaires} de la monographie n° 70 par le script \lse. L'encodage est fautif dans la mesure où des niveaux supplémentaires ont été rajoutés : \textit{Observations...} ne devrait être que dans une \citecode{section} (les lignes des repères A n'ont pas lieu d'être), \textit{Définitions du lieu...} dans une \citecode{sub\_section} (les lignes des repères B sont fautives). On remarque également une erreur de transcription, le numéro de paragraphe (§1) étant répété. La balise finale, \citecode{<pb>}, signifie un changement de page.}
+    \label{fig:ex_structure}
+\end{figure}
+
+Le script \lse{} a été lancé sur le \textit{cluster} (ou \textit{grappe de serveurs}) \rioc{} d'Inria, où il a fallu un peu plus de quinze heures pour traiter l'ensemble des \odm. Un \textit{cluster} est un groupe d'ordinateurs inter-connectés où une \og reine \fg{} (le \textit{master node}) répartit grâce à un \og planificateur \fg{} (\textit{scheduler}) les tâches qui lui sont demandées par des humains à des \og ouvrières \fg{} (les \textit{slave nodes})\footnote{\textit{\rioc{} Architecture}, \url{https://sed-paris.gitlabpages.inria.fr/rioc/rioc_architecture/rioc_architecture.html} (consulté le \today).}. Quatre des \og ouvrières \fg{} de \rioc{} possèdent des GPU (\textit{graphics processing unit}). Équipées d'une carte graphique, ces processeurs sont capables de réaliser du calcul vectoriel et peuvent ainsi traiter les images --- par exemple les pages des \odm{} --- très rapidement. Cette architecture en réseau permet d'augmenter de façon significative la vitesse de calcul et donc l'exécution des tâches.
+
+Au final, les treize fichiers source créés par \lse{} représentent 25,5 Mo. Ils ont été divisés en 223 fichiers (25,7 Mo) nommés de la façon suivante : \citecode{s[numéro de la série]t[numéro du volume]\_chapt\_[numéro du chapitre dans le volume].xml}.
+
+\clearpage
+
+\vspace*{\stretch{0.3}}
+
+Au moment de commencer notre stage, nous avons donc trouvé un ensemble de 223 fichiers XML contenant les transcriptions structurées avec uns schéma TEI des treize volumes des \odm. Les fichiers contenaient des enquêtes sociologiques (les monographies) et des éléments de paratexte. Les chercheurs du programme ANR \timeus{} n'étaient intéressés que par les monographies, mais Inria avait la volonté de valoriser l'ensemble des fichiers.
+
+Plusieurs points avaient été identifiés comme posant problème pour une future valorisation sous la forme d'une publication ou d'une réutilisation dans des projets de traitement automatique du langage (TAL).
+
+Nous allons à présent exposer les différentes reprises que nous avons menées.
+\vspace*{\stretch{1.7}}
