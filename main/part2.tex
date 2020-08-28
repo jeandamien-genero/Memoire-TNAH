@@ -6,7 +6,49 @@
 
 \chapter{Gestion de projet : méthodologie de travail}
 
-Début du chapitre 4.
+
+\section{Outils de développement}
+
+\subsection{\gitlab}
+
+La gestion quotidienne du programme \timeus{} se fait grâce à un dépôt sur \gitlab{}, un logiciel libre permettant aux entités comme Inria de créer une plate-forme interne de développement informatique. Sur \gitlab{} se trouve le dépôt central, organisé en plusieurs dossiers, dont un est réservé aux \odm. La technologie \textit{git} permet d'administrer les différentes versions du projet, sur une échelle à la fois verticale (les anciennes versions, appelées \commits, restant accessibles à travers un historique) et horizontale (le travail peut s'effectuer sur des \textit{branches} divergentes de la branche principale dite \master{} sans affecter l'état de cette dernière). Les \commits possèdent tous un commentaire où l'utilisateur peut résumer ses modifications.
+
+Chaque ingénieur peut rapatrier le dépôt \gitlab{} en local pour travailler dessus ; ce rapatriement est un \textit{pull}. Il peut ensuite effectuer l'opération inverse consistant à mettre ses \commits{} en ligne. Son équipe peut ainsi prendre connaissance des dernières avancées de la branche sur laquelle il travaille. Cette opération de mise en ligne s'effectue \textit{via} un \textit{push}.
+
+Une fois le travail dans une branche achevé, celle-ci peut être fusionnée avec \master. \gitlab{} propose une interface pour effectuer des \mergerequests{}. Il s'agit d'une demande de fusion, où \gitlab{} affiche l'historique de la branche. Les utilisateurs peuvent ainsi contrôler l'ensemble des \commits{} de la branche locale et vérifier qu'ils ne vont pas corrompre \master{} en créant des conflits (\textit{merge conflicts}) ; si des problèmes sont détectés, ils ont la possibilité d'échanger par messages afin de les résoudre.
+
+\gitlab{} permet enfin à ses utilisateurs d'échanger sur des éléments posant problème, d'effectuer des suggestions ou encore de porter à l'attention de leur équipe une ressource utile à travers des \issues. Les \issues{} et les \mergerequests{} sont numérotées (\citecode{\#\textbackslash d} et \citecode{!\textbackslash d}\footnote{Par exemple \citecode{\#5} fait référence à la cinquième \issue{} et \citecode{!5} à la cinquième \mergerequest{}.}), écrire leurs numéros dans \gitlab{} ou dans le commentaire de modification d'un \commit{} permettant de faire automatique référence à elles à travers un lien interne.
+
+\subsection{Le dépôt \gitlab{} des \odm}
+
+L'équipe ALMAnaCH possède un espace sur la plate-forme \gitlab{} d'Inria, où un dossier (en accès restreint) est réservé au programme \timeus{}. C'est ici, dans un sous-ensemble, que se trouve le dépôt des \odm. Le script \lse{} est déposé dans un dossier externe.
+
+La branche \master{} compte quatre sous-dossiers :
+
+\begin{itemize}
+    \item \citecode{source} contient les treize fichiers XML-TEI des volumes des \odm{} ;
+    \item \citecode{script} contient les scripts développés afin d'automatiser le traitement des fichiers ;
+    \item \citecode{files} contient les fichiers XML-TEI générés à partir des fichiers sources et modifiés automatiquement ou à la main en vue de leur publication (monographies et fichiers de paratexte) ;
+    \item \citecode{metadata} contient des fichiers de métadonnées sur le projet.
+\end{itemize}
+
+Ce dossier était notre espace de travail principal, notre première action ayant consisté en son rapatriement au niveau local. Notre méthodologie de travail était la suivante :
+
+\begin{enumerate}
+    \item Une branche était créée pour chaque mission ;
+    \item Des \commits{} étaient effectués en local sur cette branche ;
+    \item Les \commits{} d'une journée étaient mise en ligne sur \gitlab{} par un \textit{push} ;
+    \item Lorsque la mission était achevée, une \mergerequest{} était ouverte ;
+    \item La \mergerequest{} était acceptée et la branche fusionnée avec \master.
+\end{enumerate}
+
+\section{Espaces de discussion}
+
+La situation de confinement d'avril à mai et le maintien de la fermeture aux stagiaires des locaux d'Inria de juin à juillet a conduit à la mise en place d'outils de discussion, ou à l'exploitation intensive d'outils pré-existants.
+
+\section{Feuille de route}
+
+bla
 
 \chapter{Contrôle du découpage des fichiers source}
 
