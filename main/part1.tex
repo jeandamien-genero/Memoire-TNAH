@@ -156,6 +156,13 @@ Les exemplaires des \odm{} numérisés sur \ia{} sont conservés à la \textit{J
 
 \section{Choix du corpus à numériser}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{img/ex_tri.png}
+    \caption{Exemples d'images exclues du lot à transcrire (source : Alix Chagué, \url{https://timeus.hypotheses.org/626}).}
+    \label{fig:ex_tri}
+\end{figure}
+
 Le téléchargement depuis \ia{} permet d'obtenir un dossier contenant le fichier image de chaque page au format JPEG (en l'occurrence JPEG 2000, abrégé en JP2) avec une qualité maximale\footcite{chague2}. C'est donc pour ce corpus et ce format qu'a opté le programme \timeus. Cela représente 7 190 fichiers images, pour un poids de 3,3 Go\footcite{chague2}.
 
 L'ensemble a été versé sur un espace de stockage créé grâce au service \sharedocs de la TGIR Huma-Num. Lancé en mai 2018 à l'initiative de l'équipe ALMAnaCH, ce service est gratuit, français et sur-mesure (l'espace de stockage est alloué à la demande)\footcite[p. 33-34]{chague2}. Le \sharedocs{} permet également de centraliser l'ensemble des fichiers image du programme \timeus.
@@ -168,14 +175,20 @@ Notons qu'en dépit de ces écueils, toutes les monographies relatives au textil
 
 À l'issue du téléchargement, il a fallu procéder à un contrôle de la qualité des fichiers, afin de détecter et de retirer les images présentant des imperfections\footcite{chague2}. Ces dernières étaient principalement dues à des erreurs de cadrage ou à des vues prises alors que la main de l'opérateur ou de l'opératrice était toujours présente dans le champ de l'image (\fig{} \ref{fig:ex_tri}).
 
-\begin{figure}
+\begin{figure}[h]
     \centering
-    \includegraphics[width=15cm]{img/ex_tri.png}
-    \caption{Exemples d'images exclues du lot à transcrire (source : Alix Chagué, \url{https://timeus.hypotheses.org/626}).}
-    \label{fig:ex_tri}
+    \begin{subfigure}[t]{0.4\textwidth}
+     \includegraphics[width=0.7\linewidth]{img/title_s2t1_m47_p1.png}
+    \end{subfigure}
+    \hspace{5pt}
+    \begin{subfigure}[t]{0.4\textwidth}
+     \includegraphics[width=0.7\linewidth]{img/title_binarize.png}
+    \end{subfigure}
+    \caption{Exemple d'une binarisation : s. 2 vol. 1, n° 47, p. 1.}
+    \label{fig:binarisation}
 \end{figure}
 
-Enfin, les images retenues ont été binarisées, \cad{} passées en valeur de noir ou blanc. Cette opération permet d'augmenter la qualité des textes et donc leur détection par les programmes de transcription automatique. Un autre avantage est qu'elle supprime les annotations manuscrites, par exemple celles ajoutées par les agents des bibliothèques et relatives au classement du volume.
+Enfin, les images retenues ont été binarisées, \cad{} passées en valeur de noir ou blanc (\fig{} \ref{fig:binarisation}). Cette opération permet d'augmenter la qualité des textes et donc leur détection par les programmes de transcription automatique. Un autre avantage est qu'elle supprime les annotations manuscrites, par exemple celles ajoutées par les agents des bibliothèques et relatives au classement du volume.
 
 Dès lors que le corpus était nettoyé, les opérations de transcription et d'encodage pouvaient débuter.
 
@@ -218,7 +231,36 @@ Le but de segmentation est d'identifier dans l'image d'un texte des zones qui co
 
 Plusieurs caractéristiques des \odm{} facilitent leur transcription. D'une part, il s'agit d'un imprimé du \textsc{xix}\ieme ~siècle, ce qui garantit un texte relativement régulier dont l'alphabet correspond au nôtre (les \textit{s} sont ronds et non longs). D'autre part, les pages sont organisées en une seule colonne. Les erreurs \og de fusion \fg{}, par exemple un texte dont les deux colonnes seraient identifiées comme un seul bloc, ne peuvent pas survenir\footcite[p. 5]{karpinski}.
 
-\lodm{} ne contiennent cependant pas que des chaînes de caractères organisées en lignes. On y trouve des \og objets \fg{} : outre des reproductions de photographies occupant tout ou partie de la page dans les monographies de la troisième série, il s'agit principalement de tableaux. Les paragraphes §14 à §16 consistent ainsi en des tableaux de budget qui s'étendent sur plusieurs pages. Ils suscitent un intérêt particulier pour le programme \timeus{}, dans la mesure où ces budgets permettent de reconstituer les différents postes de dépenses des familles --- et notamment le textile --- et les ressources qui leur sont allouées. Des tableaux peuvent également se trouver dans les autres sections, entre deux paragraphes.
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.4\textwidth}
+     \includegraphics[width=0.8\linewidth]{img/tabl_s2t1_m47_p4.png}
+     \caption{s. 2 vol. 1, n° 47, p. 4.}
+    \end{subfigure}
+    \hspace{5pt}
+    \begin{subfigure}[t]{0.4\textwidth}
+     \includegraphics[width=0.8\linewidth]{img/tabl_s3t1_m102_p173.png}
+     \caption{s. 3 vol. 1, n° 102, p. 173.}
+    \end{subfigure}
+    \hspace{5pt}
+    
+    
+    
+    \begin{subfigure}[t]{0.4\textwidth}
+     \includegraphics[width=0.8\linewidth]{img/map_s2t1_m47_p3.png}
+     \caption{s. 2 vol. 1, n° 47, p. 3.}
+    \end{subfigure}
+    \hspace{5pt}
+    \begin{subfigure}[t]{0.4\textwidth}
+     \includegraphics[width=0.8\linewidth]{img/img_s3t1_m102_p172.png}
+     \caption{s. 3 vol. 1, n° 102, p. 172.}
+    \end{subfigure}
+    \hspace{5pt}
+    \caption{Exemples d'objets dans les pages des \odm{}.}
+    \label{fig:ex_figures}
+\end{figure}
+
+\lodm{} ne contiennent cependant pas que des chaînes de caractères organisées en lignes. On y trouve des \og objets \fg{} : outre des reproductions de photographies occupant tout ou partie de la page dans les monographies de la troisième série, il s'agit principalement de tableaux (\fig{} \ref{fig:ex_figures}). Les paragraphes §14 à §16 consistent ainsi en des tableaux de budget qui s'étendent sur plusieurs pages. Ils suscitent un intérêt particulier pour le programme \timeus{}, dans la mesure où ces budgets permettent de reconstituer les différents postes de dépenses des familles --- et notamment le textile --- et les ressources qui leur sont allouées. Des tableaux peuvent également se trouver dans les autres sections, entre deux paragraphes.
 
 Les performances du logiciel d'\ocr{} dans la restitution de la mise en page des tableaux ne sont pas optimales\footcite{chague2}. Inria a donc pris la décision de seulement détecter leur présence dans une page afin de pouvoir situer leur emplacement et d'ajouter à cet endroit un lien pointant vers l'image de la page. Il s'agit d'une solution d'attente en prévision d'un traitement spécifique de ces tableaux, dont l'intérêt premier est de les localiser dans le flux du texte pour savoir où l'intervention future aura lieu.
 
@@ -315,15 +357,15 @@ Le document continue avec une succession de balises \citecode{<facsimile>} dont 
 
 Le \citecode{<teiHeaer>} et les éléments \citecode{<facsimile>} montrent que la structuration d'un texte brut issu d'une \ocr{} ne consiste pas simplement en l'encodage de la transcription. Il s'agit aussi de produire des métadonnées permettant de décrire le contenu du fichier.
 
-La dernière section de l'arbre, \citecode{<text>}, contient les transcriptions structurées au sein de son élément \citecode{<body>}. Notons que l'implémentation de la structure logique par \lse{} n'a pas donné de résultats optimals et a fait l'objet d'une reprise majeure lors du stage ; ces résultats restent néanmoins satisfaisant au regard du temps alloué pour l'écriture et le fonctionnement du  script (trois mois). 
+La dernière section de l'arbre, \citecode{<text>}, contient les transcriptions structurées au sein de son élément \citecode{<body>}. Notons que l'implémentation de la structure logique par \lse{} n'a pas donné de résultats optimals et a fait l'objet d'une reprise majeure lors du stage. Ces résultats restent néanmoins satisfaisant au regard du temps alloué pour l'écriture et le fonctionnement du  script (trois mois). 
 
-Le principe retenu est le suivant : chaque division de la structure est enchâssée dans un élément \citecode{<div>} pour lequel la valeur de l'attribut \citecode{@type} vient préciser son niveau. Ces valeurs sont calquées sur les divisions des documents du langage de composition \LaTeX{} : \citecode{\textbackslash chapter\{\}}, \citecode{\textbackslash section\{\}}, \citecode{\textbackslash subsection\{\}}, \citecode{\textbackslash subsubsection\{\}}. Cela a pour but de faciliter une éventuelle transformation des documents XML-TEI au format \LaTeX\footcite[p. 52]{chague2}.
+Le principe retenu est le suivant : chaque division de la structure est enchâssée dans un élément \citecode{<div>} pour lequel un attribut \citecode{@type} vient préciser son niveau. De manière assez classique, cet encodage traduit ainsi la hiérarchie sémantique interne aux monographie grâce à une imbrication de \citecode{<div>} jusqu'à arriver au texte lui-même\footcite[p. 117]{clerice}. Les valeurs de l'attribut \citecode{@type} sont calquées sur les divisions des documents du langage de composition \LaTeX{} : \citecode{\textbackslash chapter\{\}}, \citecode{\textbackslash section\{\}}, \citecode{\textbackslash subsection\{\}}, \citecode{\textbackslash subsubsection\{\}}. Cela a pour but de faciliter une éventuelle transformation des documents XML-TEI au format \LaTeX\footcite[p. 52]{chague2}.
 
 La monographie correspond à une \citecode{<div>} de type \citecode{chapter}. Les ensemble de niveau~A (page de titre, \textit{Observations préliminaires} et \textit{Notes}) sont de type \citecode{section}, les titres de niveau~I \citecode{sub\_section} et les paragraphes \citecode{sub\_sub\_section} (\textit{cf.} \ann{} \ref{structure}). Dans chaque niveau, le titre en lui-même est encodé au sein d'un élément \citecode{<head>}, le texte se trouvant ensuite dans des \citecode{<p>} (\fig{} \ref{fig:ex_structure}).
 
 Pour les éléments de paratexte, tels que les avertissements liminaires de chaque volume, seul le niveau \citecode{chapter} a été utilisé, l'ensemble du texte se trouvant dans des \citecode{<p>}.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=16cm]{img/ex_structure.png}
     \caption{Exemple de la structuration du début des \textit{Observations préliminaires} de la monographie n° 70 par le script \lse. L'encodage est fautif dans la mesure où des niveaux supplémentaires ont été rajoutés : \textit{Observations...} ne devrait être que dans une \citecode{section} (les lignes des repères A n'ont pas lieu d'être), \textit{Définitions du lieu...} dans une \citecode{sub\_section} (les lignes des repères B sont fautives). On remarque également une erreur de transcription, le numéro de paragraphe (§1) étant répété. La balise finale, \citecode{<pb>}, signifie un changement de page.}

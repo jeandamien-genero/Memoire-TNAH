@@ -4,7 +4,7 @@
 \thispagestyle{empty}
 \cleardoublepage
 
-\chapter{Gestion de projet et méthodologie de travail}
+\chapter{Outils, méthodologie et gestion du projet}
 
 
 \section{Outils de développement}
@@ -17,9 +17,7 @@ Chaque participant peut rapatrier le dépôt \gitlab{} en local pour travailler 
 
 Une fois le travail dans une branche achevé, celle-ci peut être fusionnée avec \master. \gitlab{} propose une interface pour effectuer des \mergerequests{}. Il s'agit d'une demande de fusion, où \gitlab{} affiche l'historique de la branche. Les utilisateurs peuvent ainsi contrôler l'ensemble des \commits{} de la branche locale et vérifier qu'ils ne vont pas corrompre \master{} en créant des conflits (\textit{merge conflicts}).
 
-\gitlab{} permet enfin à ses utilisateurs d'exposer un élément posant problème, d'effectuer des suggestions ou encore de porter à l'attention de leur équipe une ressource utile à travers des \issues. Les \issues{} et les \mergerequests{} sont numérotées (\citecode{\#\textbackslash d} et \citecode{!\textbackslash d}\footnote{Par exemple \citecode{\#5} fait référence à la cinquième \issue{} et \citecode{!5} à la cinquième \mergerequest{}.}), écrire leurs numéros dans \gitlab{} ou dans le commentaire de modification d'un \commit{} permettant de faire automatiquement référence à elles à travers un lien interne.
-
-\subsection{Le dépôt \gitlab{} des \odm}
+\gitlab{} permet enfin à ses utilisateurs d'exposer un élément posant problème, d'effectuer des suggestions ou encore de porter à l'attention de leur équipe une ressource utile à travers des \issues{} (ou \textit{tickets}). Les \issues{} et les \mergerequests{} sont numérotées (\citecode{\#\textbackslash d} et \citecode{!\textbackslash d}\footnote{Par exemple, \citecode{\#5} fait référence à la cinquième \issue{} et \citecode{!5} à la cinquième \mergerequest{}.}), écrire leurs numéros dans \gitlab{} ou dans le commentaire de modification d'un \commit{} permettant de faire automatiquement référence à elles à travers un lien interne.
 
 L'équipe ALMAnaCH possède un espace sur la plate-forme \gitlab{} d'Inria, où un dossier (en accès restreint) est réservé au programme \timeus{}. C'est ici, dans un sous-ensemble, que se trouve le dépôt des \odm. Le script \lse{} est déposé dans un dossier externe.
 
@@ -42,15 +40,32 @@ Ce dossier était notre espace de travail principal, notre première action ayan
     \item La \mergerequest{} était acceptée et la branche fusionnée avec \master.
 \end{enumerate}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=15cm]{img/pylint_output.png}
+    \caption{Exemple d'un contrôle de code par \textit{Pylint}, qui donne une note à chaque script (\textit{module}) et détaille ensuite les erreurs détectées.}
+    \label{fig:pylint}
+\end{figure}
+
+Le \textit{linter} \textit{Pylint} était également implanté dans le dépôt ; il s'agit d'un système de vérification de code Python. Son rôle est de contrôler à chaque \textit{push} la qualité du code des scripts, notamment la longueur des lignes, les intitulés des variables ou encore la documentation des fonctions. Le résultat est affiché dans une console (\fig{} \ref{fig:pylint}).
+
+\subsection{\pycharm{} et \oxygen}
+
+Pour manipuler les fichiers XML, développer et activer les scripts Python, nous usions des logiciels \oxygen{} (éditeur de code XML sous licence propriétaire) et \pycharm{} (environnement de développement intégré pour la programmation en Python, une version est sous licence libre et une seconde sous licence propriétaire). 
+
+Plusieurs fonctionnalités d'\oxygen{} ont facilité le traitement du corpus, notamment la possibilité de rassembler l'ensemble des fichiers dans un \og projet \fg. Par ce biais, des opérations --- par exemple effectuer une recherche ou remplacer une expression par une autre --- peuvent être menées sur le corpus sans requérir l'ouverture successive de chaque fichier. En outre, le logiciel dispose d'un système de vérification du code, qui là encore peut être appliqué à tout le corpus à travers l'outil \og projet \fg.
+
+\pycharm{} est également équipé d'un outil de type \textit{linter} comparable à \textit{Pylint}, qui permet de s'assurer de la validité et de la lisibilité du code et facilite la programmation. \textit{Pylint} est cependant plus exigeant que le \textit{linter} natif de \pycharm, un double contrôle était donc nécessaire.
+
 \section{Espaces de discussion}
 
-La situation de confinement d'avril à mai et le maintien de la fermeture aux stagiaires des locaux d'Inria de juin à juillet a conduit à la mise en place d'outils de discussion, ou à l'exploitation intensive d'outils pré-existants.
+La situation de confinement d'avril à mai et le maintien de la fermeture aux stagiaires des locaux d'Inria de juin à juillet a conduit à la mise en place d'outils de discussion.
 
 \subsection{\Mattermost}
 
 \Mattermost{} est un logiciel de discussion instantanée dont le code, écrit à l'origine sous un format propriétaire, a été publié en \opensource{}\footnote{Consultable sur \github{} (\url{https://github.com/mattermost/mattermost-server}, consulté le \today).} en 2015\footnote{Lindsay Brock, \textit{Open source Slack-alternative reaches 1.0: Self-host ready, Slack-compatible, MIT licensed}, 2 octobre 2015, \url{https://mattermost.com/blog/mattermost-3-4-16/} (consulté le \today).}. Auto-hébergé --- Inria stocke le code dans ses propres installations et n'a pas recours à un serveur distant ---, il s'agit de l'espace de discussion principal des agents d'Inria.
 
-Composé de plusieurs \og chaînes \fg{} (\textit{public channels}) organisées de façon thématique, il leur permet d'échanger sur les différents projets et de suivre leur avancement, mais aussi d'exposer les difficultés techniques qu'ils rencontrent dans leur travail quotidien afin d'obtenir de l'aide. La chaîne \og \ocr \fg{} est ainsi fréquemment utilisé par les utilisateurs de \kraken{} (\fig{} \ref{fig:mattermost}). Le programme \timeus{} possède également une chaîne.
+Composé de plusieurs \og chaînes \fg{} (\textit{public channels}) organisées de façon thématique, il leur permet d'échanger sur les différents projets et de suivre leur avancement, mais aussi d'exposer les difficultés techniques qu'ils rencontrent dans leur travail quotidien afin d'obtenir de l'aide. La chaîne \og \ocr \fg{} est ainsi fréquemment utilisée par les utilisateurs de \kraken{} (\fig{} \ref{fig:mattermost}).
 
 \begin{figure}
     \centering
@@ -61,11 +76,13 @@ Composé de plusieurs \og chaînes \fg{} (\textit{public channels}) organisées 
 
 \subsection{\textit{Issues} et \mergerequests{} sur \gitlab}
 
-\Mattermost{} permet également d'engager une conversation personnelle avec un utilisateur ; cependant, pour les échanges afférents à nos missions, nous usions des espaces de discussion de \gitlab.
+Le programme \timeus{} possède également une chaîne ; cependant, pour les échanges afférents à nos missions, nous usions des espaces de discussion de \gitlab.
 
-Les \issues{} et les \mergerequests{} n'ont pas pour seule utilité de permettre aux utilisateurs d'exposer des problèmes ou de demander des fusions de branches. Il s'agit d'espaces dynamiques qui participent pleinement à la gestion de projet en offrant aux participants la possibilité de réagir au sujet ou d'apporter des solutions, par exemple pour résoudre un \textit{merge conflict}.
+Les \issues{} et les \mergerequests{} n'ont en effet pas pour seule utilité de permettre aux utilisateurs d'exposer des problèmes ou de demander des fusions de branches. Il s'agit d'espaces dynamiques qui participent pleinement à la gestion de projet en offrant aux participants la possibilité de donner leur avis ou d'apporter des solutions, par exemple pour résoudre un \textit{merge conflict}.
 
-Cet aspect est facilité par l'usage du langage à balises \markdown\footnote{\gitlab{} use de sa propre version de \markdown, le \textit{GitLab Flavored Markdown} : \url{https://docs.gitlab.com/ee/user/markdown.html} (consulté le \today).}. Il permet une mise en forme légère (listes, liens hypertexte, diagramme), ainsi qu'une intégration d'échantillons de code. Si ceux-ci ne sont pas fonctionnels, le \markdown{} permet de leur appliquer une coloration syntaxique, les rendant ainsi plus facile à lire (\fig{} \ref{fig:ex_gitlab}).
+Cet aspect est facilité par l'usage du langage à balises \markdown\footnote{\gitlab{} use de sa propre version du \markdown, le \textit{GitLab Flavored Markdown} : \url{https://docs.gitlab.com/ee/user/markdown.html} (consulté le \today).}. Il permet une mise en forme légère (listes, liens hypertexte, diagrammes), ainsi qu'une intégration d'échantillons de code. Si ceux-ci ne sont pas fonctionnels, le \markdown{} permet de leur appliquer une coloration syntaxique, les rendant ainsi plus facile à lire (\fig{} \ref{fig:ex_gitlab}).
+
+Les échanges sur ces espaces restent accessibles après la clôture des \issues{} ou des \mergerequests{}, constituant ainsi un historique de l'avancement du projet.
 
 \begin{figure}
     \centering
@@ -76,33 +93,35 @@ Cet aspect est facilité par l'usage du langage à balises \markdown\footnote{\g
 
 \section{Feuille de route}
 
-\subsection{Une gestion de projet ?}
-
-Au commencement de notre stage, huit \issues{} étaient ouvertes sur le \gitlab{} des \odm{}. Chacune correspondait à un problème ou à un point qui n'avait pas encore pu être développé. Elles constituaient donc notre \og feuille de route \fg, \cad{} l'exposé des missions que nous avions à réaliser (\ann{} \ref{ann:feuille_route}). Il nous a été demandé de les utiliser pour poser nos questions ou proposer nos solutions, elles ont ainsi constitué notre principal espace d'échange.
-
-Ce faisant, les \issues{} ont constitué notre principal espace de gestion et de suivi du projet. Nous n'avons donc pas utilisé d'outil véritablement dédié à la gestion de projet, détournant plutôt un outil courant de \gitlab.
-
-Des fonctionnalités de \gitlab{} sont pourtant dédiées à une gestion plus fine. La principale est l'outil \og tableau de bord \fg{} (\textit{boards}). Par défaut, les \issues{} sont affichées sous la forme d'une liste présentant toutes celles qui sont ouvertes, deux onglets permettant d'accéder à celles qui ont été résolues ou bien à la fois celles en cours et celles qui sont fermées. Avec l'outil \og tableau de bord \fg{}, l'utilisateur a accès à un tableau à quatre colonnes, la première listant les issues ouvertes, la seconde affichant une liste de tâches (\textit{todo list}), la troisième présentant les tâches en cours (\textit{doing}) et la dernières les \issues{} terminées.
-
-Au-delà de la présentation des tâches, le tableau de bord est également interactif. Ainsi, sélectionner une \issue{} affiche ses métadonnées (agent en charge de sa résolution, label, temps estimé, échéance). Un système de labels --- des étiquettes thématiques --- permet également de classer les \issues{} et les tâches de la \textit{todo list}.
-
-Le tableau de bord offre donc une vision globale du projet selon une organisation chronologique, tout en permettant des vues synthétiques ciblées. Le fonctionnement des \textit{boards} de \gitlab{} est comparable à celui d'autres applications, comme par exemple \textit{Trello}. Il s'agit d'un organisateur de tâche, également sous forme de tableaux, qui est utilisé par ALMAnaCH et les Archives nationales pour coordonner le projet de lecture automatique des répertoires du Minutier central des notaires de Paris, Lectaurep.
-
-Pour autant, ces outils ne sont utilisés ni dans le cadre général du programme \timeus, ni dans celui des \odm. Plusieurs raisons peuvent l'expliquer. En premier lieu, \timeus{} s'appuie sur une documentation dont le caractère disparate --- tant géographique que chronologique et typologique --- se heurte à toute volonté de gestion centralisée, d'autant que chaque membre est chargé de la gestion de sa documentation locale.
-
-Un tel outil doit être constamment maintenu à jour afin de garantir un gain de productivité. À l'échelle des \odm{} et de notre stage, le nombre relativement faible de missions (8) et d'intervenants (2) ne justifiaient pas la mise en place du tableau de bord \gitlab. L'affiche basique des \issues{} sous forme d'une liste se suffisait à lui-même.
-
 \subsection{Les missions du stage}
 
-Les missions qui nous ont été confiées étaient de deux ordres (\ann{} \ref{ann:feuille_route}).
+Au commencement de notre stage, huit \issues{} étaient ouvertes sur le \gitlab{} des \odm{}. Chacune correspondait à un problème ou à un point qui n'avait pas encore pu être développé. Elles constituaient donc notre \og feuille de route \fg, \cad{} l'exposé des missions que nous avions à réaliser (\ann{} \ref{ann:feuille_route}). Il nous a été demandé de les utiliser pour poser nos questions ou proposer nos solutions.
 
-Une moitié consistait à contrôler les résultats du script \lse, tant au niveau du corpus qu'à celui de chaque fichier. Dans un premier temps, il s'agissait de vérifier de détecter les erreurs de découpage des fichiers de volume et d'opérer les fusions ou séparations nécessaires. Ceci avait pour but de pouvoir identifier fichiers en leur donnant un numéro unique. Dans un second temps, nous nous sommes intéressés à des éléments particuliers dans chaque fichier, à l'instant de l'implémentation de la structure logique, des balises \citecode{<facsimile>} ou encore de la validité du schéma TEI.
+Les missions qui nous ont été confiées étaient de deux ordres.
 
-L'autre moitié avait pour but de valoriser les données des \odm.
+Une première moitié consistait à contrôler les résultats du script \lse, tant au niveau du corpus qu'à celui de chaque fichier, et à effectuer des reprises si nécessaire. Tout d'abord, il s'agissait de détecter les erreurs de découpage des fichiers de volume et d'opérer les fusions ou les séparations nécessaires. Ceci avait pour but de donner à chaque fichier un identifiant unique après s'être assuré de l'unité de son contenu (\issue{}~1). Dans un second temps, nous devions nous intéresser à des éléments particuliers dans chaque fichier, à l'instar du contenu des balises \citecode{<facsimile>} (\issue{}~2), de la qualité des transcriptions (\issue{}~6) ou encore de la validité du schéma TEI (\issue{}~3); le contrôle de l'implémentation de la structure logique ayant constitué notre occupation principale.
+
+L'autre moitié de nos missions avait pour but de valoriser les données des \odm{} en menant des actions ciblées. La principale consistait à identifier les individus enquêtés en liant les informations onomastiques du deuxième paragraphe (\textit{État civil de la famille}) à un tableau prosopographique établi par Stéphane Baciocchi, chercheur de l'EHESS (\issue{}~4). De plus, nous devions implémenter dans les fichiers un système permettant la citation de passages précis afin de faciliter les études des chercheurs du programme en leur offrant la possibilité d'établir un lien direct entre leur travail et les données contenues dans les fichiers XML (\issue{}~5).
+
+Il nous a enfin été demandé de publier sur le blog Hypothèses de \timeus{} des billets rendant compte de notre travail\footnote{Consultable à cette adresse : \url{https://timeus.hypotheses.org/}.}.
+
+\subsection{Une gestion de projet ?}
+
+Nous n'avons pas utilisé d'outil véritablement dédié à la gestion de projet, détournant plutôt un outil courant de \gitlab, les \issues.
+
+Des fonctionnalités de \gitlab{} sont pourtant dédiées à une gestion plus fine. La principale est l'outil \og tableau de bord \fg{} (\textit{boards}). Par défaut, les \issues{} sont affichées sous la forme d'une liste présentant toutes celles qui sont ouvertes, deux onglets permettant d'accéder à celles qui ont été résolues ou bien de les afficher toutes. Avec l'outil \og tableau de bord \fg{}, l'utilisateur a accès à un tableau de quatre colonnes, la première listant les issues ouvertes, la seconde affichant une liste de tâches (\textit{todo list}), la troisième présentant les tâches en cours (\textit{doing}) et la dernières les \issues{} terminées.
+
+Au-delà de la présentation des tâches, le tableau de bord est également interactif. Ainsi, sélectionner une \issue{} affiche ses métadonnées (agent en charge de sa résolution, label, temps estimé, échéance). Un système de labels --- des étiquettes thématiques --- permet également de classer les \issues{} et les tâches de la \textit{todo list}. Le tableau de bord offre donc une vision globale du projet selon une organisation chronologique, tout en permettant des vues synthétiques ciblées.
+
+Le fonctionnement des \textit{boards} de \gitlab{} est comparable à celui d'autres applications, comme par exemple \textit{Trello}. Il s'agit d'un organisateur de tâche, également sous forme de tableaux, qui est utilisé par ALMAnaCH et les Archives nationales pour coordonner le projet de lecture automatique des répertoires du Minutier central des notaires de Paris, Lectaurep.
+
+Pour autant, ces outils ne sont utilisés ni dans le cadre général du programme \timeus, ni dans le cadre particulier des \odm. Plusieurs raisons peuvent l'expliquer. En premier lieu, \timeus{} s'appuie sur une documentation dont le caractère disparate --- tant géographique que chronologique et typologique --- se heurte à toute volonté de gestion centralisée, d'autant que chaque membre est chargé de la gestion de sa documentation locale.
+
+Un tel outil doit également être constamment maintenu à jour afin de garantir un gain de productivité. À l'échelle des \odm{} et de notre stage, le nombre relativement faible de missions (8) et d'intervenants (2) ne justifiaient pas la mise en place du tableau de bord \gitlab{} ou la création d'un \textit{Trello}. L'affichage basique des \issues{} sous forme d'une liste se suffisait à lui-même.
 
 \chapter{Contrôle du découpage des fichiers source}
 
-Début du chapitre 5.
+Dans la réalisation de nos missions, nous devions privilégier la voie de l’automatisation des tâches par le biais de script Python. Cependant, ceci n’a pas toujours été possible, nous conduisant à engager des actions manuelles à plusieurs reprises.
 
 \chapter[Correction des erreurs d'implémentation]{Correction des erreurs d'implémentation de la structure logique}
 

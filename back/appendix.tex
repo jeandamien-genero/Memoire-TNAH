@@ -547,17 +547,17 @@ Cette liste reprend le texte des \issues{} ouvertes dans le \gitlab{} des \odm{}
         \item \textit{Trier et renommer les fichiers} :
     \begin{itemize}
         \item  Identifier les fichiers qui correspondent aux monographies et ceux qui correspondent au paratexte ;
-        \item  Donner un identifiant aux fichiers de monographie en fonction des identifiant déjà existants dans le fichier de référence ;
+        \item  Donner un identifiant aux fichiers de monographie en fonction des identifiants déjà existants dans le fichier de référence ;
         \item  Créer un identifiant pour les fichiers de paratexte ;
-        \item  Ajouter ces identifiants aux xml:id de chaque fichier ;
-        \item  Créer un mapping de l’ensemble des fichiers sous la forme d’un csv avec le nom du fichier et son identifiant ;
-        \item  Créer un fichier « master.xml » contenant des renvois vers les autres fichiers grâce à des <xi:includes>.
+        \item  Ajouter ces identifiants aux \citecode{@xml:id} de chaque fichier ;
+        \item  Créer un \textit{mapping} de l’ensemble des fichiers sous la forme d’un CSV avec le nom du fichier et son identifiant ;
+        \item  Créer un fichier \citecode{master.xml} contenant des renvois vers les autres fichiers grâce à des \citecode{<xi:includes>}.
     \end{itemize}
 
-    \item \textit{ Mettre à jour l’attribut @url dans la balise <graphic>} :
+    \item \textit{Mettre à jour l’attribut \citecode{@url} dans la balise \citecode{<graphic>}} :
     \begin{itemize}
-        \item  Les images des pages sont stockées localement sur humanum, mais également en ligne sur Internet Archives.
-        \item  Trouver l’url de chaque page de chaque volume sur Internet Archives ;
+        \item  Les images des pages sont stockées localement sur Humanum, mais également en ligne sur Internet Archives.
+        \item  Trouver l’url de chaque page de chaque volume sur \ia ;
         \item  Remplacer automatiquement le chemin local par l’url de l’image dans chaque fichier.
     \end{itemize}
 
@@ -570,10 +570,10 @@ Cette liste reprend le texte des \issues{} ouvertes dans le \gitlab{} des \odm{}
     \item \textit{Intégrer les métadonnées des « enquêtés »} :
     \begin{itemize}
         \item  Créer un fichier référentiel de personnes (XML) à partir du fichier CSV de prosopographie ;
-        \item  Ajouter aux paragraphes 2 des monographies ("§2. - Etat civil de la famille") des @refs au référentiel de personnes.
+        \item  Ajouter aux paragraphes 2 des monographies ("§2. - Etat civil de la famille") des \citecode{@refs} au référentiel de personnes.
     \end{itemize}
 
-    \item \textit{Intégrer modèle de citation dans les chapitres et créer un système de référence bibliographie   } :
+    \item \textit{Intégrer modèle de citation dans les chapitres et créer un système de référence bibliographique} :
     \begin{itemize}
         \item  Pour chaque niveau de la structure d'une monographie  ;
         \item  Pour chaque chapitre (sans descendre dans les niveaux) ;
@@ -597,7 +597,7 @@ Cette liste reprend le texte des \issues{} ouvertes dans le \gitlab{} des \odm{}
         \begin{itemize}
             \item  Est-il vraiment nécessaire d'utiliser les div enchâssées ? Une structure à plat avec des marqueurs signalant le début d'une nouvelle section ne suffirait-elle pas ?
             \item  Comment gérer l'articulation entre l'arbre principal (un arbre pour l'ensemble des monographies) et les sous-arbre (un sous-arbre par monographie) ? L'ensemble du corpus n'a pas de front/back mais chaque volume a un front et un back et chaque monographie a potentiellement un front et un back.
-            \item  Avec quelles restrictions peut-on créer une structure similaire à celle d'un fichier LaTeX avec ses imports ?
+            \item  Avec quelles restrictions peut-on créer une structure similaire à celle d'un fichier \LaTeX{} avec ses imports ?
         \end{itemize}
     \end{itemize}
 \end{enumerate}
