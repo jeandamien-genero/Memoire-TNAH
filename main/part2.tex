@@ -121,7 +121,25 @@ Un tel outil doit également être constamment maintenu à jour afin de garantir
 
 \chapter{Contrôle du découpage des fichiers source}
 
-Dans la réalisation de nos missions, nous devions privilégier la voie de l’automatisation des tâches par le biais de script Python. Cependant, ceci n’a pas toujours été possible, nous conduisant à engager des actions manuelles à plusieurs reprises.
+\section{Les différents niveaux d'encodage}
+
+L'encodage d'un texte brut s'effectue sur plusieurs niveaux, depuis une échelle documentaire surplombante jusqu'à celle plus fine de l'analyse scientifique. Ces niveaux sont décrits dans un document intitulé \textit{Best Practices for TEI in Libraries}, édité par le Consortium TEI et disponible en ligne\footcite[\textit{4.2. Encoding Levels}]{bestpratice}.
+
+Le premier niveau est celui du découpage documentaire, soit la constitution d'un fichier qui reproduit le texte brut d'une unité codicologique et lui associe des métadonnées. Dans le cas des \odm, il s'agit du découpage des treize fichiers des volumes, qui ne s'est pas fait sans erreur.
+
+Le second niveau est celui dit de l'encodage \og minimal \fg, dont le seul but est d'améliorer la navigation dans le document. Il s'agit d'identifier les paragraphes par des balises \citecode{<p>} et de liées celles-ci aux ensembles \citecode{<facsimile>} des images d'origine par un identifiant, tant en marquant les changements de page par des éléments \citecode{<pb>}.
+
+Le troisième niveau s'intéresse au découpage éditorial, \cad{} à l'identification et à la reproduction de la structure logique du texte. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à la structuration des monographies ; c'est également le niveau qui a nécessité la reprise la plus longue et la plus lourde.
+
+Le quatrième niveau est celui de l'encodage sémantique, destiné à mettre en valeur les éléments internes au texte afin d'en faire une production électronique autonome. Dans les fichiers des \odm, cela s'est traduit par l'élimination des éléments de mise en page des volumes tels que les en-têtes ou les numéros de page.
+
+Le cinquième et dernier niveau est celui de l'annotation scientifique. Pour l'équipe ALMAnaCH, il s'agissait de repérer les éléments d'onomastique et d'implanter un système permettant la citation de passage précis selon une granularité qui restait à définir.
+
+L'ensemble de ces niveaux a été contrôlé lors du stage. Lorsqu'une correction était nécessaire, nous devions favoriser son automatisation par le biais de script Python. Cependant, ceci n’a pas toujours été possible, nous conduisant à engager des actions manuelles plus d'une fois.
+
+\section{Vérification de la cohérence documentaire}
+
+Nous avons commencé par contrôler le découpage des fichiers source, dont les résultats étaient étonnants pour certain volume. Ainsi, plus de trente fichiers avaient résulté du troisième volume de la deuxième série (\ann{} \ref{mappings2t3}). Au-delà d'une vérification de la cohérence du découpage, l'opération avait pour but, dans un premier temps, de reconnaître le contenu des fichiers et, dans un second temps, de lui associer un identifiant unique. La première 
 
 \chapter[Correction des erreurs d'implémentation]{Correction des erreurs d'implémentation de la structure logique}
 
