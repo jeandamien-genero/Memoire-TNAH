@@ -125,21 +125,41 @@ Un tel outil doit également être constamment maintenu à jour afin de garantir
 
 L'encodage d'un texte brut s'effectue sur plusieurs niveaux, depuis une échelle documentaire surplombante jusqu'à celle plus fine de l'analyse scientifique. Ces niveaux sont décrits dans un document intitulé \textit{Best Practices for TEI in Libraries}, édité par le Consortium TEI et disponible en ligne\footcite[\textit{4.2. Encoding Levels}]{bestpratice}.
 
-Le premier niveau est celui du découpage documentaire, soit la constitution d'un fichier qui reproduit le texte brut d'une unité codicologique et lui associe des métadonnées. Dans le cas des \odm, il s'agit du découpage des treize fichiers des volumes, qui ne s'est pas fait sans erreur.
+Le premier niveau est celui du découpage documentaire, soit la constitution d'un fichier qui reproduit le texte brut d'une unité codicologique et lui associe des métadonnées. Dans le cas des \odm, il s'agit du découpage des treize fichiers des volumes, qui ne s'est pas fait sans erreur, et de la constitution du \citecode{<teiHeaer>}.
 
-Le second niveau est celui dit de l'encodage \og minimal \fg, dont le seul but est d'améliorer la navigation dans le document. Il s'agit d'identifier les paragraphes par des balises \citecode{<p>} et de liées celles-ci aux ensembles \citecode{<facsimile>} des images d'origine par un identifiant, tant en marquant les changements de page par des éléments \citecode{<pb>}.
+Le second niveau est celui dit de l'encodage \og minimal \fg, dont le seul but est d'améliorer la navigation dans le document. Il s'agit d'identifier les paragraphes par des balises \citecode{<p>} et de lier celles-ci aux ensembles \citecode{<facsimile>} des images d'origine par un identifiant, tant en marquant les changements de page par des éléments \citecode{<pb>}.
 
-Le troisième niveau s'intéresse au découpage éditorial, \cad{} à l'identification et à la reproduction de la structure logique du texte. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à la structuration des monographies ; c'est également le niveau qui a nécessité la reprise la plus longue et la plus lourde.
+Le troisième niveau s'intéresse au découpage éditorial, \cad{} à l'identification et à la reproduction de la structure logique du texte. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à la structuration des monographies ; c'est également le niveau qui a nécessité la reprise la plus lourde et la plus longue.
 
 Le quatrième niveau est celui de l'encodage sémantique, destiné à mettre en valeur les éléments internes au texte afin d'en faire une production électronique autonome. Dans les fichiers des \odm, cela s'est traduit par l'élimination des éléments de mise en page des volumes tels que les en-têtes ou les numéros de page.
 
 Le cinquième et dernier niveau est celui de l'annotation scientifique. Pour l'équipe ALMAnaCH, il s'agissait de repérer les éléments d'onomastique et d'implanter un système permettant la citation de passage précis selon une granularité qui restait à définir.
 
-L'ensemble de ces niveaux a été contrôlé lors du stage. Lorsqu'une correction était nécessaire, nous devions favoriser son automatisation par le biais de script Python. Cependant, ceci n’a pas toujours été possible, nous conduisant à engager des actions manuelles plus d'une fois.
+L'ensemble de ces niveaux a été contrôlé lors du stage. Lorsqu'une correction était nécessaire, nous devions favoriser son automatisation par le biais d'un script Python. Cependant, ceci n’a pas toujours été possible, nous conduisant à engager des actions manuelles plus d'une fois.
 
 \section{Vérification de la cohérence documentaire}
 
-Nous avons commencé par contrôler le découpage des fichiers source, dont les résultats étaient étonnants pour certain volume. Ainsi, plus de trente fichiers avaient résulté du troisième volume de la deuxième série (\ann{} \ref{mappings2t3}). Au-delà d'une vérification de la cohérence du découpage, l'opération avait pour but, dans un premier temps, de reconnaître le contenu des fichiers et, dans un second temps, de lui associer un identifiant unique. La première 
+Nous avons commencé par contrôler le découpage des fichiers source, dont les résultats étaient étonnants pour certain volume. Ainsi, plus de trente fichiers avaient résulté du troisième volume de la deuxième série (\ann{} \ref{mappings2t3}). Au-delà d'une vérification de la cohérence du découpage, l'opération avait pour but de reconnaître le contenu des fichiers et  de leur associer un identifiant unique. Ces derniers provenaient d'une bibliographie réalisée par Stéphane Baciocchi au format BibTeX à partir de son exemplaire personnel du corpus.
+
+Le contrôle a été opéré manuellement, par une ouverture successive des fichiers. Les monographies devaient commencer par la reproduction de l'en-tête, point de repère du script \lse{} pour le découpage. Deux erreurs majeures ont été constatée.
+
+\subsection{Fission horizontale lors de la segmentation}
+
+La première consistait en une erreur de découpage dans les précis n° 48 bis et 66 ter. Le premier est scindé en dix fichiers contenant deux pages chacun (\citecode{s2t1\_chapt\_6.xml} à \citecode{s2t1\_chapt\_15.xml}) et le second en quatorze fichiers contenant quatre (\citecode{s2t3\_chapt\_14.xml}) et deux pages (\citecode{s2t3\_chapt\_15.xml} à \citecode{s2t3\_chapt\_27.xml}). Les deux pages sont toujours un recto et un verso.
+
+Mis à part \citecode{s2t1\_chapt\_6.xml} et \citecode{s2t3\_chapt\_14} \citecode{.xml} qui commencent par le titre du précis, les \citecode{<body>} de ces fichiers ont un point commun : ils débutent tous par les deux mêmes lignes, \citecode{<p>\textsc{précis de monographie}</p> \textbackslash n <p>[numéro de la page]</p>}. Or ces deux informations --- le rappel du titre du chapitre et le numéro de la page courante --- se trouvent sur une seule et même ligne dans les images. Une erreur de fission horizontale résultant d'une mauvaise segmentation s'est donc produite au moment de l'\ocr\footcite[p. 5-6]{karpinski}.
+
+Dans son comportement normal, \lse{} est programmé pour détecter tout ce qui relève de l'en-tête ou du pied de page et le retirer afin de permettre une reconstitution optimale des paragraphes au moment de la transformation des fichiers XML pour une éventuelle édition. Dans le cas présent, le script a été dupé par l'erreur de segmentation : il n'a pas vu des rappels de titre et des numéros de page, mais des titres et des numéros de chapitre. En conséquence, il a opéré une coupure à cet endroit, \cad{} achevé le fichier en cours pour en amorcer un nouveau.
+
+Une question demeure néanmoins : pourquoi \citecode{s2t3\_chapt\_14.xml} contient-il quatre pages, à l'inverse des autres qui n'en contiennent que deux ? Le fait est que l'en-tête de la troisième page a été détecté convenablement, et donc retiré du flux du texte. 
+
+L'erreur a été résolue par un transfert manuel du contenu de chaque fichier particulier dans un fichier global (\citecode{s2t1\_chapt\_6.xml} et \citecode{s2t3\_chapt\_14}). Le choix a été fait de ne pas modifier la numérotation des fichiers suivants, notamment afin de pouvoir effectuer un suivi sur la durée. C'est la raison pour laquelle, dans la deuxième série, le n°~6 est suivi du n°~16 dans le premier volume et le n°~14 par le n°~28 dans le troisième.
+
+\subsection{Défaut de transcription}
+
+La seconde erreur majeure à laquelle nous avons été confronté est le défaut d'une partie de la transcription dans un chapitre (\ann{} \ref{ann:deficit-transcr}). Il ne s'agit pas d'une erreur de découpage, puisque déjà présente dans les treize fichiers source. C'est néanmoins l'opération de contrôle du découpage qui a permis de s'en rendre compte.
+
+\texttt{<figure>} et \citecode{<figure>}
 
 \chapter[Correction des erreurs d'implémentation]{Correction des erreurs d'implémentation de la structure logique}
 
