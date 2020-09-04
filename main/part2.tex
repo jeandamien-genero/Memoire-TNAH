@@ -17,17 +17,17 @@ Chaque participant peut rapatrier le dépôt \gitlab{} en local pour travailler 
 
 Une fois le travail dans une branche achevé, celle-ci peut être fusionnée avec \master. \gitlab{} propose une interface pour effectuer des \mergerequests{}. Il s'agit d'une demande de fusion, où \gitlab{} affiche l'historique de la branche. Les utilisateurs peuvent ainsi contrôler l'ensemble des \commits{} de la branche locale et vérifier qu'ils ne vont pas corrompre \master{} en créant des conflits (\textit{merge conflicts}).
 
-\gitlab{} permet enfin à ses utilisateurs d'exposer un élément posant problème, d'effectuer des suggestions ou encore de porter à l'attention de leur équipe une ressource utile à travers des \issues{} (ou \textit{tickets}). Les \issues{} et les \mergerequests{} sont numérotées (\citecode{\#\textbackslash d} et \citecode{!\textbackslash d}\footnote{Par exemple, \citecode{\#5} fait référence à la cinquième \issue{} et \citecode{!5} à la cinquième \mergerequest{}.}), écrire leurs numéros dans \gitlab{} ou dans le commentaire de modification d'un \commit{} permettant de faire automatiquement référence à elles à travers un lien interne.
+\gitlab{} permet enfin à ses utilisateurs d'exposer un élément posant problème, d'effectuer des suggestions ou encore de porter à l'attention de leur équipe une ressource utile à travers des \issues{} (ou \textit{tickets}). Les \issues{} et les \mergerequests{} sont numérotées (\texttt{\#\textbackslash d} et \texttt{!\textbackslash d}\footnote{Par exemple, \texttt{\#5} fait référence à la cinquième \issue{} et \texttt{!5} à la cinquième \mergerequest{}.}), écrire leurs numéros dans \gitlab{} ou dans le commentaire de modification d'un \commit{} permettant de faire automatiquement référence à elles à travers un lien interne.
 
 L'équipe ALMAnaCH possède un espace sur la plate-forme \gitlab{} d'Inria, où un dossier (en accès restreint) est réservé au programme \timeus{}. C'est ici, dans un sous-ensemble, que se trouve le dépôt des \odm. Le script \lse{} est déposé dans un dossier externe.
 
 La branche \master{} compte quatre sous-dossiers :
 
 \begin{itemize}
-    \item \citecode{source} contient les treize fichiers XML-TEI des volumes des \odm{} ;
-    \item \citecode{script} contient les scripts développés afin d'automatiser le traitement des fichiers ;
-    \item \citecode{files} contient les fichiers XML-TEI générés à partir des fichiers sources et modifiés automatiquement ou à la main en vue de leur publication (monographies et fichiers de paratexte) ;
-    \item \citecode{metadata} contient des fichiers de métadonnées sur le projet.
+    \item \texttt{source} contient les treize fichiers XML-TEI des volumes des \odm{} ;
+    \item \texttt{script} contient les scripts développés afin d'automatiser le traitement des fichiers ;
+    \item \texttt{files} contient les fichiers XML-TEI générés à partir des fichiers sources et modifiés automatiquement ou à la main en vue de leur publication (monographies et fichiers de paratexte) ;
+    \item \texttt{metadata} contient des fichiers de métadonnées sur le projet.
 \end{itemize}
 
 Ce dossier était notre espace de travail principal, notre première action ayant consisté en son rapatriement au niveau local. Notre méthodologie de travail était la suivante :
@@ -99,7 +99,7 @@ Au commencement de notre stage, huit \issues{} étaient ouvertes sur le \gitlab{
 
 Les missions qui nous ont été confiées étaient de deux ordres.
 
-Une première moitié consistait à contrôler les résultats du script \lse, tant au niveau du corpus qu'à celui de chaque fichier, et à effectuer des reprises si nécessaire. Tout d'abord, il s'agissait de détecter les erreurs de découpage des fichiers de volume et d'opérer les fusions ou les séparations nécessaires. Ceci avait pour but de donner à chaque fichier un identifiant unique après s'être assuré de l'unité de son contenu (\issue{}~1). Dans un second temps, nous devions nous intéresser à des éléments particuliers dans chaque fichier, à l'instar du contenu des balises \citecode{<facsimile>} (\issue{}~2), de la qualité des transcriptions (\issue{}~6) ou encore de la validité du schéma TEI (\issue{}~3); le contrôle de l'implémentation de la structure logique ayant constitué notre occupation principale.
+Une première moitié consistait à contrôler les résultats du script \lse, tant au niveau du corpus qu'à celui de chaque fichier, et à effectuer des reprises si nécessaire. Tout d'abord, il s'agissait de détecter les erreurs de découpage des fichiers de volume et d'opérer les fusions ou les séparations nécessaires. Ceci avait pour but de donner à chaque fichier un identifiant unique après s'être assuré de l'unité de son contenu (\issue{}~1). Dans un second temps, nous devions nous intéresser à des éléments particuliers dans chaque fichier, à l'instar du contenu des balises \texttt{<facsimile>} (\issue{}~2), de la qualité des transcriptions (\issue{}~6) ou encore de la validité du schéma TEI (\issue{}~3); le contrôle de l'implémentation de la structure logique ayant constitué notre occupation principale.
 
 L'autre moitié de nos missions avait pour but de valoriser les données des \odm{} en menant des actions ciblées. La principale consistait à identifier les individus enquêtés en liant les informations onomastiques du deuxième paragraphe (\textit{État civil de la famille}) à un tableau prosopographique établi par Stéphane Baciocchi, chercheur de l'EHESS (\issue{}~4). De plus, nous devions implémenter dans les fichiers un système permettant la citation de passages précis afin de faciliter les études des chercheurs du programme en leur offrant la possibilité d'établir un lien direct entre leur travail et les données contenues dans les fichiers XML (\issue{}~5).
 
@@ -125,9 +125,9 @@ Un tel outil doit également être constamment maintenu à jour afin de garantir
 
 L'encodage d'un texte brut s'effectue sur plusieurs niveaux, depuis une échelle documentaire surplombante jusqu'à celle plus fine de l'analyse scientifique. Ces niveaux sont décrits dans un document intitulé \textit{Best Practices for TEI in Libraries}, édité par le Consortium TEI et disponible en ligne\footcite[\textit{4.2. Encoding Levels}]{bestpratice}.
 
-Le premier niveau est celui du découpage documentaire, soit la constitution d'un fichier qui reproduit le texte brut d'une unité codicologique et lui associe des métadonnées. Dans le cas des \odm, il s'agit du découpage des treize fichiers des volumes, qui ne s'est pas fait sans erreur, et de la constitution du \citecode{<teiHeaer>}.
+Le premier niveau est celui du découpage documentaire, soit la constitution d'un fichier qui reproduit le texte brut d'une unité codicologique et lui associe des métadonnées. Dans le cas des \odm, il s'agit du découpage des treize fichiers des volumes, qui ne s'est pas fait sans erreur, et de la constitution du \texttt{<teiHeaer>}.
 
-Le second niveau est celui dit de l'encodage \og minimal \fg, dont le seul but est d'améliorer la navigation dans le document. Il s'agit d'identifier les paragraphes par des balises \citecode{<p>} et de lier celles-ci aux ensembles \citecode{<facsimile>} des images d'origine par un identifiant, tant en marquant les changements de page par des éléments \citecode{<pb>}.
+Le second niveau est celui dit de l'encodage \og minimal \fg, dont le seul but est d'améliorer la navigation dans le document. Il s'agit d'identifier les paragraphes par des balises \texttt{<p>} et de lier celles-ci aux ensembles \texttt{<facsimile>} des images d'origine par un identifiant, tant en marquant les changements de page par des éléments \texttt{<pb>}.
 
 Le troisième niveau s'intéresse au découpage éditorial, \cad{} à l'identification et à la reproduction de la structure logique du texte. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à la structuration des monographies ; c'est également le niveau qui a nécessité la reprise la plus lourde et la plus longue.
 
@@ -139,28 +139,70 @@ L'ensemble de ces niveaux a été contrôlé lors du stage. Lorsqu'une correctio
 
 \section{Vérification de la cohérence documentaire}
 
-Nous avons commencé par contrôler le découpage des fichiers source, dont les résultats étaient étonnants pour certain volume. Ainsi, plus de trente fichiers avaient résulté du troisième volume de la deuxième série (\ann{} \ref{mappings2t3}). Au-delà d'une vérification de la cohérence du découpage, l'opération avait pour but de reconnaître le contenu des fichiers et  de leur associer un identifiant unique. Ces derniers provenaient d'une bibliographie réalisée par Stéphane Baciocchi au format BibTeX à partir de son exemplaire personnel du corpus.
+Nous avons commencé par contrôler le découpage des fichiers source, dont les résultats étaient étonnants pour certain volume. Ainsi, plus de trente fichiers avaient résulté du troisième volume de la deuxième série (\ann{} \ref{mappings2t3}).
 
 Le contrôle a été opéré manuellement, par une ouverture successive des fichiers. Les monographies devaient commencer par la reproduction de l'en-tête, point de repère du script \lse{} pour le découpage. Deux erreurs majeures ont été constatée.
 
 \subsection{Fission horizontale lors de la segmentation}
 
-La première consistait en une erreur de découpage dans les précis n° 48 bis et 66 ter. Le premier est scindé en dix fichiers contenant deux pages chacun (\citecode{s2t1\_chapt\_6.xml} à \citecode{s2t1\_chapt\_15.xml}) et le second en quatorze fichiers contenant quatre (\citecode{s2t3\_chapt\_14.xml}) et deux pages (\citecode{s2t3\_chapt\_15.xml} à \citecode{s2t3\_chapt\_27.xml}). Les deux pages sont toujours un recto et un verso.
+La première consistait en une erreur de découpage dans les précis n° 48 bis\footcite{mono048b}, 66 bis\footcite{mono066b} et 66 ter\footcite{mono066c}. Le premier est scindé en dix fichiers contenant deux pages chacun (\texttt{s2t1\_chapt\_6.xml} à \texttt{s2t1\_chapt\_15.xml}), le second et le troisième en respectivement sept et quatorze fichiers contenant quatre (\texttt{s2t3\_chapt\_7.xml} et \texttt{s2t3\_chapt\_8.xml} ; \texttt{s2t3\_chapt\_14.xml}) et deux pages (\texttt{s2t3\_chapt\_9.xml} à \texttt{s2t3\_chapt\_13.xml} ; \texttt{s2t3\_\-chapt\_15.xml} à \texttt{s2t3\_chapt\_27.xml}). Lorsqu'il y a deux pages, il s'agit toujours d'un recto et d'un verso, et de deux rectos et deux versos lorsqu'il y en a quatre.
 
-Mis à part \citecode{s2t1\_chapt\_6.xml} et \citecode{s2t3\_chapt\_14} \citecode{.xml} qui commencent par le titre du précis, les \citecode{<body>} de ces fichiers ont un point commun : ils débutent tous par les deux mêmes lignes, \citecode{<p>\textsc{précis de monographie}</p> \textbackslash n <p>[numéro de la page]</p>}. Or ces deux informations --- le rappel du titre du chapitre et le numéro de la page courante --- se trouvent sur une seule et même ligne dans les images. Une erreur de fission horizontale résultant d'une mauvaise segmentation s'est donc produite au moment de l'\ocr\footcite[p. 5-6]{karpinski}.
+Mis à part les premiers fichiers, qui commencent par le titre du précis, les \texttt{<body>} de ces fichiers ont un point commun : ils débutent tous par les deux mêmes lignes, \texttt{<p>\textsc{précis de monographie}</p> \textbackslash n <p>[numéro de la page]</p>}. Or ces deux informations --- le rappel du titre du chapitre et le numéro de la page courante --- se trouvent sur une seule et même ligne dans les images. Une erreur de fission horizontale résultant d'une mauvaise segmentation s'est donc produite au moment de l'\ocr\footcite[p. 5-6]{karpinski}.
 
 Dans son comportement normal, \lse{} est programmé pour détecter tout ce qui relève de l'en-tête ou du pied de page et le retirer afin de permettre une reconstitution optimale des paragraphes au moment de la transformation des fichiers XML pour une éventuelle édition. Dans le cas présent, le script a été dupé par l'erreur de segmentation : il n'a pas vu des rappels de titre et des numéros de page, mais des titres et des numéros de chapitre. En conséquence, il a opéré une coupure à cet endroit, \cad{} achevé le fichier en cours pour en amorcer un nouveau.
 
-Une question demeure néanmoins : pourquoi \citecode{s2t3\_chapt\_14.xml} contient-il quatre pages, à l'inverse des autres qui n'en contiennent que deux ? Le fait est que l'en-tête de la troisième page a été détecté convenablement, et donc retiré du flux du texte. 
+Une question demeure néanmoins : pourquoi trois des fichiers contiennent-ils quatre pages, à l'inverse des autres qui n'en contiennent que deux ? Le fait est que les en-têtes des troisième pages ont été détectés convenablement, et donc retirés du flux du texte. Aussi la séparation n'était-elle pas nécessaire.
 
-L'erreur a été résolue par un transfert manuel du contenu de chaque fichier particulier dans un fichier global (\citecode{s2t1\_chapt\_6.xml} et \citecode{s2t3\_chapt\_14}). Le choix a été fait de ne pas modifier la numérotation des fichiers suivants, notamment afin de pouvoir effectuer un suivi sur la durée. C'est la raison pour laquelle, dans la deuxième série, le n°~6 est suivi du n°~16 dans le premier volume et le n°~14 par le n°~28 dans le troisième.
+L'erreur a été résolue par un transfert manuel du contenu de chaque fichier particulier dans un fichier global (\texttt{s2t1\_chapt\_6.xml}, \texttt{s2t3\_chapt\_7.xml} et \texttt{s2t3\_chapt\_14}). Le choix a été fait de ne pas modifier la numérotation des fichiers suivants, notamment afin de pouvoir effectuer un suivi sur la durée. C'est la raison pour laquelle, dans la deuxième série, le n°~6 est suivi du n°~16 dans le premier volume et, dans le troisième, le  n°~7 par le n°~14, lui-même précédant le n°~28 (\ann{} \ref{mappings2t1} et \ref{mappings2t3}).
+
+Cette opération a conduit à la suppression de vingt-huit fichiers. Ajoutons à cela celle de \texttt{s2t1\_chapt\_23.xml}, doublon de \texttt{s2t2\_chapt\_5.xml} (\cf{} \ref{part:I1_longue_pub}, p. \pageref{part:I1_longue_pub}) : un total de vingt-neuf fichiers ont été supprimés, le corpus passe donc de 223 à 194 fichiers.
 
 \subsection{Défaut de transcription}
 
-La seconde erreur majeure à laquelle nous avons été confronté est le défaut d'une partie de la transcription dans un chapitre (\ann{} \ref{ann:deficit-transcr}). Il ne s'agit pas d'une erreur de découpage, puisque déjà présente dans les treize fichiers source. C'est néanmoins l'opération de contrôle du découpage qui a permis de s'en rendre compte.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=15cm]{img/deficit_transcrip.png}
+    \caption{Dans six fichiers, le contenu de la section \textit{Observations préliminaires} n'a pas été considéré comme du texte mais comme des figures. À l'inverse, la section \textit{Notes} a bien été prise en compte comme dut texte. Exemple du fichier \texttt{s1t4\_chapt\_8.xml}.}
+    \label{fig:deficit}
+\end{figure}
 
-\texttt{<figure>} et \citecode{<figure>}
+La seconde erreur majeure à laquelle nous avons été confronté est le défaut d'une partie de la transcription dans six monographies (\ann{} \ref{ann:deficit-transcr}). Il ne s'agit pas d'une erreur de découpage, puisque déjà présente dans les treize fichiers source. C'est néanmoins l'opération de contrôle du découpage qui a permis de s'en rendre compte.
 
-\chapter[Correction des erreurs d'implémentation]{Correction des erreurs d'implémentation de la structure logique}
+Ce défaut se manifeste de deux manières différentes : soit le titre et l'ensemble de la partie \textit{Observations préliminaires} manquent (n° 30\footcite{mono030a}, 33\footcite{mono033a}, 37\footcite{mono037a}, 45\footcite{mono045a} et 46\footcite{mono046a}), soit la transcription n'a été effectuée qu'à partir du paragraphe §14 (n° 44\footcite{mono044a}).
+
+Il ne s'agit pas d'un déficit total. L'analyse de la mise en page et la segmentation se sont effectuées de manière convenable, comme en atteste la présence d'ensemble \texttt{<facsimile>} entre le \texttt{<teiHeader>} et le \texttt{<text>}. Néanmoins, les paragraphes §1 à §16, qui peuvent contenir des figures ou des tableaux mais sont principalement composés de textes, ont été considérés comme des éléments graphiques. En conséquence, chaque page est représentée par un élément \texttt{<figure>} contenant une balise \texttt{<graphic>} que l'attribut \texttt{@facs} relie à un \texttt{<facsimile>} ; \texttt{<pb>} venant signifier le changement de page (\fig{} \ref{fig:deficit}).
+
+Nous n'avons pas pu fournir d'explication à ce résultat. Il illustre le concept de \og boîte noire \fg, \cad{} que dans ce cas précis, le fonctionnement de \lse{} n'est pas explicable. Nous ne pouvons que faire état des données d'entrée (les images segmentées) et des données de sortie (des fichiers XML-TEI où des textes ont été détectés comme des illustrations), le processus de transformation entre les deux n'étant pas descriptible\footcite[p. 4]{henin}.
+
+Ces fichiers requièrent une nouvelle \ocr{} ; une correction par le biais d'une transcription manuelle ne fait en effet pas partie des possibilités acceptables pour l'équipe ALMAnaCH. Cette opération a été repoussée et nous n'avons pas eu à la mener. La reprise de ces six fichiers pourra cependant servir à valider les modifications apportées à \lse{} en tenant compte de l'ensemble des axes d'amélioration relevés au cours du stage et présentés dans ce mémoire.
+
+\subsection{Identification, cartographie et inclusion}
+
+Au-delà d'une vérification de la cohérence du découpage, cette étape de vérification avait pour but de reconnaître le contenu des fichiers, de leur associer un identifiant unique et de produire un fichier de cartographie ou \og mapping \fg{} du corpus. Une partie des identifiants provenaient d'une bibliographie réalisée au format BibTeX\footnote{BibTeX est le logiciel de gestion de bibliographie du langage \LaTeX.} par Stéphane Baciocchi à partir de son exemplaire personnel du corpus.
+
+Une partie seulement, car le fichier bibliographique ne s'intéressait qu'aux monographies, là où ALMAnaCH avait la volonté de travailler sur l'ensemble du corpus, monographies et fichiers de paratexte compris. Il a donc été nécessaire d'établir de nouveaux identifiants sur le modèle de ceux des monographies. Ces derniers se composent d'une série de trois chiffres suivie d'une lettre, \texttt{a} pour une monographie, \texttt{b} pour le précis bis et \texttt{c} pour le ter (\texttt{\textbackslash d\textbackslash d\textbackslash d[a-c]}). Nous avons donc choisi de donner au premier fichier de paratexte le numéro \texttt{401a} et de continuer jusqu'au dernier.
+
+Trois versions de la cartographie ont été réalisée : la première contient uniquement les monographies, la seconde le paratexte et la troisième l'ensemble des fichiers\footnote{La troisième cartographie a été scindée en fonction des volumes afin de constituer l'annexe \ref{mapping} du présent mémoire.}. Ces versions sont enregistrées au format CSV : en texte brut, elles se présentent sous la forme d'une succession de lignes contenant des données (identifiant, intitulé puis libellé du fichier), ces données étant séparées par des virgules. Ces fichiers CSV peuvent ensuite être interprétés comme des tableaux, chaque ligne correspondant à une ligne tabulaire et chaque virgule à une séparation entre deux colonnes. Ce format, outre son extrême simplicité, a l'avantage d'être libre et de pouvoir être interprété par le langage Python. Les données peuvent donc être manipulées par un script.
+
+Une fois les CSV constitué, il a fallu implanté les identifiants dans les fichiers TEI : il s'agissait de la première opération que nous avons pu automatiser. Après avoir relevé les identifiants et les libellés de fichier dans le CSV général pour constituer un dictionnaire Python (\texttt{dict\_xml = \{'401a': 's1t1\_chapt\_1.xml', etc\}}), le script ouvrait chaque fichier un par un. À l'aide de la librairie \textit{BeautifulSoup}, il analysait ensuite l'arbre XML (\fig{} \ref{fig:xmltree1}, p. \pageref{fig:xmltree1}) et implantait l'identifiant comme valeur de l'attribut \texttt{@xml:id} de \texttt{<TEI>} et de l'attribut \texttt{@ana} de la première \texttt{<div>}.
+
+La première exécution de ce script a permis de faire remonter une erreur dans la constitution des identifiants : la grammaire TEI n'autorise qu'un \texttt{@xml:id} unique et qui commence par une lettre dans chaque document\footnote{\og \textit{Values for the \texttt{@xml:id} attributes must be unique within a single document, and \texttt{@xml:id} values must begin with a letter}\fg{} : \textit{TEI Guidelines, 3.10.2 Creating New Reference Systems} (\url{https://www.tei-c.org/release/doc/tei-p5-doc/fr/html/CO.html\#CORS2}, consulté le \today).}. Or il n'était pas possible de revenir sur ces identifiants, utilisés par d'autres chercheurs. La seule solution trouvée a été d'ajouter le préfixe \texttt{ID-} devant chaque identifiant afin de satisfaire aux règles de la TEI.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=15cm]{img/xinclude.png}
+    \caption{Premières lignes du fichier \texttt{master.xml}. Dans la balise \texttt{<master>}, l'attribut \texttt{@xmlns:xi} contient l'adresse de l'espace de nom \textit{XInclude}.}
+    \label{fig:xinclude}
+\end{figure}
+
+ALMAnaCH souhaitait enfin pouvoir disposer d'un fichier XML regroupant l'ensemble des 194 fichiers. Pour cela, nous avons eu recours à un mécanisme d'inclusion grâce au langage XInclude.
+
+Le principe est de constituer un fichier --- ici, \texttt{master.xml} --- dont le seul contenu sera une balise \texttt{<master>} englobant une succession d'éléments \texttt{<xi:include>}. Ceux-ci possèdent un attribut \texttt{@href} contenant l'URI d'un fichier XML de paratexte ou de monographie. Il s'agit de l'identifiant uniforme d'une ressource (\textit{Uniform Resource Identifier}), \cad{} une séquence de caractères qui localise et nomme une ressource de manière pérenne\footnote{\og \textit{A URI is an identifier consisting of a sequence of characters matching the syntax rule named \texttt{<URI>}. It enables uniform identification of resources via a separately defined extensible set of naming schemes} \fg{} : RFC 3986, \textit{Uniform Resource Identifier (URI): Generic Syntax}, IETF, janvier 2005 (\url{https://tools.ietf.org/html/rfc3986}, consulté le \today).}. Dans notre corpus, les URI des fichiers ne sont pas leurs identifiants mais leurs libellés : au moment d'analyser \texttt{master.xml}, le logiciel --- par exemple, \oxygen{} --- va lui adjoindre le contenu de la ressource localisée par la première URI, \cad{} le fichier s1t1\_chapt\_1.xml, qui contient la page de titre du premier volume, puis passer à l'URI suivante (le premier paratexte du premier volume), et ainsi de suite jusqu'au dernier fichier du troisième volume de la troisième série.
+
+Ce fichier \texttt{master.xml} a été là encore constitué de manière automatique avec un script qui rassemble tous les libellés des fichiers dans une liste et, pour chacun d'eux écrit la ligne \texttt{<xi:include href="[libellé du fichier]"/>}.
+
+\section{Vérification des éléments \texttt{<facsimile>}}
+
+\chapter{Contrôle du découpage éditorial}
 
 Début du chapitre 6.
