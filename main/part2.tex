@@ -129,7 +129,7 @@ Le premier niveau est celui du découpage documentaire, soit la constitution d'u
 
 Le second niveau est celui dit de l'encodage \og minimal \fg, dont le seul but est d'améliorer la navigation dans le document. Il s'agit d'identifier les paragraphes par des balises \texttt{<p>} et de lier celles-ci aux ensembles \texttt{<facsimile>} des images d'origine par un identifiant, tant en marquant les changements de page par des éléments \texttt{<pb>}.
 
-Le troisième niveau s'intéresse au découpage éditorial, \cad{} à l'identification et à la reproduction de la structure logique du texte. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à la structuration des monographies ; c'est également le niveau qui a nécessité la reprise la plus lourde et la plus longue.
+Le troisième niveau s'intéresse au découpage éditorial, \cad{} à l'identification et à la reproduction de la structure hiérarchique du texte, en l'occurrence la structure initiée par Frédéric Le Play et reprise par ses continuateurs.
 
 Le quatrième niveau est celui de l'encodage sémantique, destiné à mettre en valeur les éléments internes au texte afin d'en faire une production électronique autonome. Dans les fichiers des \odm, cela s'est traduit par l'élimination des éléments de mise en page des volumes tels que les en-têtes ou les numéros de page.
 
@@ -153,28 +153,52 @@ Dans son comportement normal, \lse{} est programmé pour détecter tout ce qui r
 
 Une question demeure néanmoins : pourquoi trois des fichiers contiennent-ils quatre pages, à l'inverse des autres qui n'en contiennent que deux ? Le fait est que les en-têtes des troisième pages ont été détectés convenablement, et donc retirés du flux du texte. Aussi la séparation n'était-elle pas nécessaire.
 
-L'erreur a été résolue par un transfert manuel du contenu de chaque fichier particulier dans un fichier global (\texttt{s2t1\_chapt\_6.xml}, \texttt{s2t3\_chapt\_7.xml} et \texttt{s2t3\_chapt\_14}). Le choix a été fait de ne pas modifier la numérotation des fichiers suivants, notamment afin de pouvoir effectuer un suivi sur la durée. C'est la raison pour laquelle, dans la deuxième série, le n°~6 est suivi du n°~16 dans le premier volume et, dans le troisième, le  n°~7 par le n°~14, lui-même précédant le n°~28 (\ann{} \ref{mappings2t1} et \ref{mappings2t3}).
+L'erreur a été résolue par un transfert manuel du contenu de chaque fichier particulier dans un fichier global (\texttt{s2t1\_chapt\_6.xml}, \texttt{s2t3\_chapt\_7.xml} et \texttt{s2t3\_chapt\_14}). Le choix a été fait de ne pas modifier la numérotation des fichiers suivants, notamment afin de pouvoir effectuer un suivi sur la durée. C'est la raison pour laquelle, dans la deuxième série, le n°~6 est suivi du n°~16 dans le premier volume et, dans le troisième, le  n°~7 par le n°~14, lui-même précédant le n°~28 (\ann{} \ref{mappings2t1} et \ref{mappings2t3}, p. \pageref{mappings2t1}).
 
-Cette opération a conduit à la suppression de vingt-huit fichiers. Ajoutons à cela celle de \texttt{s2t1\_chapt\_23.xml}, doublon de \texttt{s2t2\_chapt\_5.xml} (\cf{} \ref{part:I1_longue_pub}, p. \pageref{part:I1_longue_pub}) : un total de vingt-neuf fichiers ont été supprimés, le corpus passe donc de 223 à 194 fichiers.
+Cette opération a conduit à la suppression de vingt-huit fichiers. Ajoutons à cela le retrait de \texttt{s2t1\_chapt\_23.xml}, doublon de \texttt{s2t2\_chapt\_5.xml} (\cf{} \ref{part:I1_longue_pub}, p. \pageref{part:I1_longue_pub}) : un total de vingt-neuf fichiers ont été supprimés, le corpus passe donc de 223 à 194 fichiers.
 
 \subsection{Défaut de transcription}
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=15cm]{img/deficit_transcrip.png}
-    \caption{Dans six fichiers, le contenu de la section \textit{Observations préliminaires} n'a pas été considéré comme du texte mais comme des figures. À l'inverse, la section \textit{Notes} a bien été prise en compte comme dut texte. Exemple du fichier \texttt{s1t4\_chapt\_8.xml}.}
+    \caption{Dans six fichiers, le contenu de la section \textit{Observations préliminaires} n'a pas été considéré comme du texte mais comme des figures. À l'inverse, la section \textit{Notes} a bien été prise en compte comme du texte. Exemple du fichier \texttt{s1t4\_chapt\_8.xml}.}
     \label{fig:deficit}
 \end{figure}
 
-La seconde erreur majeure à laquelle nous avons été confronté est le défaut d'une partie de la transcription dans six monographies (\ann{} \ref{ann:deficit-transcr}). Il ne s'agit pas d'une erreur de découpage, puisque déjà présente dans les treize fichiers source. C'est néanmoins l'opération de contrôle du découpage qui a permis de s'en rendre compte.
+La seconde erreur majeure à laquelle nous avons été confronté est le défaut d'une partie de la transcription dans six monographies (\ann{} \ref{ann:deficit-transcr}). Le titre et l'ensemble de la partie \textit{Observations préliminaires} manquent (n° 30\footcite{mono030a}, 33\footcite{mono033a}, 37\footcite{mono037a}, n° 44\footcite{mono044a}, 45\footcite{mono045a} et 46\footcite{mono046a}). Il ne s'agit pas d'une erreur de découpage, puisque déjà présente dans les treize fichiers source. C'est néanmoins l'opération de contrôle du découpage qui a permis de s'en rendre compte.
 
-Ce défaut se manifeste de deux manières différentes : soit le titre et l'ensemble de la partie \textit{Observations préliminaires} manquent (n° 30\footcite{mono030a}, 33\footcite{mono033a}, 37\footcite{mono037a}, 45\footcite{mono045a} et 46\footcite{mono046a}), soit la transcription n'a été effectuée qu'à partir du paragraphe §14 (n° 44\footcite{mono044a}).
+Il ne s'agit pas d'un déficit total. L'analyse de la mise en page et la segmentation se sont effectuées de manière convenable, comme en atteste la présence d'ensemble \texttt{<facsimile>} entre le \texttt{<teiHeader>} et le \texttt{<text>}, repris des éléments \texttt{<TextBlock>} des fichiers ALTO d'origine. Néanmoins, les paragraphes §1 à §16, qui peuvent contenir des figures ou des tableaux mais sont principalement composés de textes, ont été considérés comme des éléments graphiques. En conséquence, chaque page est représentée par un élément \texttt{<figure>} contenant une balise \texttt{<graphic>} que l'attribut \texttt{@facs} relie à un \texttt{<facsimile>} ; \texttt{<pb>} venant signifier le changement de page (\fig{} \ref{fig:deficit}).
 
-Il ne s'agit pas d'un déficit total. L'analyse de la mise en page et la segmentation se sont effectuées de manière convenable, comme en atteste la présence d'ensemble \texttt{<facsimile>} entre le \texttt{<teiHeader>} et le \texttt{<text>}. Néanmoins, les paragraphes §1 à §16, qui peuvent contenir des figures ou des tableaux mais sont principalement composés de textes, ont été considérés comme des éléments graphiques. En conséquence, chaque page est représentée par un élément \texttt{<figure>} contenant une balise \texttt{<graphic>} que l'attribut \texttt{@facs} relie à un \texttt{<facsimile>} ; \texttt{<pb>} venant signifier le changement de page (\fig{} \ref{fig:deficit}).
+Que s'est-il passé ? Le problème provient d'une fonction de \lse, \texttt{where\_do\_\-budgets\_start}. Son  rôle est de déterminer l'index de la page où commencent les tableaux de budget et de placer cette donnée dans la variable \texttt{budget\_start}. Pour cela, il cherche la ligne \og \textsc{budget des recettes de l'année} \fg, qui se trouve entre l'en-tête de la page et la ligne supérieure délimitant le tableau de budget. Une fois cette information connue, le script sait que la page correspondante et l'ensemble des suivantes jusqu'au commencement de la section \textit{Notes} (index placé dans la variable \texttt{budget\_stop}) devront être considérées comme des objets graphiques.
 
-Nous n'avons pas pu fournir d'explication à ce résultat. Il illustre le concept de \og boîte noire \fg, \cad{} que dans ce cas précis, le fonctionnement de \lse{} n'est pas explicable. Nous ne pouvons que faire état des données d'entrée (les images segmentées) et des données de sortie (des fichiers XML-TEI où des textes ont été détectés comme des illustrations), le processus de transformation entre les deux n'étant pas descriptible\footcite[p. 4]{henin}.
+Or les trois monographies concernées du quatrième volume (n°~30, 33 et 37) présentent un problème au niveau de la segmentation de la première page du budget. En effet, soit l'en-tête a été considéré comme du texte et le reste comme une illustration (\fig{}~\ref{fig:odm30tkb} et~\ref{fig:odm33tkb}), soit l'ensemble de la page a été considéré comme une illustration (\fig{}~\ref{fig:odm37tkb}). \kraken, à qui les zones de segmentation sont adressées, n'a donc rien à transcrire (à l'exception de la ligne d'en-tête dans deux cas), et \lse{} n'obtient pas de résultat quand il cherche la ligne \og \textsc{budget des recettes de l'année} \fg{}. La variable \texttt{budget\_start} est équivalente à \texttt{false} et \lse{} considère que les budgets débutent à la première page de la monographie. Il remplace alors toutes les transcriptions par des objets graphiques jusqu'aux \textit{Notes} qu'il traite normalement, et nous obtenons un fichier partiellement transcrit.
 
-Ces fichiers requièrent une nouvelle \ocr{} ; une correction par le biais d'une transcription manuelle ne fait en effet pas partie des possibilités acceptables pour l'équipe ALMAnaCH. Cette opération a été repoussée et nous n'avons pas eu à la mener. La reprise de ces six fichiers pourra cependant servir à valider les modifications apportées à \lse{} en tenant compte de l'ensemble des axes d'amélioration relevés au cours du stage et présentés dans ce mémoire.
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+     \includegraphics[width=1\linewidth]{img/transkribus_30.png}
+     \caption{N° 30, p. 104.}
+     \label{fig:odm30tkb}
+    \end{subfigure}
+    \hspace{5pt}
+    \begin{subfigure}{0.3\textwidth}
+     \includegraphics[width=1\linewidth]{img/transkribus_33.png}
+     \caption{N° 33, p. 260.}
+     \label{fig:odm33tkb}
+    \end{subfigure}
+    \hspace{5pt}
+    \begin{subfigure}{0.3\textwidth}
+     \includegraphics[width=1\linewidth]{img/transkribus_37.png}
+     \caption{N° 37, p. 426.}
+     \label{fig:odm37tkb}
+    \end{subfigure}
+    \caption{Segmentations dans \textit{Transkribus} des pages liminaires des budgets des monographies n° 30,  33 et 37. Dans les monographies 30 et 33, seul la ligne d'en-tête est considérée comme du texte.}
+    \label{fig:odmtkbs1t4}
+\end{figure}
+
+Ces fichiers requièrent une nouvelle \ocr{} et une nouvelle structuration ; une correction par le biais d'une transcription manuelle ne fait en effet pas partie des possibilités acceptables pour l'équipe ALMAnaCH. Cette opération a été repoussée et nous n'avons pas eu à la mener. La reprise de ces six fichiers pourra cependant servir à valider les modifications apportées à \lse{} en tenant compte de l'ensemble des axes d'amélioration relevés au cours du stage et présentés dans ce mémoire. Notamment, l'éventualité de l'absence de valeur pour \texttt{budget\_start} pourrait 
+être envisagée et traduite par un message d'erreur informant l'opérateur que le calibrage de la segmentation doit être changé.
 
 \subsection{Identification, cartographie et inclusion}
 
@@ -197,12 +221,97 @@ La première exécution de ce script a permis de faire remonter une erreur dans 
 
 ALMAnaCH souhaitait enfin pouvoir disposer d'un fichier XML regroupant l'ensemble des 194 fichiers. Pour cela, nous avons eu recours à un mécanisme d'inclusion grâce au langage XInclude.
 
-Le principe est de constituer un fichier --- ici, \texttt{master.xml} --- dont le seul contenu sera une balise \texttt{<master>} englobant une succession d'éléments \texttt{<xi:include>}. Ceux-ci possèdent un attribut \texttt{@href} contenant l'URI d'un fichier XML de paratexte ou de monographie. Il s'agit de l'identifiant uniforme d'une ressource (\textit{Uniform Resource Identifier}), \cad{} une séquence de caractères qui localise et nomme une ressource de manière pérenne\footnote{\og \textit{A URI is an identifier consisting of a sequence of characters matching the syntax rule named \texttt{<URI>}. It enables uniform identification of resources via a separately defined extensible set of naming schemes} \fg{} : RFC 3986, \textit{Uniform Resource Identifier (URI): Generic Syntax}, IETF, janvier 2005 (\url{https://tools.ietf.org/html/rfc3986}, consulté le \today).}. Dans notre corpus, les URI des fichiers ne sont pas leurs identifiants mais leurs libellés : au moment d'analyser \texttt{master.xml}, le logiciel --- par exemple, \oxygen{} --- va lui adjoindre le contenu de la ressource localisée par la première URI, \cad{} le fichier s1t1\_chapt\_1.xml, qui contient la page de titre du premier volume, puis passer à l'URI suivante (le premier paratexte du premier volume), et ainsi de suite jusqu'au dernier fichier du troisième volume de la troisième série.
+Le principe est de constituer un fichier --- ici, \texttt{master.xml} --- dont le seul contenu sera une balise \texttt{<master>} englobant une succession d'éléments \texttt{<xi:include>}. Ceux-ci possèdent un attribut \texttt{@href} contenant l'URI d'un fichier XML de paratexte ou de monographie. Il s'agit de l'identifiant uniforme d'une ressource (\textit{Uniform Resource Identifier}), \cad{} une séquence de caractères qui localise et nomme une ressource de manière pérenne\footnote{\og \textit{A URI is an identifier consisting of a sequence of characters matching the syntax rule named \texttt{<URI>}. It enables uniform identification of resources via a separately defined extensible set of naming schemes} \fg{} : RFC 3986, \textit{Uniform Resource Identifier (URI): Generic Syntax}, IETF, janvier 2005 (\url{https://tools.ietf.org/html/rfc3986}, consulté le \today).}. Dans notre corpus, les URI des fichiers ne sont pas leurs identifiants mais leurs libellés : au moment d'analyser \texttt{master.xml}, le logiciel --- par exemple, \oxygen{} --- va lui adjoindre le contenu de la ressource localisée par la première URI, \cad{} le fichier \texttt{s1t1\_chapt\_1.xml}, qui contient la page de titre du premier volume, puis passer à l'URI suivante (le premier paratexte du premier volume), et ainsi de suite jusqu'au dernier fichier du troisième volume de la troisième série.
 
-Ce fichier \texttt{master.xml} a été là encore constitué de manière automatique avec un script qui rassemble tous les libellés des fichiers dans une liste et, pour chacun d'eux écrit la ligne \texttt{<xi:include href="[libellé du fichier]"/>}.
+Ce fichier \texttt{master.xml} a été là encore constitué de manière automatique avec un script qui rassemble tous les libellés des fichiers dans une liste et, pour chacun d'eux, écrit la ligne \texttt{<xi:include href="[libellé]"/>} (\fig{} \ref{fig:xinclude}).
 
-\section{Vérification des éléments \texttt{<facsimile>}}
+\section{Vérification de l'encodage minimal}
+
+La mise en forme minimale des documents a été correctement exécutée par \lse, aucune partie de la transcription n'ayant été laissée sans encodage.
+
+Les objets graphiques ont pu néanmoins poser problème au script. Nous avons vu dans la section précédente que dans six fichiers, toute une partie du texte avait été représentée par des éléments \texttt{<figure>}. L'inverse s'est également produit, \cad{} que des objets graphiques véritables --- à l'instar des tableaux de budget des paragraphes 14 à 16 --- ont souvent été considérés comme du texte. Ainsi, dans la monographie n° 56\footcite{mono056a}, le tiers du premier tableau du paragraphe 14 est encodé dans un élément \texttt{<figure>} (articles 1 à 2), le reste, à partir de l'article 3, étant transcrit et placé dans des \texttt{<p>} (\fig{} \ref{fig:tableodm56xml}).
+
+Pour autant, ces faits sont moins gênants que les cas inverses, dans la mesure où il s'agit de surplus de transcription. Les \texttt{<div>} encadrant ces sections de budgets étant en place, il est envisageable d'effacer automatiquement les balises \texttt{<head>} et \texttt{<p>} qu'elles contiennent et de n'ajouter que des \texttt{<graphic>} avec l'adresse de l'image de la page.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=15cm]{img/table_s2t2_chapt_5.png}
+    \caption{Encodage du début du §14 de la monographie 56.}
+    \label{fig:tableodm56xml}
+\end{figure}
+
+Cependant, toute mesure d'ajout ou de suppression d'élément \texttt{<p>} ou \texttt{<head>} a pour conséquence de rompre la logique interne au document. En effet, ces balises possèdent un attribut \texttt{@facs} dont la valeur renvoie à l'identifiant (\texttt{@xml:id}) d'un élément \texttt{<zone>} dans les \texttt{<facsimile>}. Pousser la précision de ces derniers jusqu'au niveau des paragraphes devient inutile puisque la correspondance entre les \texttt{<zone>} et les \texttt{<p>} ou les \texttt{<head>} ne peut plus 
+être garantie. De fait, le niveau de référence devient la page (\texttt{<surface>}) et non le paragraphe. Les nombreuses modifications que nous avons menées sur ces balises nous ont donc conduit à retirer l'ensemble des éléments \texttt{<zone>} et des attributs \texttt{@facs} des paragraphes et des titres par le biais d'un script. Dans l'arbre XML de départ (\fig{} \ref{fig:xmltree1} p. \pageref{fig:xmltree1}), le seul descendant de l'élément \texttt{<surface>}  est désormais \texttt{<graphic>}.
 
 \chapter{Contrôle du découpage éditorial}
 
-Début du chapitre 6.
+Le contrôle du découpage éditorial, \cad{} de l'implémentation de la structure logique, a donné lieu à la reprise la plus importante. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à une structure logique qui seule permet de transformer les \og faits observés \fg{} sur le terrains en des \og faits décris \fg{} par la monographie\footcite[p. 87]{baciocchi2}.
+
+\section{Erreurs constatées dans l'implémentation}
+
+\subsection{Niveau des titres (\texttt{<head>})}
+
+Pour commencer, nous avons tenter de réaliser l'étendue des corrections à effectuer à l'aide d'un script. Il comparait une structure idéale --- \cad{} l'idée que chaque fichier de monographie devait contenir dans des \texttt{<head>} deux titres de niveau section (B et C), quatre titres de sous-section (I à IV) et seize titres de paragraphes (§1 à §16, \cf{} \ann{} \ref{structure}) --- à la structure réelle contenue les fichiers. En sortie, les titres qui n'avaient pas été trouvés étaient listés.
+
+Le script a fait remonter plus de quatre cent cinquante erreurs. Ce chiffre était largement gonflé par la non-prise en compte de la qualité de la transcription : certains titres étaient présents mais avaient été transcrits avec des fautes. Les erreurs principales pouvaient néanmoins être identifiées dès cette étape :
+
+\begin{itemize}
+    \item Des distances d'édition trop faible entre deux titres ont causé le remplacement de l'un par l'autre :
+    \begin{itemize}
+        \item (II.) \og Mode d'existence de la famille \fg{} par (III.) \og Moyens d'existence de la famille \fg.
+        \item \og § 11. -- Récréations \fg{} par \og § 7. -- Subventions \fg.
+    \end{itemize}
+    \item La monographie n° 44\footcite{mono044a} est la dernière à posséder des titres de paragraphe sur une seule ligne, un retour à la ligne étant ensuite systématiquement effectué entre le numéro et le libellé du paragraphe. Cet élément n'a pas été compris par \lse, qui a pu répéter ou non le numéro du paragraphe sur la ligne du libellé.
+    \begin{itemize}
+        \item En cas de répétition, le numéro original est placé dans un \texttt{<p>} et le titre avec le numéro ajouté dans un \texttt{<head>} (\fig{} \ref{fig:ex_structure} p. \pageref{fig:ex_structure}).
+        \item En cas de non répétition, le titre n'est pas toujours détecté et les deux lignes sont encodées dans des \texttt{<p>}.
+    \end{itemize}
+    \item Des titres transcrits avec une distance trop grande par rapport au modèle n'ont pas été détectés. Ce point concerne l'ensemble des titres, sans prévalence particulière.
+    \item Les titres des tableaux de budgets sont transcrits plus d'une fois.
+    \item Les cas particuliers n'ont pas été pris en compte :
+    \begin{itemize}
+        \item La monographie concerne un ouvrier ou une ouvrière et non une famille, ce qui conduit à un changement dans la terminologie (par exemple, \og État civil de la famille \fg{} devient \og État civil de l'ouvrier \fg) : concerne notamment \texttt{s1t2\_chapt\_4.xml}, \texttt{s1t3\_chapt\_7.xml} et \texttt{10} ;
+        \item Les titres du paragraphes n'étaient pas séparés du texte mais imprimé en italique au début de celui-ci ;
+        \item Le titre n'est pas imprimé (\ann{} \ref{ann:titre-non-imprimes}, \ref{ann:structure-allegee} et \ref{ann:no-notes-no-16}) ;
+        \item La monographie possède une structure qui lui est propre ( \ann{} \ref{ann:remarques-et-cas-particuliers}).
+    \end{itemize}
+\end{itemize}
+
+\subsection{Niveau des divisions (\texttt{<div>})}
+
+L'implémentation de la structure logique ne s'est pas uniquement traduite par une mise en forme des titres : chaque \texttt{<head>} est en effet attaché à une \texttt{<div>} (\fig{} \ref{fig:deficit} p. \pageref{fig:deficit}). Tous deux possèdent un identifiant \texttt{@type} qui définit leur niveau (\texttt{section}, \texttt{sub\_section} ou \texttt{sub\_sub\_section}), la \texttt{<div>} étant en plus nantie d'un numéro (\texttt{@n}).
+
+Deux erreurs ont été constatées à ce niveau :
+
+\begin{itemize}
+    \item Lorsqu'un titre n'était pas détecté, la \texttt{<div>} correspondante n'était pas créée et le paragraphe était intégré dans la division précédente, invalidant de fait l'ensemble de la numérotation ;
+    \item Des \texttt{<div>} surnuméraires ont été implantées (\fig{} \ref{fig:ex_structure} p. \pageref{fig:ex_structure}) ;
+    \item Au cour du stage, il a été décidé de placer la titre de la monographie dans une \texttt{<div>} de type \texttt{section}, ce qui impliquait une reprise dans l'ensemble des fichiers.
+\end{itemize}
+
+\subsection{Méthodologie : \textit{tabula rasa}}
+
+Le nombre élevé de cas particuliers rendait impossible une automatisation complète de cette reprise. Nous allons d'abord exposer la méthode suivie pour le traitement de ces cas avant de rendre compte de celle utilisée pour le reste du corpus.
+
+Les monographies d'ateliers (\texttt{s3t1\_chapt\_2.xml}\footcite{mono472a} et \texttt{s3t2\_chapt\_10.xml}\footcite{mono473a}) imposaient une reprise manuelle du fait de leur structure unique. Ces fichiers partageaient également avec certaines monographies de familles le fait d'avoir des titres qui ne sont pas détachés des paragraphes qu'ils concernent. Le recours à la balise \texttt{<head>} n'était pas possible en l'état, dans la mesure où elle constitue normalement un bloc séparé des \texttt{<p>}. Plusieurs solutions, toutes insatisfaisantes, ont été envisagées.
+
+La plus légère consistait à signaler la mise en forme de ces titres (italique ou gras) par des balises telles que \texttt{<emph style="italic">} ou \texttt{<hi rend="i">}. Nous n'avons pas opté pour ce choix en raison des règles de la TEI qui n'autorisent pas pour ces balises les attributs qui auraient permis de caractériser ces titres (notamment, \texttt{@type}). Aussi ne serait-il pas possible de les différencier d'autres passages ayant la même mise en forme dans le corps du texte. Une deuxième solution, beaucoup plus lourde pour le fichier, aurait consisté en l'imbrication de  \texttt{<div>} : le \texttt{@type} assigné à la division aurait permis de savoir que le \texttt{<head>} et le \texttt{<p>}, eux-même placés dans une sous-division, ne constituaient qu'un seul paragraphe dans le volume original (\fig{} \ref{fig:solution2}). La contre-partie est que chaque paragraphe aurait dû être placé dans une sous-division.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{img/solution2.png}
+    \caption{Représentation de la deuxième solution, dont le résultat est de produire une imbrication malvenue de \texttt{<div>}.}
+    \label{fig:solution2}
+\end{figure}
+
+Au final, \timeus{} n'a opté pour aucune solution, considérant que le nombre de cas était suffisamment bas pour ne pas avoir à mettre en place une solution particulière. Pour autant, cette décision n'a pas eu pour effet d'arrêter le niveau de granularité des titres à la sous-sous-section.
+
+En effet, les fichiers \texttt{s1t5\_chapt\_9.xml}\footcite{mono041a} et \texttt{10}\footcite{mono042a} comprennent des précis de monographie dotés de leur propre structure logique et intégrés dans le corps de leurs sections \textit{Notes}. Les titres étant détachés des paragraphes, il a été possible de mobiliser un niveau inférieur à la sous-sous-section, le \texttt{paragraph}, afin de rendre compte de cette structuration.
+
+Les cas de ces quelques fichiers réglés, il restait à prendre en charge l'essentiel du corpus, \cad{} une soixantaine de monographies. Une reprise entièrement manuelle n'était pas envisageable en raison du temps trop important qu'elle aurait nécessité. À l'inverse, une automatisation totale aurait nécessité une longue étude et un relevé minutieux des aléas de la détection et de la transcription des titres.
+
+Nous avons donc choisi d'implanter la structure logique par des expressions régulières appliquées sur un lot de fichiers à l'aide d'un script. Les expressions régulières sont des motifs qui permettent de décrire des chaînes de caractères dans un texte. Le module \texttt{re} de Python permet d'utiliser ces expressions dans un script, et notamment d'effectuer des substituions grâce à la fonction \texttt{re.sub()}. Une dernière commande, qui affichait la liste des balises \texttt{<head>} de chaque fichier, nous permettait ensuite de contrôle l'intégrité de la nouvelle structure. Si une erreur était constatée, nous intervenions manuellement afin de la résoudre.
+
+Du fait de la désorganisation massive des \texttt{<div>}, la première expressions régulière consistait à faire table rase de ces balises. Pour reconstruire la structure logique, le script suivait la structure. Ainsi, il commençait par implanter au niveau supérieur la \texttt{<div>} de type \texttt{chapter} et celle de la première section (la page de titre). Venaient ensuite les \texttt{<div>} des deux autres section, (\textit{Observations préliminaires} et \textit{Notes}), puis celles des sous-section, etc. Pour procéder, le script recherchait ou le numéro les libellés (qui en général étaient bien transcrits) jusqu'à la sous-section, puis les numéros des paragraphes. 
+
+intervention manuelle pour moyen d'ex
