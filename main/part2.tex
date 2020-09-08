@@ -243,17 +243,17 @@ Pour autant, ces faits sont moins gênants que les cas inverses, dans la mesure 
 Cependant, toute mesure d'ajout ou de suppression d'élément \texttt{<p>} ou \texttt{<head>} a pour conséquence de rompre la logique interne au document. En effet, ces balises possèdent un attribut \texttt{@facs} dont la valeur renvoie à l'identifiant (\texttt{@xml:id}) d'un élément \texttt{<zone>} dans les \texttt{<facsimile>}. Pousser la précision de ces derniers jusqu'au niveau des paragraphes devient inutile puisque la correspondance entre les \texttt{<zone>} et les \texttt{<p>} ou les \texttt{<head>} ne peut plus 
 être garantie. De fait, le niveau de référence devient la page (\texttt{<surface>}) et non le paragraphe. Les nombreuses modifications que nous avons menées sur ces balises nous ont donc conduit à retirer l'ensemble des éléments \texttt{<zone>} et des attributs \texttt{@facs} des paragraphes et des titres par le biais d'un script. Dans l'arbre XML de départ (\fig{} \ref{fig:xmltree1} p. \pageref{fig:xmltree1}), le seul descendant de l'élément \texttt{<surface>}  est désormais \texttt{<graphic>}.
 
-\chapter{Contrôle du découpage éditorial}
+\chapter[Découpages éditorial et sémantique]{Contrôle des découpages éditorial et sémantique}
 
-Le contrôle du découpage éditorial, \cad{} de l'implémentation de la structure logique, a donné lieu à la reprise la plus importante. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à une structure logique qui seule permet de transformer les \og faits observés \fg{} sur le terrains en des \og faits décris \fg{} par la monographie\footcite[p. 87]{baciocchi2}.
+Le contrôle du découpage éditorial, \cad{} de l'implémentation de la structure logique, a donné lieu à la reprise la plus importante. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à une structure logique qui seule permet de transformer les \og faits observés \fg{} sur le terrain en des \og faits décris \fg{} par la monographie\footcite[p. 87]{baciocchi2}.
 
-\section{Erreurs constatées dans l'implémentation}
+\section{Découpage éditorial}
 
 \subsection{Niveau des titres (\texttt{<head>})}
 
-Pour commencer, nous avons tenter de réaliser l'étendue des corrections à effectuer à l'aide d'un script. Il comparait une structure idéale --- \cad{} l'idée que chaque fichier de monographie devait contenir dans des \texttt{<head>} deux titres de niveau section (B et C), quatre titres de sous-section (I à IV) et seize titres de paragraphes (§1 à §16, \cf{} \ann{} \ref{structure}) --- à la structure réelle contenue les fichiers. En sortie, les titres qui n'avaient pas été trouvés étaient listés.
+Pour commencer, nous avons cherché à évaluer l'étendue des corrections à effectuer à l'aide d'un script. Il comparait une structure idéale --- \cad{} l'idée que chaque fichier de monographie devait contenir dans des \texttt{<head>} deux titres de niveau section (B et C), quatre titres de sous-section (I à IV) et seize titres de paragraphes (§1 à §16, \cf{} \ann{} \ref{structure}) --- à la structure réelle contenue les fichiers. Les titres qui n'avaient pas été trouvés étaient listés en sortie.
 
-Le script a fait remonter plus de quatre cent cinquante erreurs. Ce chiffre était largement gonflé par la non-prise en compte de la qualité de la transcription : certains titres étaient présents mais avaient été transcrits avec des fautes. Les erreurs principales pouvaient néanmoins être identifiées dès cette étape :
+Le script a fait remonter plus de quatre cent cinquante erreurs. Ce chiffre comptait de nombreux faux positifs en raison de la non-prise en compte de la qualité des transcriptions. Certains titres étaient en effet présents mais leurs transcriptions étaient fautives. Les erreurs principales pouvaient néanmoins être identifiées dès cette étape :
 
 \begin{itemize}
     \item Des distances d'édition trop faible entre deux titres ont causé le remplacement de l'un par l'autre :
@@ -270,10 +270,11 @@ Le script a fait remonter plus de quatre cent cinquante erreurs. Ce chiffre éta
     \item Les titres des tableaux de budgets sont transcrits plus d'une fois.
     \item Les cas particuliers n'ont pas été pris en compte :
     \begin{itemize}
-        \item La monographie concerne un ouvrier ou une ouvrière et non une famille, ce qui conduit à un changement dans la terminologie (par exemple, \og État civil de la famille \fg{} devient \og État civil de l'ouvrier \fg) : concerne notamment \texttt{s1t2\_chapt\_4.xml}, \texttt{s1t3\_chapt\_7.xml} et \texttt{10} ;
-        \item Les titres du paragraphes n'étaient pas séparés du texte mais imprimé en italique au début de celui-ci ;
+        \item La monographie porte sur un ouvrier ou une ouvrière et non pas une famille, ce qui conduit à un changement dans la terminologie (par exemple, \og État civil de la famille \fg{} devient \og État civil de l'ouvrier \fg) : concerne notamment \texttt{s1t2\_chapt\_4.xml}, \texttt{s1t3\_chapt\_7.xml} et \texttt{10} ;
+        \item Les titres du paragraphes n'étaient pas séparés du texte mais imprimé en italique au début de celui-ci (\ann{} \ref{ann:structure-allegee}) ;
         \item Le titre n'est pas imprimé (\ann{} \ref{ann:titre-non-imprimes}, \ref{ann:structure-allegee} et \ref{ann:no-notes-no-16}) ;
-        \item La monographie possède une structure qui lui est propre ( \ann{} \ref{ann:remarques-et-cas-particuliers}).
+        \item La monographie possède une structure qui lui est propre (\ann{} \ref{ann:remarques-et-cas-particuliers}).
+        \item La sous-section des budgets est titrée dans huit monographies.
     \end{itemize}
 \end{itemize}
 
@@ -281,21 +282,25 @@ Le script a fait remonter plus de quatre cent cinquante erreurs. Ce chiffre éta
 
 L'implémentation de la structure logique ne s'est pas uniquement traduite par une mise en forme des titres : chaque \texttt{<head>} est en effet attaché à une \texttt{<div>} (\fig{} \ref{fig:deficit} p. \pageref{fig:deficit}). Tous deux possèdent un identifiant \texttt{@type} qui définit leur niveau (\texttt{section}, \texttt{sub\_section} ou \texttt{sub\_sub\_section}), la \texttt{<div>} étant en plus nantie d'un numéro (\texttt{@n}).
 
-Deux erreurs ont été constatées à ce niveau :
+Trois erreurs ont été constatées à ce niveau :
 
 \begin{itemize}
     \item Lorsqu'un titre n'était pas détecté, la \texttt{<div>} correspondante n'était pas créée et le paragraphe était intégré dans la division précédente, invalidant de fait l'ensemble de la numérotation ;
     \item Des \texttt{<div>} surnuméraires ont été implantées (\fig{} \ref{fig:ex_structure} p. \pageref{fig:ex_structure}) ;
-    \item Au cour du stage, il a été décidé de placer la titre de la monographie dans une \texttt{<div>} de type \texttt{section}, ce qui impliquait une reprise dans l'ensemble des fichiers.
+    \item Au cour du stage, il a été décidé de placer le titre de la monographie dans une \texttt{<div>} de type \texttt{section}, ce qui impliquait une reprise dans l'ensemble des fichiers.
 \end{itemize}
 
 \subsection{Méthodologie : \textit{tabula rasa}}
 
 Le nombre élevé de cas particuliers rendait impossible une automatisation complète de cette reprise. Nous allons d'abord exposer la méthode suivie pour le traitement de ces cas avant de rendre compte de celle utilisée pour le reste du corpus.
 
-Les monographies d'ateliers (\texttt{s3t1\_chapt\_2.xml}\footcite{mono472a} et \texttt{s3t2\_chapt\_10.xml}\footcite{mono473a}) imposaient une reprise manuelle du fait de leur structure unique. Ces fichiers partageaient également avec certaines monographies de familles le fait d'avoir des titres qui ne sont pas détachés des paragraphes qu'ils concernent. Le recours à la balise \texttt{<head>} n'était pas possible en l'état, dans la mesure où elle constitue normalement un bloc séparé des \texttt{<p>}. Plusieurs solutions, toutes insatisfaisantes, ont été envisagées.
+\subsubsection{Cas particuliers}
 
-La plus légère consistait à signaler la mise en forme de ces titres (italique ou gras) par des balises telles que \texttt{<emph style="italic">} ou \texttt{<hi rend="i">}. Nous n'avons pas opté pour ce choix en raison des règles de la TEI qui n'autorisent pas pour ces balises les attributs qui auraient permis de caractériser ces titres (notamment, \texttt{@type}). Aussi ne serait-il pas possible de les différencier d'autres passages ayant la même mise en forme dans le corps du texte. Une deuxième solution, beaucoup plus lourde pour le fichier, aurait consisté en l'imbrication de  \texttt{<div>} : le \texttt{@type} assigné à la division aurait permis de savoir que le \texttt{<head>} et le \texttt{<p>}, eux-même placés dans une sous-division, ne constituaient qu'un seul paragraphe dans le volume original (\fig{} \ref{fig:solution2}). La contre-partie est que chaque paragraphe aurait dû être placé dans une sous-division.
+Les monographies d'ateliers (\texttt{s3t1\_chapt\_2.xml}\footcite{mono472a} et \texttt{s3t2\_chapt\_10.xml}\footcite{mono473a}) imposaient une reprise manuelle du fait de leur structure unique. De plus, ces fichiers, ainsi que certaines monographies de familles, avaient certains de leurs titres qui n'étaient pas détachés des paragraphes. Le recours à la balise \texttt{<head>} n'était pas possible en l'état, dans la mesure où elle constitue normalement un bloc séparé des \texttt{<p>}. Plusieurs solutions, toutes insatisfaisantes, ont été envisagées.
+
+La plus légère consistait à signaler la mise en forme de ces titres (italique ou gras) par des balises de mise en valeur telles que \texttt{<emph style="italic">} ou \texttt{<hi rend="i">}. Nous n'avons pas opté pour ce choix en raison des règles de la TEI qui ne prévoient pas d'attributs pour caractériser ces titres (notamment, \texttt{@type}). Aussi ne serait-il pas possible de les différencier d'autres passages avec une mise en forme similaire dans le corps du texte lors de la transformation des fichiers XML en d’autres formats.
+
+Une deuxième solution, beaucoup plus lourde pour le fichier, aurait consisté en l'imbrication de  \texttt{<div>}. Le \texttt{@type} assigné à la division aurait permis de savoir que le \texttt{<head>} et le \texttt{<p>}, eux-même placés dans une sous-division, ne constituaient qu'un seul paragraphe dans le volume original (\fig{} \ref{fig:solution2}). La contre-partie est que chaque paragraphe aurait dû être placé dans une sous-division.
 
 \begin{figure}[h]
     \centering
@@ -308,15 +313,84 @@ Au final, \timeus{} n'a opté pour aucune solution, considérant que le nombre d
 
 En effet, les fichiers \texttt{s1t5\_chapt\_9.xml}\footcite{mono041a} et \texttt{10}\footcite{mono042a} comprennent des précis de monographie dotés de leur propre structure logique et intégrés dans le corps de leurs sections \textit{Notes}. Les titres étant détachés des paragraphes, il a été possible de mobiliser un niveau inférieur à la sous-sous-section, le \texttt{paragraph}, afin de rendre compte de cette structuration.
 
-Les cas de ces quelques fichiers réglés, il restait à prendre en charge l'essentiel du corpus, \cad{} une soixantaine de monographies. Une reprise entièrement manuelle n'était pas envisageable en raison du temps trop important qu'elle aurait nécessité. À l'inverse, une automatisation totale aurait nécessité une longue étude et un relevé minutieux des aléas de la détection et de la transcription des titres.
+\subsubsection{Reconstruction de la structure}
+
+Ces cas particuliers réglés, il restait à prendre en charge l'essentiel du corpus, \cad{} une soixantaine de monographies. Une reprise entièrement manuelle n'était pas envisageable en raison du temps trop important qu'elle aurait nécessité. À l'inverse, une automatisation totale aurait nécessité une longue étude et un relevé minutieux des aléas de la détection et de la transcription des titres.
 
 Nous avons donc choisi d'implanter la structure logique par des expressions régulières appliquées sur un lot de fichiers à l'aide d'un script. Les expressions régulières sont des motifs qui permettent de décrire des chaînes de caractères dans un texte. Le module \texttt{re} de Python permet de mobiliser ces expressions dans un script, et notamment d'effectuer des substituions grâce à la fonction \texttt{re.sub()}.
 
-Du fait de la désorganisation massive des \texttt{<div>}, la première expression régulière consistait à faire table rase de ces balises. Le script suivait ensuite la structure pour reconstruire la structure logique. Il commençait par implanter au niveau supérieur la \texttt{<div>} de type \texttt{chapter} et celle de la première section (la page de titre). Venaient ensuite les \texttt{<div>} des deux sections restantes (\textit{Observations préliminaires} et \textit{Notes}), puis celles des sous-sections, etc. Pour procéder, le script recherchait les libellés des titres lorsqu'il s'agissait de sections ou de sous-sections, convenablement transcrits pour la plupart. Puis il recherchait le numéro des sous-sous-sections, qui avaient tous pour point commun de commencer par le symbole typographique \texttt{§}. Les paragraphes \textit{Notes} des quatre-vingt-quatre premières monographies ayant pour particularité d'
+Du fait de la désorganisation massive des \texttt{<div>}, la première expression régulière consistait à faire table rase de ces balises. Le script reconstruisait ensuite la structure en progressant selon ses niveaux. Il commençait par implanter la \texttt{<div>} de type \texttt{chapter} et celle de la première section (la page de titre). Venaient ensuite les \texttt{<div>} des deux sections restantes (\textit{Observations préliminaires} et \textit{Notes}), puis celles des sous-sections, etc.
+
+Les expressions régulières recherchaient les libellés des titres lorsqu'il s'agissait de sections ou de sous-sections, car la plupart étaient convenablement transcrits. En revanche, il recherchait le numéro des sous-sous-sections, qui avaient tous pour point commun de commencer par le symbole typographique \texttt{§}. Les paragraphes \textit{Notes} des quatre-vingt-quatre premières monographies ayant pour particularité d'
 être numérotés par une lettre entre parenthèses, le motif recherché des premiers lots était légèrement différent.
 
 Une dernière commande, qui affichait la liste des balises \texttt{<head>} de chaque fichier, nous permettait de contrôler l'intégrité de la nouvelle structure. Si une erreur était constatée, nous intervenions manuellement afin de la résoudre. Pour chaque lot (qui correspondait \textit{grosso modo} à un volume), jusqu'à 50\% d'erreur était constaté. Cela était dû à des titres qui ne correspondaient pas aux motifs en raison de l'absence d'un symbole ou d'une transcription trop éloignée.
 
-L'opération s'est conclue par la constitution automatique d'un tableau synoptique, le contenu de chaque balise \texttt{<head>} étant placé dans une cellule. Son étude a permis, d'une part de corriger les dernières erreurs résiduelles, et d'autre part de rédiger une note exposant l'ensemble des défauts restant (\ann{} \ref{ann:releve_erreurs}).
+L'opération s'est conclue par la constitution automatique d'un tableau synoptique, le contenu de chaque balise \texttt{<head>} étant placé dans une cellule. Son étude a permis, d'une part, de corriger les dernières erreurs résiduelles, et d'autre part de rédiger une note exposant l'ensemble des défauts restant (\ann{} \ref{ann:releve_erreurs}).
 
-\section{Suppression des en-tête et bas de page}
+\section{Découpage sémantique}
+
+L'opération de reconstruction de la structure logique a mis en évidence une erreur qui n'avait pas été détectée jusque là : des en-têtes (rappel du type de chapitre et de son titre, numéro de page ou de la monographie) et des bas de page (numéro du cahier) étaient toujours présents dans le flux du texte. L'élément révélateur a été la mise en forme par \lse{} de plusieurs rappels de titre comme s'il s'agissait de titre à part entière. 
+
+Pour les supprimer, nous avons là encore utilisé des expressions régulières. L'automatisation n'était pas possible pour les numéros de page, de cahier ou de monographie --- par exemple, \texttt{<p>3</p>} --- car certaines transcriptions de tableau avaient produits des données numériques semblables qu'il fallait conserver.
+
+Pour résoudre ce problème, nous avons utilisé la fonction de recherche de l'outil \og projet \fg{} d'\oxygen, qui permet de rechercher une expression dans l'ensemble des fichiers du corpus. Les expressions étaient toutes construites par rapport à la balise \texttt{<pb/>} qui marque un changement de page, et toute occurrence d'une donnée numérique et d'un titre était systématiquement contrôlée (\fig{} \ref{fig:supprnumpage} et \ref{fig:suppnumcahier}).
+
+Cette opération minutieuse a permis de garantir qu'au moment de la transformation des fichiers la reconstitution des paragraphes très peu perturbée par des éléments externes. Des contrôles visuels au cours d'autres opérations ont cependant permis de déceler des numéros subsistants, placés à la fin de certains paragraphes ou bien transcrits par des lettres (\fig{} \ref{fig:suppnumcahiervisu}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=15cm]{img/suppr_num_page.png}
+    \caption{Suppression du numéro de page 28 dans le fichier  \texttt{s2t1\_chapt\_20.xml} (image du \commit{} sur \gitlab{} --- monographie n° 53).}
+    \label{fig:supprnumpage}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{img/suppr_num _cahier.png}
+    \caption{Suppression du numéro de cahier 16 dans le fichier  \texttt{s2t2\_chapt\_10.xml} (image du \commit{} sur \gitlab{} --- monographie n° 59, page 221).}
+    \label{fig:suppnumcahier}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{img/suppr_num _cahier_visuel.png}
+    \caption{Suppression du numéro de cahier 36 dans le fichier  \texttt{s2t2\_chapt\_10.xml} après un contrôle visuel (image du \commit{} sur \gitlab{} --- table alphabétique et analytique du deuxième volume de la deuxième série, page 529).}
+    \label{fig:suppnumcahiervisu}
+\end{figure}
+
+
+\section{Validation du schéma XML-TEI}
+
+Les erreurs de structuration et de transcription retirées des quatre premiers niveaux d'encodage, nous pouvions envisager de formaliser le schéma des fichiers. Il s'agit d'un document qui définit quelles balises peuvent être utilisées dans les fichiers, l'ordre de leur imbrication, le nombre et la nature des attributs qui peuvent leur être attachés.
+
+Nous avons choisi d'établir un fichier ODD, entièrement écrit dans une syntaxe XML, qui permet d'établir très précisément les éléments, les séquences d'éléments (nombre et ordre) et leurs attributs. \oxygen{} est capable d'en générer un après avoir analysés un ensemble de fichiers TEI, puis de le transformer en un schéma relaxNG. Ce document relaxNG contient le schéma servant à la validation du fichier TEI, l'ODD étant un fichier XML de documentation et de description de ce schéma. Le document relaxNG est finalement associé au document TEI (\fig{} \ref{fig:tei-odd-rng}), une des fonctionnalités d'\oxygen{} permettant de contrôler à tout moment la validité du code par rapport au schéma.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{img/tei-odd-rng.png}
+    \caption{Schématisation du processus de validation à l'aide d'une ODD.}
+    \label{fig:tei-odd-rng}
+\end{figure}
+
+Le document ODD est généré automatiquement par \oxygen{} grâce au scénario de transformation du Consortium TEI intitulé \textit{oddbyexample}. Il s'agit d'une feuille de style XSL qui, appliquée à un document TEI, analyse l'ensemble des balises et leurs attributs pour les comparer aux préconisations de la TEI\footnote{\textit{The XSLT stylesheet which traverses a nominated directory tree looking for *.xml files which have <TEI> or <teiCorpus> root elements. It analyzes the collection of elements and attributes in the resulting corpus, and compares that to the whole of TEI P5.} : \textit{oddbyexample} sur le \textit{TEI Wiki} (\url{https://wiki.tei-c.org/index.php/Oddbyexample}, consulté le \today).}. Puis il génère ensuite une ODD où les modules TEI sont chargés, les balises et les attributs non-utilisés étant supprimés d'office et les valeurs des attributs collectés et inscrites dans des listes.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=9cm]{img/odd.png}
+    \caption{Extrait de l'ODD des \odm{} concernant la balise \texttt{<div>}. Les attributs \texttt{@facs} et \texttt{@source} sont supprimés (\texttt{mode="delete"}), \texttt{@type} est requis (\texttt{usage="req"}) et sa liste de valeurs est close (\texttt{type="closed"}).}
+    \label{fig:tei-odd-rng}
+\end{figure}
+
+L'utilisateur peut ensuite modifier le document obtenu en imposant des règles plus restrictives ou au contraire en en relâchant certaines ; il peut également ajouter des valeurs d'attributs, rendre des attributs obligatoires ou contraindre l'enchaînement de certaines balises. Par exemple, nous avons rendu l'attribut \texttt{@type} obligatoire pour les balises \texttt{<head>} et \texttt{<div>}, et clos la liste de ses valeurs possibles (\fig{} \ref{fig:tei-odd-rng}).
+
+Une ODD peut également être documentée, \cad{} que son rédacteur peut justifier ses choix d'encodage. Disposer d'un schéma et de sa documentation est un élément extrêmement important pour un projet en humanités numériques : c'est en effet une assurance pour la pérennité des données qu'il a rassemblées et structurées. Celle-ci ne sont plus dépendant des ingénieurs ou des structures institutionnelles et peuvent être réutilisées par d'autres projets\footcite[p. 61]{jolivet}.
+
+Il existe plusieurs possibilités pour permettre la vérification du document TEI. La première et la plus courante est la spécification d'une instruction de traitement au début du document sous la forme suivante : \texttt{<?xml-model href="\#" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>}, l'attribut \texttt{@href} devant être complété par l'adresse du schéma. Cela suppose bien évidemment que ce schéma soit hébergé, par exemple sur \gitlab. La ligne peut ensuite être ajoutée automatiquement à l'ensemble des fichiers du corpus grâce à la fonction de recherche et de remplacement.
+
+Une autre possibilité est une validation externe, \cad{} qu'un logiciel ou un script vérifie la compatibilité des fichiers par rapport à un schéma qui lui est fourni par l'utilisateur à l'instant \texttt{t} de la validation. C'est une des fonctionnalités du mode \og projet \fg{} d'\oxygen. \timeus{} a cependant souhaité se détacher de tout logiciel, et \textit{a fortiori} d'un logiciel propriétaire, afin de se réserver la possibilité de contrôler la validité de ses fichiers à tout moment.
+
+Le module \texttt{etree} de la librairie Python \texttt{lxml}, qui permet d'analyser un arbre XML, possède un module répondant parfaitement à ce besoin. En effet, un schéma RNG peut être chargé avec la classe \texttt{etree.RelaxNG()}, et la fonction \texttt{validate()} contrôle ensuite la validité de tout fichier lui étant donné comme argument par rapport à ce schéma.
+
+La spécificité de ce script est qu'il s'applique à un corpus entier, ce qui avait pour effet d'allonger démesurément son exécution sur notre ordinateur (environ une demi-heure pour traiter une vingtaine de fichiers). Nous avons donc charger l'ensemble des fichiers, le schéma et le script sur le \textit{cluster} \rioc{} d'Inria, ce qui a considérablement rétréci le temps d'exécution  (vingt-quatre minutes au total).
+
