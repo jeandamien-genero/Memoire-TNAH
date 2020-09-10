@@ -86,7 +86,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
 #### A. Différents niveaux de valorisation
 
-*À lire : Vincent  Jolivet, « Éditions ou données? API et (re)publications », dans Actes royauxprinciers à l’ère du numérique (Moyen Âge — Temps moderne)*
+*À lire : Vincent  Jolivet, « Éditions ou données? API et (re)publications », dans Actes royaux et princiers à l’ère du numérique (Moyen Âge — Temps moderne)*
 
 - Valorisation de la donnée se fait sur deux niveaux :
 
