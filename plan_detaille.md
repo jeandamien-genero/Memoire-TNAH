@@ -50,7 +50,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
 ---
   
-### II. Une structuration à reprendre : des tâches manuelles et semi-automatiques
+### II. Une structuration à reprendre
 
 #### A. Gestion de projet : méthodologie de travail
 
@@ -82,7 +82,11 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   
 ---
 
-### III. Un corpus à valoriser : quelle place pour l'automatisation ?
+### III. Un corpus à valoriser
+
+#### A. Différents niveaux de valorisation
+
+*À lire : Vincent  Jolivet, « Éditions ou données? API et (re)publications », dans Actes royauxprinciers à l’ère du numérique (Moyen Âge — Temps moderne)*
 
 - Valorisation de la donnée se fait sur deux niveaux :
 
@@ -90,15 +94,19 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   
   - Donnée mise en scène (publication, mise à disposition du public de chercheur) : plateforme de publication.
 
-#### A. Lier le texte aux images des pages ? 
+#### B. Place des données graphiques dans un flux textuel
 
   - Choix de ne garder que le lien vers les images d'Internet Archive et de supprimer celles stockées localement.
   
   - Script de substitution automatique (https://timeus.hypotheses.org/645).
+
+  - Place des objets graphiques
   
   - Pour une publication future : *quid* du IIIF ? (L'image est affichée dans le contexte de l'application depuis le serveur d'Internet Archive ou Gallica avec ses métadonnées et la possibilité de feuilleter le volume.)
 
-#### B. Indexer les individus ?
+#### C. Extraire des données
+
+##### C.1. Indexer les individus ?
 
   - Travail en amont d'un chercheur : constitution manuelle d'un tableau prosopographique des individus enquêtés. Possibilité de le faire de manière automatique ? Problème posé par la reconnaissance d'entités nommées "personne", très difficile car la transcription et mauvaise et qu'il faudrait un corpus plus important.
 
@@ -106,7 +114,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   
   - Impossibilité d'implémenter les balises d'indexation (`<persName>`) dans les fichiers du fait de la qualité des transcriptions. Solution d'attente, implémentation d'un commentaire avec le individus et leurs id, mais cela constitue une dette technique pour plus tard.
   
-#### C. Corriger les transcriptions ?
+##### C.2. Corriger les transcriptions ?
 
   - Dans le cadre d'une exploitation de données, peu d'intérêt d'avoir une transcription parfaite. Or possibilité au minimum de mettre à disposition des fichiers XML au mieux de publier les textes (par ex. sur Wikisource). Comment parvenir un état qui permet deux exploitations différentes (niveau données, niveau texte) ?
   
