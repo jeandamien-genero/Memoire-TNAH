@@ -1,10 +1,10 @@
-\part{Un corpus à valoriser}
+\part{Des données à valoriser}
 
 \clearpage
 \thispagestyle{empty}
 \cleardoublepage
 
-\chapter{Les données graphiques}
+\chapter{Données graphiques, données statistiques}
 
 \section{Le lien entre le texte et les images du texte}
 
@@ -32,7 +32,7 @@ Pour rendre cela possible, il faudrait disposer d'une évaluation du taux de dé
     \centering
     \begin{subfigure}{0.4\textwidth}
      \includegraphics[width=1\linewidth]{img/odm90_439.jpg}
-     \caption{Page 439 : détection optimale.}
+     \caption{Page 439 : détection optimale de la carte.}
      \label{fig:odmfig90439}
     \end{subfigure}
     \hspace{5pt}
@@ -45,9 +45,20 @@ Pour rendre cela possible, il faudrait disposer d'une évaluation du taux de dé
     \label{fig:odmfig90}
 \end{figure}
 
+Ces erreurs de détection ne peuvent pas être résolues de manière automatique : aucune table des figures n'est présente dans les volumes. Elle eut permis de cibler les pages à contrôler et de ne pas avoir à chercher visuellement les figures. Une intervention manuelle, possiblement longue, s'impose donc.
 
+La présence de ces figures est également un élément à garder à l'esprit au moment de la reconstitution des paragraphes. En effet, certaines sont insérées en plein milieu d'un paragraphe. Pour ne pas perturber la reconstitution, il sera nécessaire d'ajouter une condition spécifiant que les balises \texttt{<p>} commençant pas une minuscule ne constituent pas une unité indépendante, et ce même si elles sont précédées d'une figure. Le problème de cette méthode est qu'elle présuppose que \lse{} a bien fait la différence entre une majuscule et une minuscule, ce dont on ne peut pas 
+être totalement certain.
 
-\chapter{Qualité des transcriptions}
+Ajoutons enfin que les figures de type carte, croquis ou photographie ne sont pas importantes du \pov{} de la donnée pure. Elles ne sont pas utiles aux chercheurs qui s'intéressent au vocabulaire du textile ou du monde ouvrier, ni à ceux qui souhaitent recueillir des données chiffrées. Dans le document XML, elles ne sont que des repères dont la nécessité ne se révélera qu'au moment de la transformation des fichiers pour une interface de visualisation.
+
+\section{Les tableaux : une mise en image des données ?}
+
+À l'inverse, les tableaux qui jalonnent le corpus ont une importance considérable en raison des informations statistiques qu'ils contiennent.
+
+Avant de décrire la manière dont \lse{} les a traités, posons nous la question de la manière dont nous pourrions accéder aux données qu'ils contiennent.
+
+\chapter{Données textuelles, données scientifiques}
 
 \chapter{Une valorisation plurielle}
 
