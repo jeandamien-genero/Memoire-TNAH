@@ -41,13 +41,8 @@ Memoire-TNAH/
 |── `enc.bbx` & `enc.cbx`
 
 |
-
 |── `main.tex` *fichier principal avec les packages, les commandes et les includes*
-
 |
-
 |──  `mybibliography.bib` *fichier bibliographique*
-
 |
-
 |── `plan_detaille.md`
