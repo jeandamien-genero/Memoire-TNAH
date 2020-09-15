@@ -14,35 +14,24 @@
 
 ### Arborescence
 
+```
 Memoire-TNAH/
-
 |
-
-|── `back` *annexe*
-
+|── back (annexes)
 |
-
-|── `front` *page de titre, abréviations, introduction, bibliographie*
-
+|── front (page de titre, abréviations, introduction, bibliographie)
 |
-
-|── `img`
-
+|── img
 |
-
-|── `main` *parties 1-3, conclusion*
-
+|── main (parties 1-3, conclusion)
 |
-
-|── `Memoire_TNAH_OD2M.pdf`
-
+|── Memoire_TNAH_OD2M.pdf
 |
-
-|── `enc.bbx` & `enc.cbx`
-
+|── enc.bbx & enc.cbx
 |
-|── `main.tex` *fichier principal avec les packages, les commandes et les includes*
+|── main.tex (fichier principal avec les packages, les commandes et les includes)
 |
-|──  `mybibliography.bib` *fichier bibliographique*
+|── mybibliography.bib (fichier bibliographique)
 |
-|── `plan_detaille.md`
+|── plan_detaille.md
+```
