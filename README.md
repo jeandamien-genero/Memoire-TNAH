@@ -1,7 +1,11 @@
-#  Memoire pour le Master TNAH de l'École nationale des chartes :mortar_board: :fire:
+#  :notebook_with_decorative_cover: Valoriser le traitement automatique des données : 
 
-:notebook_with_decorative_cover: *Valoriser le traitement automatique des données : le cas des Ouvriers des deux mondes*
+## Le cas des *Ouvriers des deux mondes*
+ 
+:mortar_board: Memoire pour le Master TNAH de l'École nationale des chartes
 
 :black_nib: Jean-Damien Généro
 
-:rocket:
+:calendar: 2020
+
+
