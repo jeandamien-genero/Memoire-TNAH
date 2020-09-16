@@ -4,7 +4,7 @@
 \thispagestyle{empty}
 \cleardoublepage
 
-\chapter{Données graphiques, données statistiques}
+\chapter{Données graphiques, données chiffrées}
 
 \section{Le lien entre le texte et les images du texte}
 
@@ -55,11 +55,21 @@ La présence de ces figures est également un élément à garder à l'esprit au
 
 Ajoutons enfin que les figures de type carte, croquis ou photographie ont une importance relative du \pov{} de la donnée pure. Elles ne sont pas utiles aux chercheurs qui s'intéressent au vocabulaire du textile ou du monde ouvrier, ni à ceux qui souhaitent recueillir des données chiffrées. Dans le document XML, elles ne sont que des repères dont la nécessité ne se révélera qu'au moment de la transformation des fichiers pour une interface de visualisation.
 
-\section{Les tableaux : une mise en image des données ?}
+\section{Les tableaux : images ou données ?}
 
-À l'inverse, les tableaux qui jalonnent le corpus ont une importance considérable en raison des informations statistiques qu'ils contiennent.
+À l'inverse, les tableaux qui jalonnent le corpus ont une importance considérable en raison des informations statistiques qu'ils contiennent. Plus particulièrement, les budgets des paragraphes 14 à 16 constituent \og la pièce centrale \fg{} des monographies leplaysiennes\footcite[p. 317]{savoyecontinuateurs}. Les \textit{Observations préliminaires} sont en effet entièrement tournées vers leur établissement ; le monographe n'arrête son enquête que lorsqu'il a établi un budget équilibré offrant une vue globale des recettes et des dépenses de la famille. Dans la démarche de Frédéric Le Play, \og l'argent est pris comme unité de mesure de la vie sociale, le budget étant la quantification, en termes de revenus et dépenses, de l'ensemble des activités de la famille \fg\footcite[p. 317]{savoyecontinuateurs}.
 
-Avant de décrire la manière dont \lse{} les a traités, posons nous la question de la manière dont nous pourrions accéder aux données qu'ils contiennent.
+Cependant, d'un \pov{} technologique, il n'est pas simple de reproduire à l'identique ces tableaux. La TEI comporte un ensemble de balises destiné à cet effet --- \texttt{<table>}, \texttt{<row>} et \texttt{<cell>} --- mais le problème est ici fonction de la segmentation et de la compréhension par un script de la mise en page du tableau. Or cette mise en page peut se révéler sophistiquée. Ainsi, lorsque plusieurs postes de dépense successifs partagent une même formulation dans leurs intitulés, celle-ci n'est pas répétée mais signifiée par des traits de rappel.
+
+Ces adaptations permises par l'imprimé ne sont pas envisageables dans un tableau numérique, où toute donnée chiffrée doit correspondre à un libellé défini et non suggéré afin d'être rendu exploitable. Face à ce type d'information, un algorithme idéal devrait être capable de reproduire le processus cognitif de reconstruction effectué par le cerveau humain. En l'état actuel de l'avancée technique, faire en sorte que la machine différencie un trait de rappel d'une ligne de séparation entre deux cellules n'est pas aisé.
+
+Le traitement des tableaux doit donc être pensé à l'aune de ces difficultés techniques. Dans un essai de mise en scène des fichiers XML au format HTML, Alix Chagué a ainsi choisi de transformer les balises \texttt{<figure>} --- signifiant notamment la présence des tableaux --- en des icônes cliquables qui redirigent vers les images des pages où ces figures se trouvent. Le procédé est habile mais se fonde sur l'idée que toutes les figures ont été détectées, ce qui n'est pas encore le cas. Du reste, cela ne permet pas d'exploiter directement les informations des tableaux.
+
+Pour autant, cette idée du tableau comme une image est sérieusement étudiée par le programme \timeus. L'effort d'ingénierie d'études se concentrerait alors sur la modélisation et l'implémentation d'une indexation fine des différents tableaux. 
+
+D'une part, un identifiant \texttt{@xml:id} pourrait être donné à chaque titre de paragraphe, et ensuite référencé dans un attribut \texttt{@ana} (\texttt{analytic}). Peu intéressants pour les paragraphes de budget qui contiennent systématiquement des tableaux, ces attributs permettraient de signaler ceux que l'on peut rencontrer dans les paragraphes 6 à 10 (\textit{Propriétés}, \textit{Subventions}, \textit{Travaux et industries}, \textit{Aliments et repas}, \textit{Habitation, mobilier et vêtement}). D'autres part, un recensement des objets des tableaux --- dépenses de nourriture, dépenses pour l'habitation, dépenses pour le textile, etc. --- pourrait fournir une liste de valeurs pour un attribut \texttt{@type}. Cette méthode pourrait servir de base à l'établissement de vues logiques ou de facettes de recherche permettant d'afficher des tableaux sur une base thématique.
+
+La valorisation des objets graphiques n'est donc pas chose aisée. Elle peut se restreindre à leur simple reproduction doublée d'une indexation qui, si elle oriente le chercheur, ne le dispense pas d'effectuer lui-même l'extraction des données chiffrées ou textuelles contenues dans la figure. Il y a ici une limite au projet de numérisation du corpus.
 
 \chapter{Données textuelles, données scientifiques}
 
