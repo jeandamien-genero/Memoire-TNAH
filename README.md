@@ -17,13 +17,17 @@
 ```
 Memoire-TNAH/
 |
-|── back/ (annexes)
+|── back/
+|     |── annexes
 |
-|── front/ (page de titre, abréviations, introduction, bibliographie)
+|── front/
+|     |── page de titre, abréviations, introduction, bibliographie
 |
 |── img/
+|     |── images
 |
-|── main/ (parties 1-3, conclusion)
+|── main/
+|     |── parties 1-3, conclusion
 |
 |── Memoire_TNAH_OD2M.pdf
 |
