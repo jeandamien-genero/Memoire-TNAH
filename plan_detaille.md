@@ -94,7 +94,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   
   - Pour une publication future : *quid* du IIIF ? (L'image est affichée dans le contexte de l'application depuis le serveur d'Internet Archive ou Gallica avec ses métadonnées et la possibilité de feuilleter le volume.)
 
-#### B.  Extraire des données
+#### B. Données textuelles
 
 ##### B.1. Indexer les individus ?
 
