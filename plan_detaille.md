@@ -84,17 +84,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
 
 ### III. Un corpus à valoriser
 
-#### A. Différents niveaux de valorisation
-
-*À lire : Vincent  Jolivet, « Éditions ou données? API et (re)publications », dans Actes royaux et princiers à l’ère du numérique (Moyen Âge — Temps moderne)*
-
-- Valorisation de la donnée se fait sur deux niveaux :
-
-  - Donnée brute (standardisation, pérennisation, documentation) : nécessite un schéma (ODD = définir en amont la pratique éditoriale et s'y conformer) et un historique des interventions (Git) ;
-  
-  - Donnée mise en scène (publication, mise à disposition du public de chercheur) : plateforme de publication.
-
-#### B. Place des données graphiques dans un flux textuel
+#### A. Place des données graphiques dans un flux textuel
 
   - Choix de ne garder que le lien vers les images d'Internet Archive et de supprimer celles stockées localement.
   
@@ -104,9 +94,9 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   
   - Pour une publication future : *quid* du IIIF ? (L'image est affichée dans le contexte de l'application depuis le serveur d'Internet Archive ou Gallica avec ses métadonnées et la possibilité de feuilleter le volume.)
 
-#### C. Extraire des données
+#### B.  Extraire des données
 
-##### C.1. Indexer les individus ?
+##### B.1. Indexer les individus ?
 
   - Travail en amont d'un chercheur : constitution manuelle d'un tableau prosopographique des individus enquêtés. Possibilité de le faire de manière automatique ? Problème posé par la reconnaissance d'entités nommées "personne", très difficile car la transcription et mauvaise et qu'il faudrait un corpus plus important.
 
@@ -114,7 +104,7 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   
   - Impossibilité d'implémenter les balises d'indexation (`<persName>`) dans les fichiers du fait de la qualité des transcriptions. Solution d'attente, implémentation d'un commentaire avec le individus et leurs id, mais cela constitue une dette technique pour plus tard.
   
-##### C.2. Corriger les transcriptions ?
+##### B.2. Corriger les transcriptions ?
 
   - Dans le cadre d'une exploitation de données, peu d'intérêt d'avoir une transcription parfaite. Or possibilité au minimum de mettre à disposition des fichiers XML au mieux de publier les textes (par ex. sur Wikisource). Comment parvenir un état qui permet deux exploitations différentes (niveau données, niveau texte) ?
   
@@ -123,6 +113,16 @@ Réflexion : quelles sont les implications de la production d'un corpus semi-aut
   - Nécessité d'analyser la qualité textuelle du corpus.
   
   - Comment ? Librairies Grammalecte ou pyspellchecker ?
+
+#### C. Différents niveaux de valorisation
+
+*À lire : Vincent  Jolivet, « Éditions ou données? API et (re)publications », dans Actes royaux et princiers à l’ère du numérique (Moyen Âge — Temps moderne)*
+
+- Valorisation de la donnée se fait sur deux niveaux :
+
+  - Donnée brute (standardisation, pérennisation, documentation) : nécessite un schéma (ODD = définir en amont la pratique éditoriale et s'y conformer) et un historique des interventions (Git) ;
+  
+  - Donnée mise en scène (publication, mise à disposition du public de chercheur) : plateforme de publication.
 
 ---
 
