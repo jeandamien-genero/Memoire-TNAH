@@ -75,9 +75,9 @@ La valorisation des objets graphiques n'est donc pas chose aisée. Elle peut se 
 
 \chapter{Données textuelles, données scientifiques}
 
-\section{Les entités nommées dans l'\ocr}
+\section{La qualité de l'\ocr}
 
-L'extrême majorité des données des \odm{} est composée de texte. Ce texte peut être le support de différente études, qui se basent toutes sur la lecture. La lecture par l'oeil humain --- le corpus n'est pas réellement important et un chercheur peut en prendre intégralement connaissance ---, mais aussi la lecture par une machine, \cad{} l'analyse automatique. Ces deux opérations ne nécessitent pas un même niveau de qualité de l'\ocr{} et ne s'adressent pas au même public --- la première est accessible à un large panel, la seconde requiert l'assistance technique d'un ingénieur.
+L'extrême majorité des données des \odm{} est composée de texte. Ce texte peut être le support de différente études, qui se basent toutes sur la lecture. La lecture par l'oeil humain --- le corpus n'est pas réellement important et un chercheur peut en prendre intégralement connaissance ---, mais aussi la lecture par une machine, \cad{} l'analyse automatique. Ces deux opérations ne nécessitent pas un même niveau de qualité de l'\ocr{} et ne s'adressent pas au même public --- la première est accessible à un large panel, la seconde requiert l'assistance technique d'un ingénieur et l'exécution par une machine.
 
 La qualité d'une \ocr{} peut être mesurée par différents indices, au niveau du caractère (\textit{character error rate}, CER) ou du mot (\textit{word error rate}, WER).  Le CER est obtenu grâce la formule suivante :
 
@@ -85,11 +85,18 @@ La qualité d'une \ocr{} peut être mesurée par différents indices, au niveau 
 
 où \textit{S} représente le nombre de substitutions (caractères dont la reconnaissance n'est pas correcte), \textit{D} le nombre de suppression (\textit{deletions}), et \textit{I} le nombre d'insertion, \cad{} les caractères qui ne sont pas présents dans la vérité terrain que l'on trouve pourtant dans l'\ocr. La somme de ces trois chiffres est divisée par le nombre total de caractères dans le fichier de vérité terrain (\textit{N}).
 
-À partir d'une vérité terrain de 1300 lignes, Alix Chagué avait calculé un CER de 2,2\%\footcite[slide 16]{inria-pp}. Ce taux très faible est le signe d'une transcription de bonne qualité. Il ne contente néanmoins pas totalement les chercheurs qui souhaiteraient disposer d'une transcription parfaite. Or cet état ne peut pas être obtenu sans une intervention humaine, qu'elle soit entièrement manuelle ou semi-automatisée grâce à un logiciel de suggestion de correction\footcite[p. 1]{sagot}. Ces logiciels --- par exemple, \textit{Antidote}\footnote{Présentation : \url{https://www.antidote.info/fr/} (consulté le \today).} --- s'appuient sur un lexique et, \og pour chaque mot inconnu, [cherchent] des candidats proches (par exemple en termes de distance d’édition) qui figurent dans le lexique et choisissent en prenant en compte la fréquence des candidats, le contexte, ou éventuellement un poids associé au type d’erreur présumé \fg{}\footcite[p. 1-2]{sagot}. Une telle intervention, quels que soient les moyens choisis pour sa réalisation, serait du reste possiblement très longue et dans tous les cas coûteuse\footcite[p. 14]{en-tal}.
+À partir d'une vérité terrain de 1300 lignes, Alix Chagué avait calculé un CER de 2,2\%\footcite[slide 16]{inria-pp}. Ce taux très faible est le signe d'une transcription de bonne qualité. Où se situent les erreurs restantes ?
 
-Le problème est que, dans les \odm{} comme dans de nombreux autres corpus\footcite[p. 1]{sagot}, les erreurs se concentrent sur les entités nommées. Au premier rang de ces dernières figurent les patronymes et les toponymes; les \og expressions temporelles et les expressions de quantité \fg{} ou encore \og les nombres, les formules chimiques, les unités monétaires \fg{} sont également concernés\footnote{Les entités nommées sont définies dans le domaine du traitement automatique du langage comme des \og unités faisant référence à une entité unique et concrète et réalisées par des noms propres (noms de personnes, d’organisations, d’artefacts ou de lieux) \fg{} : \cite[p. 4]{sagot}}. Ces entités sont en effet très peu représentées dans les fichiers de vérité terrain ; pour augmenter leur détection, un entraînement spécifique et focalisé sur elles serait nécessaire.
+Dans les \odm{} comme dans de nombreux autres corpus\footcite[p. 1]{sagot}, elles se concentrent sur les entités nommées. Au premier rang de ces dernières figurent les patronymes et les toponymes (\fig{} \ref{fig:mono-56-page-4-code}); les \og expressions temporelles et les expressions de quantité \fg{} ou encore \og les nombres, les formules chimiques, les unités monétaires \fg{} sont également concernés\footnote{Les entités nommées sont définies dans le domaine du traitement automatique du langage comme des \og unités faisant référence à une entité unique et concrète et réalisées par des noms propres (noms de personnes, d’organisations, d’artefacts ou de lieux) \fg{} : \cite[p. 4]{sagot}}. Ces entités sont en effet très peu représentées dans les fichiers de vérité terrain ; pour augmenter leur détection, un entraînement spécifique et focalisé sur elles serait nécessaire.
 
-\section{Indexer les individus ?}
+\section{Indexer les individus}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{img/index_tree.png}
+    \caption{Arbre XML simplifié montrant l'organisation d'une entrée d'index.}
+    \label{fig:index_tree}
+\end{figure}
 
 Cette défaillance dans la détection des entités nommées est un problème dans la mesure où les monographies de familles prennent pour sujet un groupe d'individus (les enquêtés) ; si leurs noms sont souvent anonymisés (\textit{M***}, \textit{F***}, etc.), les prénoms sont écrits en toute lettre.
 
@@ -97,24 +104,81 @@ Un projet de recherche mené par le CMH et le CHR concerne ces enquêtés et sou
 
 Une tableau prosopographique au format CSV était déjà établi au moment de notre stage. Huit cent quarante-deux individus y été identifiés et décrits selon leur état civil et des critères sociaux. Les chercheurs nous ont demandé de procéder, dans un premier temps, à la transformation de ce tableau en un  index XML et, dans un seconde temps, de lier chaque entrée à l'individu correspondant dans les fichiers de monographie (\ann{} \ref{ann:feuille_route}, \issue{} 4). Du point de vue de l'ingénierie, cela se traduisait par la constitution automatique de l'index puis par l'implémentation dans les fichiers TEI des identifiants des individus cités dans le deuxième paragraphe.
 
-Un fichier d'index au format XML repose sur un \texttt{<body>} où sont établies une ou plusieurs listes de personnes (\texttt{<listPerson>}), les individus y étant indexés au sein d'éléments \texttt{<person>}. Nous avons constitué une liste de personnes unique, car aucune besoin particulier n'a été exprimé quant à cette fonctionnalité du XML. Nous nous sommes concentrés sur les différentes catégories à faire figurer dans l'index et sur les balises pouvant les traduire (\fig{} \ref{fig:index_tree}).
+Un fichier d'index au format XML repose sur un \texttt{<body>} où sont établies une ou plusieurs listes de personnes (\texttt{<listPerson>}), les individus y étant indexés au sein d'éléments \texttt{<person>}. Nous avons constitué une liste de personnes unique, car aucun besoin particulier n'a été exprimé quant à cette fonctionnalité du XML. Nous nous sommes concentrés sur les différentes catégories à faire figurer dans l'index et sur les balises pouvant les traduire (\fig{} \ref{fig:index_tree}).
+
+L'identifiant des individus --- formé de celui de la monographie, de la lettre \textit{E} pour \textit{enquêté} et du numéro d'apparition --- constitue la valeur de l'attribut \texttt{xml:id} de la balise \texttt{<person>}. L'état civil se trouve ensuite dans un ensemble \texttt{<persName>} où le nom figure dans \texttt{<surname>} et le prénom dans \texttt{<forename>}. D'autre balises pourraient venir compléter cette section, notamment \texttt{<addName>} pour les surnoms ou les prénoms surnuméraires. Néanmoins, une reprise du tableau eut été nécessaire pour rendre l'usage de cet élément possible : dans l'état actuel, le surnom ou le second prénom se trouvent dans la même cellule que le prénom, ici entre parenthèses, là après un tiret et ailleurs à la suite du transitif \textit{dit}. Les informations de naissance (date et lieu) sont placées dans un ensemble \texttt{<birth>}, suivi de l'âge (\texttt{<age>}).
+
+La situation matrimoniale est décrite, dans un ensemble \texttt{<event>} (évènement), par la balise \texttt{<desc>}. La TEI conseille de décrire l'évènement de manière normalisée par un \texttt{<label>} placé avant \texttt{<desc>}, mais, dans la mesure cet index ne compte qu'un seul évènement, nous avons choisi de simplifier la structure et d'en préciser la nature grâce à un attribut \texttt{@type} au niveau de \texttt{<event>}. Suivent deux indicateurs contenant le positionnement de l'individu dans la cellule familiale (\texttt{<state>} : chef de famille, femme, fille) et son activité, qu'il s'agisse d'un apprentissage, d'un métier ou d'un travail à la tâche ou à la journée (\texttt{<occupation>}). Dans une \texttt{<note>} finale, nous avons fait figurer la date de référence pour les calcules des dates de naissance et de mariage et le rappel du titre de la monographie où apparaît l'individu.
+
+\section{Corriger les transcriptions ?}
 
 \begin{figure}
     \centering
-    \includegraphics[width=16cm]{img/index_tree.png}
-    \caption{Arbre XML simplifié montrant l'organisation d'une entrée d'index.}
-    \label{fig:index_tree}
+    \begin{subfigure}{0.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{img/mono-56-page-4.jpg}
+    \caption{}
+    \label{fig:mono-56-page-4}
+    \end{subfigure}
+    
+    
+    
+    \begin{subfigure}{0.7\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{img/mono-56-page-4-code.png}
+    \caption{}
+    \label{fig:mono-56-page-4-code}
+    \end{subfigure}
+    \caption[Lliste d'individus et de son encodage (\no{} 56)]{Liste d'individus et son encodage (série 2, volume 2, monographie \no{} 56, page 4.}
+    \label{fig:ex-mono-56}
 \end{figure}
 
-L'identifiant des individus --- formé de celui de la monographie, de la lettre \textit{E} pour \textit{enquêté} et du numéro d'apparition --- constitue la valeur de l'attribut \texttt{xml:id} de la balise \texttt{<person>}. L'état civil se trouve ensuite dans un ensemble \texttt{<persName>} où le nom figure dans \texttt{<surname>} et le prénom dans \texttt{<forename>}. D'autre balises pourraient venir compléter cette section, notamment \texttt{<addName>} pour les surnoms ou les prénoms surnuméraires. Néanmoins, une reprise du tableau eut été nécessaire pour rendre l'usage de cet élément possible : dans l'état actuel, le surnom ou le second prénom se trouve dans la même cellule que le prénom, ici entre parenthèses, là après un tiret et ailleurs à la suite du transitif \textit{dit}. Les informations de naissance (date et lieu) sont placées dans un ensemble \texttt{<birth>}, suivi de l'âge (\texttt{<age>}). La situation matrimoniale est décrite grâce à la balise 
+\begin{figure}
+    \centering
+    \includegraphics[width=14cm]{img/mono-23-page-209.jpg}
+    \caption[Liste d'individus et de son encodage (\no{} 23)]{Liste d'individus et son encodage (série 1, volume 3, monographie \no{} 23, page 209.}
+    \label{fig:mono-23-page-209}
+\end{figure}
 
-\section{Corriger les transcriptions ?}
+Dans chaque volume, le paragraphe \og État civil de la famille \fg{} commence par une liste standardisée des membres de la famille. La figure \ref{fig:ex-mono-56} montre une comparaison entre le texte d'origine de la monographie 56, sa transcription et son encodage par \lse\footcite[p. 4]{mono056a}. Les erreurs concernant la reconnaissance des entités nommées y apparaissent clairement : sur quatre prénoms, tous sont transcrits avec une distance d'édition importante et le nom de famille \og B*** \fg{} n'est absolument pas reconnu.
+
+Ici, ces erreurs ne posent pas qu'un problème de compréhension : elles empêchent la réalisation de la deuxième mission qui nous avait été confiée et qui consistait à lier les individus à leurs identifiants. En effet, cette opération se serait normalement traduite par l'implémentation d'une balise \texttt{<persName>} autour de chaque ensemble prénom et nom, avec un attribut \texttt{@ref} ayant pour valeur l'identifiant donné dans le fichier d'index. L'implémentation automatique aurait pu s'effectuer de plusieurs manières, et notamment par la recherche du prénom : cela n'est pas possible du fait des distances d'édition trop grande.
+
+Une autre solution aurait procédé de l'observation que, les paragraphes deuxièmes commençant toujours par une phrase de type \og La famille comprend X personnes \fg{}, \og La famille comprend \fg{} ou \og Les membres de la famille sont \fg{}, les lignes qui suivent correspondent aux membres de la famille. Il eut été dès lors possible, grâce à l'ordre d'apparition noté dans le CSV, de considérer que la première de ces lignes est celle du premier individu, et ainsi de suite. Ce procédé se base cependant sur l'idée que les items des listes se trouvent sur une seule ligne, ce qui n'est pas toujours le cas (\fig{} \ref{fig:mono-23-page-209}). Du reste, placer une balise \texttt{<persName>} sur l'ensemble d'une ligne serait revenu à corrompre son usage, normalement réservé à \og un nom propre ou une expression nominale se référant à une personne \fg{}\footnote{\textit{TEI element persName (personal name)}, \textit{TEI Guidelines} : \url{https://tei-c.org/release/doc/tei-p5-doc/fr/html/ref-persName.html} (consulté le \today).}.
+
+Ainsi, dans tous les cas, la réalité des transcriptions empêchait l'implémentation automatique de la balise et nous confinait à une opération de correction.  Or celle-ci ne peut pas être menée sans une intervention humaine, qu'elle soit entièrement manuelle ou semi-automatisée grâce à un logiciel de suggestion de correction\footcite[p. 1]{sagot}. Ces logiciels --- par exemple, \textit{Antidote}\footnote{Présentation : \url{https://www.antidote.info/fr/} (consulté le \today).} --- s'appuient sur un lexique et, \og pour chaque mot inconnu, [cherchent] des candidats proches (par exemple en termes de distance d’édition) qui figurent dans le lexique et choisissent en prenant en compte la fréquence des candidats, le contexte, ou éventuellement un poids associé au type d’erreur présumé \fg{}\footcite[p. 1-2]{sagot}. Une telle intervention, quels que soient les moyens choisis pour sa réalisation, serait du reste possiblement très longue et dans tous les cas coûteuse\footcite[p. 14]{en-tal}.
+
+La librairie \texttt{pyspellchecker} de Python peut également constituer une solution. Elle utilise un dictionnaire et la distance de Levenshtein pour identifier des cacographies et proposer, selon les paramètres, soit une correction soit plusieurs candidats. Par défaut, la distance est de 2, elle peut être ramenée à 1, ce qui signifie que selon le réglage la librairie va considérer qu'il y a eu une ou deux opérations de suppression, de substitution ou d'insertion.
+
+Un test sur les cinq premiers \texttt{<p>} de la figure \ref{fig:mono-56-page-4-code} a donné de bons résultats (tabl. \ref{tabl:pyspellchecker}). Le script en question cherche le texte des balises \texttt{<p>}, le nettoie en enlevant les signes de ponctuation, et crée des listes où chaque mot correspond à un item. \texttt{Pyspellchecker} analyse ensuite ces mots et peut, selon les paramètres, proposer une solution unique grâce à la méthode \texttt{.correction{}} ou un panel de candidats grâce à la méthode \texttt{.candidates()}.
+
+\begin{table}
+    \begin{tabular}{|c|c|c|}
+\hline
+    Vérité terrain & OCR & Correction \\ \hline
+    \textsc{Louis} & LOUIS & --- \\ \hline
+    \textsc{Joseph} & JosEP & joseph \\ \hline
+    \textsc{Félicité} & FLICITÉ & félicité \\ \hline
+    \textsc{Josèphe} & JosÉPH & joseph \\ \hline
+    \textsc{Gaspardine} & GAPARDINE & gagarine \\ \hline
+    \textsc{Marguerite} & MARGUERIT & marguerite \\ \hline
+    \textsc{Louise} & ILoIE & loin \\ \hline
+    \textsc{Félicité} & FÉLCITÉ & félicité \\ \hline
+    \end{tabular}
+\caption{\label{tabl:pyspellchecker} : Comparaison entre la vérité terrain, la transcription effectuée par l'\ocr{} et la proposition de correction de \texttt{pyspellchecker}.}
+\end{table}
+
+Le tableau \ref{tabl:pyspellchecker} montre que, sur sept transcriptions fausses, \texttt{pyspellchecker} permet d'en corriger quatre de manière exacte (\textit{Félicité} à deux reprises, \textit{Joseph} et \textit{Marguerite}). La vérité terrain est presque approchée pour \textit{Josèphe} : le \textit{e} final et l'accent grave manquent. Ce test pourrait ainsi être transformé en un script d'aide à la correction, augmenté d'une fonctionnalité de remplacement après qu'un opérateur ait validé la proposition de \texttt{pyspellchecker}.
+
+Une autre librairie Python, \texttt{pygrammalecte}, peut être utilisée pour générer un rapport d'identification des erreurs. La différence avec la librairie précédente est qu'elle fonctionne avec un dictionnaire et est capable, en plus de détecter les erreurs, de les répartir dans une typologie (orthographe, grammaire, ponctuation). Cette librairie est utilisée par le service humanités numériques de l'École nationale des chartes pour évaluer la qualité des \ocr{} des positions des thèses pour le diplôme d'archiviste paléographe, et permet de générer un rapport d'erreur sous la forme d'un fichier JSON\footnote{Voir notamment la fonction \texttt{ocrquality} dans le script \texttt{encpos\_control.py}, ligne 72 : \url{https://github.com/chartes/encpos/blob/38ad0277a03467642dd8a329a37237c9e663f4d1/utils/encpos_control.py\#L72} (consulté le \today).}.
+
+On le voit, il est possible de développer des solutions en interne pour corriger une \ocr. Si elles n'automatisent pas totalement cette correction, elles permettent de réduire son coût budgétaire en épargnant le recours à un prestataire externe ou l'achat d'un logiciel dédié.
 
 \chapter{Une valorisation plurielle}
 
 \section{Édition papier, édition numérique}
 
-Un postulat commun veut qu'une édition numérique offre à son utilisateur plus de possibilité qu'une édition papier n'en offre à son lecteur\footnote{\og \textit{Often these descriptions glance at their print predecessors, usually with expressions of how much more these digital editions can contain than ever could be included in print editions, and how much more the reader can do with them} \fg{} : \cite[p. 105-106]{robinson}.}. Le numérique permet en effet de concevoir des plate-formes sur mesure pour la consultation des textes, et les outils des humanités numériques permettent à \og de nombreuses données non interrogeables jusqu’à présent [d'être] l’objet d’enquêtes \fg\footcite[p. 20]{duval}. \og Des structures cachées, des faits de système difficilement décelables à l’œil et à la main \fg{} deviennent ainsi accessibles\footcite{duval}.
+Un postulat commun veut qu'une édition numérique offre à son utilisateur plus de possibilités qu'une édition papier n'en offre à son lecteur\footnote{\og \textit{Often these descriptions glance at their print predecessors, usually with expressions of how much more these digital editions can contain than ever could be included in print editions, and how much more the reader can do with them} \fg{} : \cite[p. 105-106]{robinson}.}. Le numérique permet en effet de concevoir des plate-formes sur mesure pour la consultation des textes, et les outils des humanités numériques permettent à \og de nombreuses données non interrogeables jusqu’à présent [d'être] l’objet d’enquêtes \fg\footcite[p. 20]{duval}. \og Des structures cachées, des faits de système difficilement décelables à l’œil et à la main \fg{} deviennent ainsi accessibles\footcite{duval}.
 
 Dans le programme \timeus{}, l'édition numérique des \odm{} a éveillé l'intérêt d'au moins trois participants. Le LARHRA de l'université de Lyon 2, dans le strict respect des objectifs du programme, souhaite utiliser les informations économiques fournies par les tableaux de budget et celles d'ordre prosopographique contenues dans le paragraphe \og §2 --- État civil de la famille \fg. L'équipe ALMAnaCH d'Inria a pour sa part la volonté de puiser dans les champs lexicaux des mondes ouvrier et industriel afin d'alimenter des algorithmes de traitement automatique du langage (TAL). Enfin, le Centre de recherches historiques (CRH) veut fournir à la communauté scientifique une édition numérique des \odm{} qui intégrerait des informations matérielles sur la constitution du corpus et le travail de la \sess.
 
