@@ -11,7 +11,7 @@
 
 \subsection{\gitlab}
 
-La gestion quotidienne du programme \timeus{} se fait grâce à un dépôt sur \gitlab{}, un logiciel libre permettant aux entités comme Inria de créer une plate-forme interne de développement informatique. Sur \gitlab{} se trouve le dépôt central, organisé en plusieurs dossiers, dont un réservé aux \odm. La technologie \textit{git} permet d'administrer les différentes versions du projet, sur une échelle à la fois verticale (les anciennes versions, appelées \commits, restant accessibles à travers un historique) et horizontale (le travail peut s'effectuer sur des \textit{branches} divergentes de la branche principale dite \master{} sans affecter l'état de cette dernière). Un commentaire est ajouté par l'utilisateur à chacun de ses \commits{} pour résumer ses modifications.
+La gestion quotidienne du programme \timeus{} se fait grâce à un dépôt sur \gitlab{}, un logiciel libre permettant aux entités comme Inria de créer une plate-forme interne de développement informatique. Sur \gitlab{} se trouve le dépôt central, organisé en plusieurs dossier. La technologie \textit{git} permet d'administrer les différentes versions du projet, sur une échelle à la fois verticale (les anciennes versions, appelées \commits, restant accessibles à travers un historique) et horizontale (le travail peut s'effectuer sur des \textit{branches} divergentes de la branche principale dite \master{} sans affecter l'état de cette dernière). Un commentaire est ajouté par l'utilisateur à chacun de ses \commits{} pour résumer ses modifications.
 
 Chaque participant peut rapatrier le dépôt \gitlab{} en local pour travailler dessus ; ce rapatriement est un \textit{pull}. Il peut ensuite effectuer l'opération inverse, un \textit{push}, consistant à mettre ses \commits{} en ligne. Son équipe peut ainsi prendre connaissance des dernières avancées de la branche sur laquelle il travaille.
 
@@ -30,7 +30,7 @@ La branche \master{} compte quatre sous-dossiers :
     \item \texttt{metadata} contient des fichiers de métadonnées sur le projet.
 \end{itemize}
 
-Ce dossier était notre espace de travail principal, notre première action a consisté en son rapatriement au niveau local. Notre méthodologie était la suivante :
+Ce dossier était notre espace de travail principal, notre première action ayant consisté en son rapatriement au niveau local. Notre méthodologie était la suivante :
 
 \begin{enumerate}
     \item Une branche était créée pour chaque mission ;
@@ -147,7 +147,7 @@ Le contrôle a été opéré manuellement, par une ouverture successive des fich
 
 \subsection{Fission horizontale lors de la segmentation}
 
-La première consistait en une erreur de découpage dans les précis n° 48 bis\footcite{mono048b}, 66 bis\footcite{mono066b} et 66 ter\footcite{mono066c}. Le premier était scindé en dix fichiers contenant deux pages chacun (\texttt{s2t1\_chapt\_6.xml} à \texttt{s2t1\_chapt\_15.xml}), le second et le troisième en respectivement sept et quatorze fichiers contenant quatre (\texttt{s2t3\_chapt\_7.xml} et \texttt{s2t3\_chapt\_8.xml} ; \texttt{s2t3\_chapt\_14.xml}) et deux pages (\texttt{s2t3\_chapt\_9.xml} à \texttt{s2t3\_chapt\_13.xml} ; \texttt{s2t3\_\-chapt\_15.xml} à \texttt{s2t3\_chapt\_27.xml}). Lorsqu'il y avait deux pages, il s'agissait toujours d'un recto et d'un verso, et de deux rectos et deux versos lorsqu'il y en avait quatre.
+La première consistait en une erreur de découpage dans les précis \no{}~48~\textit{bis}\footcite{mono048b}, 66~\textit{bis}\footcite{mono066b} et 66~\textit{ter}\footcite{mono066c}. Le premier était scindé en dix fichiers contenant deux pages chacun (\texttt{s2t1\_chapt\_6.xml} à \texttt{s2t1\_chapt\_15.xml}), le second et le troisième en respectivement sept et quatorze fichiers contenant quatre (\texttt{s2t3\_chapt\_7.xml} et \texttt{s2t3\_chapt\_8.xml} ; \texttt{s2t3\_chapt\_14.xml}) et deux pages (\texttt{s2t3\_chapt\_9.xml} à \texttt{s2t3\_chapt\_13.xml} ; \texttt{s2t3\_\-chapt\_15.xml} à \texttt{s2t3\_chapt\_27.xml}). Lorsqu'il y avait deux pages, il s'agissait toujours d'un recto et d'un verso, et de deux rectos et deux versos lorsqu'il y en avait quatre.
 
 Mis à part les premiers fichiers, qui commençaient par le titre du précis, les \texttt{<body>} de ces fichiers avaient un point commun : ils débutaient tous par les deux mêmes lignes, \texttt{<p>\textsc{précis de monographie}</p> \textbackslash n <p>[numéro de la page]</p>}. Or ces deux informations --- le rappel du titre du chapitre et le numéro de la page courante --- se trouvent sur une seule et même ligne dans les images. Une erreur de fission horizontale résultant d'une mauvaise segmentation s'était donc produite au moment de l'\ocr\footcite[p. 5-6]{karpinski}.
 
@@ -155,9 +155,9 @@ Dans son comportement normal, \lse{} est programmé pour détecter tout ce qui r
 
 Une question demeure néanmoins : pourquoi trois des fichiers contenaient-ils quatre pages, à l'inverse des autres qui n'en contenaient que deux ? Le fait est que les en-têtes des troisièmes pages avaient été détectés convenablement, et donc retirés du flux du texte. Aussi la séparation n'était-elle pas nécessaire.
 
-L'erreur a été résolue par un transfert manuel du contenu de chaque fichier particulier dans un fichier global (\texttt{s2t1\_chapt\_6.xml}, \texttt{s2t3\_chapt\_7.xml} et \texttt{s2t3\_chapt\_14}). Le choix a été fait de ne pas modifier la numérotation des fichiers suivants, notamment afin de pouvoir effectuer un suivi sur la durée. C'est la raison pour laquelle, dans la deuxième série, le n°~6 est suivi du n°~16 dans le premier volume et, dans le troisième, le  n°~7 par le n°~14, lui-même précédant le n°~28 (\ann{} \ref{mappings2t1} et \ref{mappings2t3}, p. \pageref{mappings2t1}).
+L'erreur a été résolue par un transfert manuel du contenu de chaque fichier particulier dans un fichier global (\texttt{s2t1\_chapt\_6.xml}, \texttt{s2t3\_chapt\_7.xml} et \texttt{s2t3\_chapt\_14}). Le choix a été fait de ne pas modifier la numérotation des fichiers suivants, notamment afin de pouvoir effectuer un suivi sur la durée. C'est la raison pour laquelle, dans la deuxième série, le \no{}~6 est suivi du \no{}~16 dans le premier volume et, dans le troisième, le  \no{}~7 par le \no{}~14, lui-même précédant le \no{}~28 (\ann{} \ref{mappings2t1} et \ref{mappings2t3}, p. \pageref{mappings2t1}).
 
-Cette opération a conduit à la suppression de vingt-huit fichiers. Ajoutons à cela le retrait de \texttt{s2t1\_chapt\_23.xml}, doublon de \texttt{s2t2\_chapt\_5.xml} : un total de vingt-neuf fichiers a été supprimé, le corpus passe donc de 223 à 194 unités.
+Cette opération a conduit à la suppression de vingt-huit fichiers. Ajoutons à cela le retrait de \texttt{s2t1\_chapt\_23.xml}, doublon de \texttt{s2t2\_chapt\_5.xml} : un total de vingt-neuf fichiers a été supprimé, ramenant le corpus de 223 à 194 unités.
 
 \subsection{Défaut de transcription}
 
@@ -174,28 +174,28 @@ Il ne s'agit pas d'un déficit total. L'analyse de la mise en page et la segment
 
 Que s'est-il passé ? Le problème provient d'une fonction de \lse, \texttt{where\_do\_\-budgets\_start}. Son  rôle est de déterminer l'index de la page où commencent les tableaux de budget et de placer cette donnée dans la variable \texttt{budget\_start}. Pour cela, il cherche la ligne \og \textsc{budget des recettes de l'année} \fg, qui se trouve entre l'en-tête de la page et la ligne supérieure délimitant le tableau de budget. Une fois cette information connue, le script sait que la page correspondante et les suivantes jusqu'au commencement de la section \textit{Notes} (index placé dans la variable \texttt{budget\_stop}) devront être considérées comme des objets graphiques.
 
-Or les trois monographies concernées dans le quatrième volume (n°~30, 33 et 37) présentent un problème au niveau de la segmentation de la première page du budget. En effet, soit l'en-tête a été considéré comme du texte et le reste comme une illustration (\fig{}~\ref{fig:odm30tkb} et~\ref{fig:odm33tkb}), soit l'ensemble de la page a été considéré comme une illustration (\fig{}~\ref{fig:odm37tkb}). \kraken, à qui les zones de segmentation sont adressées, n'a donc rien à transcrire (à l'exception de la ligne d'en-tête dans deux cas), et \lse{} n'obtient pas de résultat quand il cherche la ligne \og \textsc{budget des recettes de l'année} \fg{}. La variable \texttt{budget\_start} est équivalente à \texttt{false} et \lse{} considère que les budgets débutent à la première page de la monographie. Il remplace alors toutes les transcriptions par des objets graphiques jusqu'aux \textit{Notes} qu'il traite normalement, et nous obtenons un fichier partiellement transcrit.
+Or les trois monographies concernées dans le quatrième volume (\no{}~30, 33 et 37) présentent un problème au niveau de la segmentation de la première page du budget. En effet, soit l'en-tête a été considéré comme du texte et le reste comme une illustration (\fig{}~\ref{fig:odm30tkb} et~\ref{fig:odm33tkb}), soit l'ensemble de la page a été considéré comme une illustration (\fig{}~\ref{fig:odm37tkb}). \kraken, à qui les zones de segmentation sont adressées, n'a donc rien à transcrire (à l'exception de la ligne d'en-tête dans deux cas), et \lse{} n'obtient pas de résultat quand il cherche la ligne \og \textsc{budget des recettes de l'année} \fg{}. La variable \texttt{budget\_start} est équivalente à \texttt{false} et \lse{} considère que les budgets débutent à la première page de la monographie. Il remplace alors toutes les transcriptions par des objets graphiques jusqu'aux \textit{Notes} qu'il traite normalement, et nous obtenons un fichier partiellement transcrit.
 
 \begin{figure}[t]
     \centering
     \begin{subfigure}{0.3\textwidth}
      \includegraphics[width=1\linewidth]{img/transkribus_30.png}
-     \caption{N° 30, p. 104.}
+     \caption{\no{} 30, p. 104.}
      \label{fig:odm30tkb}
     \end{subfigure}
     \hspace{5pt}
     \begin{subfigure}{0.3\textwidth}
      \includegraphics[width=1\linewidth]{img/transkribus_33.png}
-     \caption{N° 33, p. 260.}
+     \caption{\no{} 33, p. 260.}
      \label{fig:odm33tkb}
     \end{subfigure}
     \hspace{5pt}
     \begin{subfigure}{0.3\textwidth}
      \includegraphics[width=1\linewidth]{img/transkribus_37.png}
-     \caption{N° 37, p. 426.}
+     \caption{\no{} 37, p. 426.}
      \label{fig:odm37tkb}
     \end{subfigure}
-    \caption[Segmentation défectueuse dans \transkribus{}]{Segmentations dans \transkribus{} des pages liminaires des budgets des monographies n° 30,  33 et 37. Dans les monographies 30 et 33, seul la ligne d'en-tête est considérée comme du texte.}
+    \caption[Segmentation défectueuse dans \transkribus{}]{Segmentations dans \transkribus{} des pages liminaires des budgets des monographies \no{} 30,  33 et 37. Dans les monographies 30 et 33, seul la ligne d'en-tête est considérée comme du texte.}
     \label{fig:odmtkbs1t4}
 \end{figure}
 
@@ -208,7 +208,7 @@ Au-delà d'une vérification de la cohérence du découpage, cette étape de vé
 
 Une partie seulement, car le fichier bibliographique ne s'intéressait qu'aux monographies, là où ALMAnaCH avait la volonté de travailler sur l'ensemble du corpus, monographies et fichiers de paratexte compris. Il a donc été nécessaire d'établir de nouveaux identifiants sur le modèle de ceux des monographies. Ces derniers se composent d'une série de trois chiffres suivie d'une lettre, \texttt{a} pour une monographie, \texttt{b} pour le précis \textit{bis} et \texttt{c} pour le \textit{ter} (\texttt{\textbackslash d\textbackslash d\textbackslash d[a-c]}). Pour poursuivre dans ce sens, nous avons choisi de donner au premier fichier de paratexte le numéro \texttt{401a} et de continuer jusqu'au dernier.
 
-Trois versions de la cartographie ont été réalisées : la première contient uniquement les monographies, la seconde le paratexte et la troisième l'ensemble des fichiers\footnote{La troisième cartographie a été scindée en fonction des volumes afin de constituer l'annexe \ref{mapping} du présent mémoire.}. Ces versions sont enregistrées au format CSV : en texte brut, elles se présentent sous la forme d'une succession de lignes contenant des données (identifiant, intitulé puis libellé du fichier), ces données étant séparées par des virgules. Ces fichiers CSV peuvent ensuite être interprétés comme des tableaux, chaque ligne correspondant à une ligne tabulaire et chaque virgule à une séparation entre deux colonnes. Ce format, outre son extrême simplicité, a l'avantage d'être libre et de pouvoir être interprété par le langage Python. Les données peuvent donc être manipulées par un script.
+Trois versions de la cartographie ont été réalisées : la première contient uniquement les monographies, la seconde le paratexte et la troisième l'ensemble des fichiers\footnote{La troisième cartographie a été scindée en fonction des volumes afin de constituer l'annexe \ref{mapping} du présent mémoire.}. Ces versions sont enregistrées au format CSV : en texte brut, elles se présentent sous la forme d'une succession de lignes contenant des données (identifiant, intitulé puis libellé du fichier), ces données étant séparées par des virgules. Ces fichiers CSV peuvent ensuite être interprétés comme des tableaux, chaque ligne correspondant à une ligne tabulaire et chaque virgule à une séparation entre deux colonnes. Ce format, outre son extrême simplicité, a l'avantage d'être libre et de pouvoir être parsé par le langage Python\footnote{Parser un fichier consiste à le lire et à interpréter son contenu afin d’en extraire certains éléments.}. Les données peuvent donc être manipulées par un script.
 
 Une fois les CSV constitués, il a fallu implanter les identifiants dans les fichiers TEI : il s'agissait de la première opération que nous avons pu automatiser. Après avoir relevé les identifiants et les libellés de fichier dans le CSV général pour constituer un dictionnaire Python (\texttt{dict\_xml = \{'401a': 's1t1\_chapt\_1.xml', etc\}}), le script ouvrait chaque fichier un par un. À l'aide de la librairie \texttt{BeautifulSoup}, il analysait ensuite l'arbre XML (\fig{} \ref{fig:xmltree1}, p. \pageref{fig:xmltree1}) et implantait l'identifiant comme valeur de l'attribut \texttt{@xml:id} de \texttt{<TEI>} et de l'attribut \texttt{@ana} de la première \texttt{<div>}.
 
@@ -238,7 +238,7 @@ La mise en forme minimale des documents a été correctement exécutée par \lse
     \label{fig:tableodm56xml}
 \end{figure}
 
-Les objets graphiques ont pu néanmoins poser problème au script. Nous avons vu dans la section précédente que dans six fichiers, toute une partie du texte avait été représentée par des éléments \texttt{<figure>}. L'inverse s'est également produit, \cad{} que des objets graphiques véritables --- à l'instar des tableaux de budget des paragraphes 14 à 16 --- ont souvent été considérés comme du texte. Ainsi, dans la monographie n° 56\footcite{mono056a}, le tiers du premier tableau du paragraphe 14 est encodé dans un élément \texttt{<figure>} (articles 1 à 2), le reste, à partir de l'article 3, étant transcrit et placé dans des \texttt{<p>} (\fig{} \ref{fig:tableodm56xml}).
+Les objets graphiques ont pu néanmoins poser problème au script. Nous avons vu dans la section précédente que dans six fichiers, toute une partie du texte avait été représentée par des éléments \texttt{<figure>}. L'inverse s'est également produit, \cad{} que des objets graphiques véritables --- à l'instar des tableaux de budget des paragraphes 14 à 16 --- ont souvent été considérés comme du texte. Ainsi, dans la monographie \no{} 56\footcite{mono056a}, le tiers du premier tableau du paragraphe 14 est encodé dans un élément \texttt{<figure>} (articles 1 à 2), le reste, à partir de l'article 3, étant transcrit et placé dans des \texttt{<p>} (\fig{} \ref{fig:tableodm56xml}).
 
 Pour autant, ces faits sont moins gênants que les cas inverses, dans la mesure où il s'agit de surplus de transcription. Les \texttt{<div>} encadrant ces sections de budgets étant en place, il est envisageable d'effacer automatiquement les balises \texttt{<head>} et \texttt{<p>} qu'elles contiennent et de n'ajouter que des \texttt{<graphic>} avec l'adresse de l'image de la page.
 
@@ -249,7 +249,7 @@ Pousser la précision de ces derniers jusqu'au niveau des paragraphes devient in
 
 \chapter[Découpages éditorial et sémantique]{Contrôle des découpages éditorial et sémantique}
 
-Le contrôle du découpage éditorial, \cad{} de l'implémentation de la structure logique, a donné lieu à la reprise la plus importante. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à une structure logique qui seule permet de transformer les \og faits observés \fg{} sur le terrain en des \og faits décris \fg{} par la monographie\footcite[p. 87]{baciocchi2}.
+Le contrôle du découpage éditorial, \cad{} de l'implémentation de la structure logique, a donné lieu à la reprise la plus importante. Il s'agit d'un point crucial pour les fichiers des \odm, du fait de l'importance accordée par l'école leplaysienne à une structure logique qui seule permet de transformer les \og faits observés \fg{} sur le terrain en des \og faits décrits \fg{} par la monographie\footcite[p. 87]{baciocchi2}.
 
 \section{Découpage éditorial}
 
@@ -265,10 +265,10 @@ Le script a fait remonter plus de quatre cent cinquante erreurs. Ce chiffre comp
         \item (II.) \og Mode d'existence de la famille \fg{} par (III.) \og Moyens d'existence de la famille \fg.
         \item \og § 11. -- Récréations \fg{} par \og § 7. -- Subventions \fg.
     \end{itemize}
-    \item La monographie n° 44\footcite{mono044a} est la dernière à posséder des titres de paragraphe sur une seule ligne, un retour à la ligne étant ensuite systématiquement effectué entre le numéro et le libellé du paragraphe. Cet élément n'avait pas été compris par \lse, qui a pu répéter ou non le numéro du paragraphe sur la ligne du libellé.
+    \item La monographie \no{} 44\footcite{mono044a} est la dernière à posséder des titres de paragraphe sur une seule ligne, un retour à la ligne étant ensuite systématiquement effectué entre le numéro et le libellé du paragraphe. Cet élément n'avait pas été compris par \lse, qui a pu répéter ou non le numéro du paragraphe sur la ligne du libellé.
     \begin{itemize}
         \item En cas de répétition, le numéro original était placé dans un \texttt{<p>} et le titre avec le numéro ajouté dans un \texttt{<head>} (\fig{} \ref{fig:ex_structure} p. \pageref{fig:ex_structure}).
-        \item En cas de non répétition, le titre n'était pas toujours détecté et les deux lignes sont encodées dans des \texttt{<p>}.
+        \item En cas de non répétition, le titre n'était pas toujours détecté et les deux lignes étaient encodées dans des \texttt{<p>}.
     \end{itemize}
     \item Des titres transcrits avec une distance trop grande par rapport au modèle n'avaient pas été détectés. Ce point concerne l'ensemble des titres, sans prévalence particulière.
     \item Les titres des tableaux de budgets étaient souvent transcrits plus d'une fois.
@@ -278,7 +278,7 @@ Le script a fait remonter plus de quatre cent cinquante erreurs. Ce chiffre comp
         \item Certains titres de paragraphe n'étaient pas séparés du texte mais imprimés en italique au début de celui-ci (\ann{} \ref{ann:structure-allegee}) ;
         \item Le titre n'est pas imprimé (\ann{} \ref{ann:titre-non-imprimes}, \ref{ann:structure-allegee} et \ref{ann:no-notes-no-16}) ;
         \item La monographie possède une structure qui lui est propre (\ann{} \ref{ann:remarques-et-cas-particuliers}).
-        \item La sous-section des budgets est titrée dans huit monographies, mais ce titre n'était pas détecté comme tel par \lse.
+        \item La sous-section des budgets est titrée dans huit monographies, mais ce titre n'a jamais été détecté comme tel par \lse.
     \end{itemize}
 \end{itemize}
 
@@ -296,7 +296,7 @@ Trois erreurs ont été constatées à ce niveau :
 
 \subsection{\textit{Tabula rasa}}
 
-Le nombre élevé de cas particuliers rendait impossible une automatisation complète de cette reprise. Nous allons d'abord exposer la méthode suivie pour le traitement de ces cas avant de rendre compte de celle utilisée pour le reste du corpus.
+Le nombre élevé de cas particuliers rendait impossible une automatisation complète de cette reprise. Nous allons d'abord exposer la méthode suivie pour le traitement des cas particuliers avant de rendre compte de celle utilisée pour le reste du corpus.
 
 \subsubsection{Cas particuliers}
 
@@ -328,7 +328,7 @@ Du fait de la désorganisation massive des \texttt{<div>}, la première expressi
 Les expressions régulières recherchaient les libellés des titres lorsqu'il s'agissait de sections ou de sous-sections, car la plupart étaient convenablement transcrits. En revanche, il recherchait le numéro des sous-sous-sections, qui avaient tous pour point commun de commencer par le symbole typographique \texttt{§}. Les paragraphes \textit{Notes} des quatre-vingt-quatre premières monographies ayant pour particularité d'
 être numérotés par une lettre entre parenthèses, le motif des sous-sous-sections des premiers lots était légèrement différent.
 
-Une dernière commande, qui affichait la liste des balises \texttt{<head>} de chaque fichier, nous permettait de contrôler l'intégrité de la nouvelle structure. Si une erreur était constatée, nous intervenions manuellement afin de la résoudre. Pour chaque lot (qui correspondait \textit{grosso modo} à un volume), jusqu'à 50\% d'erreur était constaté. Cela était dû à des titres qui ne correspondaient pas aux motifs en raison de l'absence d'un symbole ou d'une transcription trop éloignée de la vérité terrain..
+Une dernière commande, qui affichait la liste des balises \texttt{<head>} de chaque fichier, nous permettait de contrôler l'intégrité de la nouvelle structure. Si une erreur était constatée, nous intervenions manuellement afin de la résoudre. Pour chaque lot (qui correspondait \textit{grosso modo} à un volume), jusqu'à 50\% d'erreur était constaté. Cela était dû à des titres qui ne correspondaient pas aux motifs en raison de l'absence d'un symbole ou d'une transcription trop éloignée de la vérité terrain.
 
 L'opération s'est conclue par la constitution automatique d'un tableau synoptique, le contenu de chaque balise \texttt{<head>} étant placé dans une cellule. Son étude a permis, d'une part, de corriger les dernières erreurs résiduelles, et d'autre part de rédiger une note exposant l'ensemble des défauts restant (\ann{} \ref{ann:releve_erreurs}).
 
@@ -345,14 +345,14 @@ Cette opération a permis de garantir que la reconstitution des paragraphes sera
 \begin{figure}
     \centering
     \includegraphics[width=15cm]{img/suppr_num_page.png}
-    \caption[Suppression d'un numéro de page]{Suppression du numéro de page 28 dans le fichier  \texttt{s2t1\_chapt\_20.xml} (image du \commit{} sur \gitlab{} --- monographie n° 53).}
+    \caption[Suppression d'un numéro de page]{Suppression du numéro de page 28 dans le fichier  \texttt{s2t1\_chapt\_20.xml} (image du \commit{} sur \gitlab{} --- monographie \no{} 53).}
     \label{fig:supprnumpage}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=16cm]{img/suppr_num _cahier.png}
-    \caption[Suppression d'un numéro de cahier (1)]{Suppression du numéro de cahier 16 dans le fichier  \texttt{s2t2\_chapt\_10.xml} (image du \commit{} sur \gitlab{} --- monographie n° 59, page 221).}
+    \caption[Suppression d'un numéro de cahier (1)]{Suppression du numéro de cahier 16 dans le fichier  \texttt{s2t2\_chapt\_10.xml} (image du \commit{} sur \gitlab{} --- monographie \no{} 59, page 221).}
     \label{fig:suppnumcahier}
 \end{figure}
 
@@ -386,7 +386,7 @@ Le document ODD est généré automatiquement par \oxygen{} grâce au scénario 
     \label{fig:tei-odd-rng}
 \end{figure}
 
-L'utilisateur peut modifier le document obtenu en imposant des règles plus restrictives ou au contraire en en relâchant certaines ; il peut également ajouter des valeurs d'attributs, rendre des attributs obligatoires ou contraindre l'enchaînement de certaines balises. Par exemple, nous avons rendu l'attribut \texttt{@type} obligatoire pour les balises \texttt{<head>} et \texttt{<div>}, et clos la liste de ses valeurs possibles (\fig{} \ref{fig:tei-odd-rng}).
+L'utilisateur peut modifier le document obtenu en imposant des règles plus restrictives ou au contraire en en relâchant certaines ; il peut également ajouter des valeurs d'attribut, rendre des attributs obligatoires ou contraindre l'enchaînement de certaines balises. Par exemple, nous avons rendu l'attribut \texttt{@type} obligatoire pour les balises \texttt{<head>} et \texttt{<div>}, et clos la liste de ses valeurs possibles (\fig{} \ref{fig:tei-odd-rng}).
 
 Une ODD peut également être documentée, \cad{} que son rédacteur peut justifier ses choix d'encodage. Disposer d'un schéma et de sa documentation est un élément extrêmement important pour un projet en humanités numériques : c'est en effet une assurance pour la pérennité des données qu'il a rassemblées et structurées. Celles-ci ne sont plus dépendantes des ingénieurs ou des structures institutionnelles et peuvent être réutilisées par d'autres projets\footcite[p. 61]{jolivet}.
 
@@ -394,7 +394,7 @@ Il existe plusieurs possibilités pour permettre la vérification du document TE
 
 Une autre possibilité est une validation externe, \cad{} qu'un logiciel ou un script vérifie la compatibilité des fichiers par rapport à un schéma qui lui est fourni par l'utilisateur à l'instant \texttt{t} de la validation. C'est une des fonctionnalités du mode \og projet \fg{} d'\oxygen. \timeus{} a cependant souhaité se détacher de tout logiciel, et \textit{a fortiori} d'un logiciel propriétaire, afin de se réserver la possibilité de contrôler la validité de ses fichiers à tout moment.
 
-Le module \texttt{etree} de la librairie Python \texttt{lxml}, qui permet d'analyser un arbre XML, possède un outil répondant parfaitement à ce besoin. En effet, un schéma RNG peut être chargé avec la classe \texttt{etree.RelaxNG()}, et la fonction \texttt{validate()} contrôle ensuite la validité de tout fichier lui étant donné comme argument par rapport à ce schéma.
+Le module \texttt{etree} de la librairie Python \texttt{lxml}, qui permet d'analyser un arbre XML, possède un outil répondant parfaitement à ce besoin. En effet, un schéma RNG peut être chargé avec la méthode \texttt{.RelaxNG()}, \texttt{validate()} contrôlant ensuite la validité de tout fichier lui étant donné comme argument par rapport à ce schéma.
 
 La spécificité de ce script est qu'il s'applique à un corpus entier, ce qui avait pour effet d'allonger démesurément son exécution sur notre ordinateur (environ une demi-heure pour traiter une vingtaine de fichiers). Nous avons donc charger l'ensemble des fichiers, le schéma et le script sur le \textit{cluster} \rioc{} d'Inria, ce qui a considérablement rétréci le temps d'exécution  (vingt-quatre minutes au total).
 
