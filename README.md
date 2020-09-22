@@ -17,6 +17,20 @@
 
 XML ; TEI ; Python ; traitement automatique des données ; transcription automatique ; édition numérique ; ALTO ; OCR ; Kraken ; Transkribus ; GitLab ; Frédéric Le Play ; *Les Ouvriers des deux mondes* ; enquêtes sociologiques ; monographies de familles ; *Time Us* ; Inria.
 
+### Sommaire
+
+I. Un corpus déjà structuré
+
+A. Un corpus d'imprimé. —  B. Des numérisations multiples. — C. Un encodage multiple.
+
+II. Une structuration à reprendre
+
+A. Outils, méthodologie et gestion de projet. — B. Contrôle du découpage des fichiers source. —  C. Découpage éditorial et sémantique.
+
+III. Des données à valoriser.
+
+A. Données graphiques, données chiffrées. — B. Données textuelles, données scientifiques. — C. Une valorisation pluriel.
+
 ### Arborescence
 
 ```
