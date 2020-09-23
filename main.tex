@@ -1,76 +1,48 @@
 \documentclass[a4paper,twoside,12pt]{book}
 \usepackage[utf8]{inputenc}
 
+% Language
 \usepackage[french]{babel}
 
+% Font
 \usepackage{fontspec}
 
+% URLs
 \usepackage[colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
+\usepackage{url}
 
-%Module d'usage facultatif permettant d'intégrer les tables, index, bibliographie, automatiquement à la table des matières
-\usepackage{tocbibind}
-%\usepackage{lscape}
-
-\usepackage{csvsimple}
-
+% document
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{setspace}
 \setlength{\parindent}{1cm}
 \onehalfspacing
 
+% Bibliography
 \usepackage[backend=biber, sorting=nyt, style=enc]{biblatex}
 \usepackage[autostyle]{csquotes}
 
 \addbibresource{mybibliography.bib}
 
+% Figures
 \usepackage{graphicx}
 \usepackage{subcaption}
-\usepackage{enumerate}
-% \usepackage{enumitem} 
-\usepackage{eurosym}
-\usepackage{url}
 
+% Lists
+\usepackage{enumerate}
+
+% Special characters (oe)
+\usepackage{eurosym}
+
+% Cut URLs in bibliography
 \setcounter{biburllcpenalty}{7000}
 \setcounter{biburlucpenalty}{8000}
 
-%%%Pour les tableaux
+% Tables
 \usepackage{longtable}
 \usepackage{multirow}
 \usepackage{array}
 
-
-%%% Les index
-%\usepackage{makeidx}
-%\usepackage{multind} %Ou splitidx
-%\usepackage{index} %…
-%\makeindex
-%\makeindex{edition}
-%\makeindex{texte}
-%\newindex{etude}{adx}{and}{Index de l'étude}
-%\newindex{edition}{bdx}{bnd}{Index de l'édition}
-
-
-
-%%%Édition critique
-%\usepackage{eledmac}
-%\usepackage{eledpar}
-
-%\footparagraph{A}
-
-%\renewcommand{\Rlineflag}{D}
-
-\hyphenation{}
-
-\usepackage[backend=biber, sorting=nyt, style=enc]{biblatex}
-%\addbibresource{Biblio/demo.bib}
-%\nocite{lachin_i_2008}
-
-\usepackage{enumerate,lettrine}
-
-\usepackage[multiple]{footmisc}
-
-\usepackage{listings}
-
+% Shortcuts
 \newcommand\ajd{aujourd'hui}
 \newcommand\ann{Annexe}
 \newcommand\cad{c'est-à-dire}
@@ -112,14 +84,15 @@
 \newcommand\transkribus{\textit{Transkribus}}
 \newcommand\wikisource{\textit{Wikisource}}
 
-\newcommand{\citecode}[1]{\texttt{\textmd{#1}}}
-
+% Metadata
 \title{Valoriser le traitement automatique des données : Le cas des Ouvriers des deux mondes}
 \author{Jean-Damien Généro}
 \date{Juillet 2020}
 
+% Document
 \begin{document}
 
+% Front matter : title page, abstract, preface, introduction, bibliography
 \frontmatter
 \include{front/titlepage}
 \clearpage
@@ -141,6 +114,7 @@
 \cleardoublepage
 \include{front/biblio}
 
+% Parts 1-3, conclusion
 \mainmatter
 \include{main/part1}
 \cleardoublepage
@@ -150,18 +124,16 @@
 \cleardoublepage
 \include{main/conclusion}
 
+% Appendeix
 \backmatter
 \include{back/appendix}
 
 \cleardoublepage
 
+% List of figures
 \listoffigures
 
-\newpage
-\thispagestyle{empty}
-\mbox{}
-\newpage
-
+% Table of contents
 \tableofcontents
 
 \newpage
