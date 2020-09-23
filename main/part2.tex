@@ -130,7 +130,7 @@ Un tel outil doit également être constamment maintenu à jour afin de garantir
 
 L'encodage d'un texte brut s'effectue sur plusieurs niveaux, depuis une échelle documentaire surplombante jusqu'à celle plus fine de l'analyse scientifique. Ces niveaux sont décrits dans un document intitulé \textit{Best Practices for TEI in Libraries}, édité par le Consortium TEI et disponible en ligne\footcite[\textit{4.2. Encoding Levels}]{bestpratice}.
 
-Le premier niveau est celui du découpage documentaire, soit la constitution d'un fichier qui reproduit le texte brut d'une unité codicologique et lui associe des métadonnées. Dans le cas des \odm, il s'agit du découpage des treize fichiers des volumes, qui ne s'est pas fait sans erreur, et de la constitution du \texttt{<teiHeaer>}.
+Le premier niveau est celui du découpage documentaire, soit la constitution d'un fichier qui reproduit le texte brut d'une unité codicologique et lui associe des métadonnées. Dans le cas des \odm, il s'agit du découpage des treize fichiers des volumes, qui ne s'est pas fait sans erreur, et de la constitution du \texttt{<teiHeader>}.
 
 Le second niveau est celui dit de l'encodage \og minimal \fg, dont l'objectif est d'améliorer la navigation dans le document. Il s'agit d'identifier les paragraphes par des balises \texttt{<p>} et de lier celles-ci aux ensembles \texttt{<facsimile>} des images d'origine par un identifiant, tout en marquant les changements de page par des éléments \texttt{<pb>}.
 
@@ -146,7 +146,7 @@ Nous allons maintenant étudier le contrôle de ces différents niveaux. Notre t
 
 \section{Vérification de la cohérence documentaire}
 
-Le découpage des fichiers source a donné des résultats étonnants pour certain volume. Ainsi, plus de trente fichiers avaient résulté du troisième volume de la deuxième série (\ann{} \ref{mappings2t3}).
+Le découpage des fichiers source a donné des résultats étonnants pour certains volumes. Ainsi, plus de trente fichiers avaient résulté du troisième volume de la deuxième série (\ann{} \ref{mappings2t3}).
 
 Le contrôle a été opéré manuellement, par une ouverture successive des fichiers. Les monographies devaient commencer par la reproduction de l'en-tête, point de repère du script \lse{} pour le découpage. Deux erreurs majeures ont été constatée.
 
@@ -331,7 +331,7 @@ En effet, les fichiers \texttt{s1t5\_chapt\_9.xml}\footcite{mono041a} et \texttt
 
 Ces cas particuliers réglés, il restait à prendre en charge l'essentiel du corpus, \cad{} une soixantaine de monographies. Une reprise entièrement manuelle n'était pas envisageable en raison du temps trop important qu'elle aurait nécessité. À l'inverse, une automatisation totale aurait nécessité une longue étude et un relevé minutieux des aléas de la détection et de la transcription des titres.
 
-Nous avons donc choisi d'implanter la structure logique par des cascades d'expressions régulières appliquées sur un lot de fichiers à l'aide d'un script. Les expressions régulières sont des motifs qui permettent de décrire des chaînes de caractères dans un texte. Le module \texttt{re} de Python permet de mobiliser ces expressions dans un script, et notamment d'effectuer des substituions grâce à la fonction \texttt{re.sub()}.
+Nous avons donc choisi d'implanter la structure logique par des cascades d'expressions régulières appliquées sur un lot de fichiers à l'aide d'un script. Les expressions régulières sont des motifs qui permettent de décrire des chaînes de caractères dans un texte. Le module \texttt{re} de Python permet de mobiliser ces expressions dans un script, et notamment d'effectuer des substitutions grâce à la fonction \texttt{re.sub()}.
 
 Du fait de la désorganisation massive des \texttt{<div>}, la première expression régulière consistait à faire table rase de ces balises. Le script reconstruisait ensuite la structure en progressant selon ses niveaux. Il commençait par implanter la \texttt{<div>} de type \texttt{chapter} et celle de la première section (la page de titre). Venaient ensuite les \texttt{<div>} des deux sections restantes (\textit{Observations préliminaires} et \textit{Notes}), puis celles des sous-sections, etc.
 
@@ -406,7 +406,7 @@ Une autre possibilité est une validation externe, \cad{} qu'un logiciel ou un s
 
 Le module \texttt{etree} de la librairie Python \texttt{lxml}, qui permet d'analyser un arbre XML, possède un outil répondant parfaitement à ce besoin. En effet, un schéma RNG peut être chargé avec la méthode \texttt{.RelaxNG()}, \texttt{validate()} contrôlant ensuite la validité de tout fichier lui étant donné comme argument par rapport à ce schéma.
 
-La spécificité de ce script est qu'il s'applique à un corpus entier, ce qui avait pour effet d'allonger démesurément son exécution sur notre ordinateur (environ une demi-heure pour traiter une vingtaine de fichiers). Nous avons donc charger l'ensemble des fichiers, le schéma et le script sur le \textit{cluster} \rioc{} d'Inria, ce qui a considérablement rétréci le temps d'exécution  (vingt-quatre minutes au total).
+La spécificité de ce script est qu'il s'applique à un corpus entier, ce qui avait pour effet d'allonger démesurément son exécution sur notre ordinateur (environ une demi-heure pour traiter une vingtaine de fichiers). Nous avons donc chargé l'ensemble des fichiers, le schéma et le script sur le \textit{cluster} \rioc{} d'Inria, ce qui a considérablement rétréci le temps d'exécution  (vingt-quatre minutes au total).
 
 \clearpage
 
