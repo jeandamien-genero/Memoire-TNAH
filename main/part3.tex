@@ -94,9 +94,9 @@ où \textit{S} représente le nombre de substitutions (caractères dont la recon
 
 Dans les \odm{} comme dans de nombreux autres corpus\footcite[p. 1]{sagot}, elles se concentrent sur les entités nommées. Au premier rang de ces dernières figurent les patronymes et les toponymes (\fig{} \ref{fig:mono-56-page-4-code}); les \og expressions temporelles et les expressions de quantité \fg{} ou encore \og les nombres, les formules chimiques, les unités monétaires \fg{} sont également concernés\footnote{Les entités nommées sont définies dans le domaine du traitement automatique du langage comme des \og unités faisant référence à une entité unique et concrète et réalisées par des noms propres (noms de personnes, d’organisations, d’artefacts ou de lieux) \fg{} : \cite[p. 4]{sagot}}. Ces entités sont très peu représentées dans les fichiers de vérité terrain sur lesquels le logiciel s'entraîne ; pour augmenter leur détection, un entraînement spécifique et focalisé serait nécessaire.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=16cm]{img/index_tree.png}
+    \includegraphics[width=16cm]{img/schema_index.png}
     \caption{Arbre XML simplifié montrant l'organisation d'une entrée d'index.}
     \label{fig:index_tree}
 \end{figure}
@@ -132,20 +132,20 @@ La situation matrimoniale est décrite par la balise \texttt{<desc>} dans un ens
 
 Dans chaque volume, le paragraphe \og État civil de la famille \fg{} commence par une liste standardisée des membres de la famille. Les figures \ref{fig:mono-56-page-4} et \ref{fig:mono-56-page-4-code} montrent une comparaison entre le texte d'origine de la monographie 56, sa transcription et son encodage par \lse\footcite[p. 4]{mono056a}. Les erreurs concernant la reconnaissance des entités nommées y apparaissent clairement : sur quatre prénoms, tous sont transcrits avec une distance d'édition importante et le nom de famille \og B*** \fg{} n'est absolument pas reconnu.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \includegraphics[width=14cm]{img/mono-23-page-209.jpg}
     \caption[Liste d'individus au début du paragraphe 2 (\no{} 23)]{Liste d'individus et son encodage (série 1, volume 3, monographie \no{} 23, page 209).}
     \label{fig:mono-23-page-209}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=14cm]{img/mono-56-page-4.jpg}
     \caption[Liste d'individus au début du paragraphe 2 (\no{} 56)]{Liste d'individus (série 2, volume 2, monographie \no{} 56, page 4).}
     \label{fig:mono-56-page-4}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \includegraphics[width=14cm]{img/mono-56-page-4-code.png}
     \caption[Encodage de la liste d'individus (\no{} 56)]{Encodage de la liste d'individus, monographie \no{} 56 (\texttt{s2t2\_chapt\_5.xml}).}
     \label{fig:mono-56-page-4-code}

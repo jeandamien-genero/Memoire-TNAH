@@ -170,7 +170,7 @@ La seconde erreur majeure à laquelle nous avons été confrontés est le défau
 
 Il ne s'agit pas d'un déficit total. L'analyse de la mise en page et la segmentation se sont effectuées de manière convenable, comme en atteste la présence de \texttt{<facsimile>} entre le \texttt{<teiHeader>} et le \texttt{<text>}, repris des éléments \texttt{<TextBlock>} des fichiers ALTO d'origine. Néanmoins, les paragraphes 1 à 16, qui peuvent contenir des figures ou des tableaux mais sont principalement composés de textes, ont été considérés comme des éléments graphiques. En conséquence, chaque page est représentée par un élément \texttt{<figure>} contenant une balise \texttt{<graphic>} que l'attribut \texttt{@facs} relie à un \texttt{<facsimile>} ; \texttt{<pb>} venant signifier le changement de page (\fig{} \ref{fig:deficit}).
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=15cm]{img/deficit_transcrip.png}
     \caption[Exemple d'un déficit de transcription]{Dans six fichiers, le contenu de la section \textit{Observations préliminaires} n'a pas été considéré comme du texte mais comme des figures. À l'inverse, la section \textit{Notes} a bien été prise en compte comme du texte. Exemple du fichier \texttt{s1t4\_chapt\_8.xml}.}
@@ -213,7 +213,7 @@ Au-delà d'une vérification de la cohérence du découpage, cette étape de vé
 
 Une partie seulement, car le fichier bibliographique ne s'intéressait qu'aux monographies, là où ALMAnaCH avait la volonté de travailler sur l'ensemble du corpus, monographies et fichiers de paratexte compris. Il a donc été nécessaire d'établir de nouveaux identifiants sur le modèle de ceux des monographies. Ces derniers se composent d'une série de trois chiffres suivie d'une lettre, \texttt{a} pour une monographie, \texttt{b} pour le précis \textit{bis} et \texttt{c} pour le \textit{ter} (\texttt{\textbackslash d\textbackslash d\textbackslash d[a-c]}). Pour poursuivre dans ce sens, nous avons choisi de donner au premier fichier de paratexte le numéro \texttt{401a} et de continuer jusqu'au dernier.
 
-Trois versions de la cartographie ont été réalisées : la première contient uniquement les monographies, la seconde le paratexte et la troisième l'ensemble des fichiers\footnote{La troisième cartographie a été scindée en fonction des volumes afin de constituer l'annexe \ref{mapping} du présent mémoire.}. Ces versions sont enregistrées au format CSV : en texte brut, elles se présentent sous la forme d'une succession de lignes contenant des données (identifiant, intitulé puis libellé du fichier), ces données étant séparées par des virgules. Ces fichiers CSV peuvent ensuite être interprétés comme des tableaux, chaque ligne correspondant à une ligne tabulaire et chaque virgule à une séparation entre deux colonnes. Ce format, outre son extrême simplicité, a l'avantage d'être libre et de pouvoir être parsé par le langage Python\footnote{Parser un fichier consiste à le lire et à interpréter son contenu afin d’en extraire certains éléments.}. Les données peuvent donc être manipulées par un script.
+Trois versions de la cartographie ont été réalisées : la première contient uniquement les monographies, la seconde le paratexte et la troisième l'ensemble des fichiers\footnote{La troisième cartographie a été retravaillée afin de constituer l'annexe \ref{mapping} du présent mémoire.}. Ces versions sont enregistrées au format CSV : en texte brut, elles se présentent sous la forme d'une succession de lignes contenant des données (identifiant, intitulé puis libellé du fichier), ces données étant séparées par des virgules. Ces fichiers CSV peuvent ensuite être interprétés comme des tableaux, chaque ligne correspondant à une ligne tabulaire et chaque virgule à une séparation entre deux colonnes. Ce format, outre son extrême simplicité, a l'avantage d'être libre et de pouvoir être parsé par le langage Python\footnote{Parser un fichier consiste à le lire et à interpréter son contenu afin d’en extraire certains éléments.}. Les données peuvent donc être manipulées par un script.
 
 Une fois les CSV constitués, il a fallu implanter les identifiants dans les fichiers TEI : il s'agissait de la première opération que nous avons pu automatiser. Après avoir relevé les identifiants et les libellés de fichier dans le CSV général pour constituer un dictionnaire Python (\texttt{dict\_xml = \{'401a': 's1t1\_chapt\_1.xml', etc\}}), le script ouvrait chaque fichier un par un. À l'aide de la librairie \texttt{BeautifulSoup}, il analysait ensuite l'arbre XML (\fig{} \ref{fig:xmltree1}, p. \pageref{fig:xmltree1}) et implantait l'identifiant comme valeur de l'attribut \texttt{@xml:id} de \texttt{<TEI>} et de l'attribut \texttt{@ana} de la première \texttt{<div>}.
 
@@ -236,7 +236,7 @@ Ce fichier \texttt{master.xml} a été là encore constitué de manière automat
 
 La mise en forme minimale des documents a été correctement exécutée par \lse, aucune partie de la transcription n'ayant été laissée sans encodage.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=15cm]{img/table_s2t2_chapt_5.png}
     \caption{Encodage du début du §14 de la monographie 56.}
@@ -316,7 +316,7 @@ La plus légère consistait à signaler la mise en forme de ces titres (italique
 
 Une deuxième solution, beaucoup plus lourde pour le fichier, aurait consisté en l'imbrication de  \texttt{<div>}. Le \texttt{@type} assigné à la division aurait permis de savoir que le \texttt{<head>} et le \texttt{<p>}, eux-même placés dans une sous-division, ne constituaient qu'un seul paragraphe dans le volume original (\fig{} \ref{fig:solution2}). La contre-partie est que chaque paragraphe aurait dû être placé dans une sous-division.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=15cm]{img/solution2.png}
     \caption[Proposition pour un encodage des paragraphes.]{Représentation de la deuxième solution, dont le résultat est de produire une imbrication malvenue de \texttt{<div>}.}
@@ -380,7 +380,7 @@ Les erreurs de structuration et de transcription traitées dans les quatre premi
 
 Nous avons choisi d'établir un fichier ODD, entièrement écrit dans une syntaxe XML, qui permet d'établir très précisément les éléments, les séquences d'éléments (nombre et ordre) et leurs attributs. \oxygen{} est capable d'en générer un après avoir analysé un ensemble de fichiers TEI, puis de le transformer en un schéma relaxNG. Ce document relaxNG contient le schéma servant à la validation du fichier TEI, l'ODD étant un fichier XML de documentation et de description de ce schéma. Le document relaxNG est finalement associé au document TEI (\fig{} \ref{fig:tei-odd-rng}), une des fonctionnalités d'\oxygen{} permettant de contrôler à tout moment la validité du code par rapport au schéma.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=5cm]{img/tei-odd-rng.png}
     \caption{Schématisation du processus de validation à l'aide d'une ODD.}
@@ -389,14 +389,14 @@ Nous avons choisi d'établir un fichier ODD, entièrement écrit dans une syntax
 
 Le document ODD est généré automatiquement par \oxygen{} grâce au scénario de transformation du Consortium TEI intitulé \textit{oddbyexample}. Il s'agit d'une feuille de style XSL qui, appliquée à un document TEI, analyse l'ensemble des balises et leurs attributs pour les comparer aux préconisations de la TEI\footnote{\textit{The XSLT stylesheet which traverses a nominated directory tree looking for *.xml files which have <TEI> or <teiCorpus> root elements. It analyzes the collection of elements and attributes in the resulting corpus, and compares that to the whole of TEI P5} : \textit{oddbyexample} sur le \textit{TEI Wiki} (\url{https://wiki.tei-c.org/index.php/Oddbyexample}, consulté le \today).}. Puis il génère une ODD où les modules TEI sont chargés, les balises et les attributs non-utilisés étant supprimés d'office et les valeurs des attributs collectées et inscrites dans des listes.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=9cm]{img/odd.png}
     \caption[Extrait de l'ODD concernant la balise \texttt{<div>}]{Extrait de l'ODD des \odm{} concernant la balise \texttt{<div>}. Les attributs \texttt{@facs} et \texttt{@source} sont supprimés (\texttt{mode="delete"}), \texttt{@type} est requis (\texttt{usage="req"}) et sa liste de valeurs est close (\texttt{type="closed"}).}
-    \label{fig:tei-odd-rng}
+    \label{fig:tei-odd-rng-ex}
 \end{figure}
 
-L'utilisateur peut modifier le document obtenu en imposant des règles plus restrictives ou au contraire en en relâchant certaines ; il peut également ajouter des valeurs d'attribut, rendre des attributs obligatoires ou contraindre l'enchaînement de certaines balises. Par exemple, nous avons rendu l'attribut \texttt{@type} obligatoire pour les balises \texttt{<head>} et \texttt{<div>}, et clos la liste de ses valeurs possibles (\fig{} \ref{fig:tei-odd-rng}).
+L'utilisateur peut modifier le document obtenu en imposant des règles plus restrictives ou au contraire en en relâchant certaines ; il peut également ajouter des valeurs d'attribut, rendre des attributs obligatoires ou contraindre l'enchaînement de certaines balises. Par exemple, nous avons rendu l'attribut \texttt{@type} obligatoire pour les balises \texttt{<head>} et \texttt{<div>}, et clos la liste de ses valeurs possibles (\fig{} \ref{fig:tei-odd-rng-ex}).
 
 Une ODD peut également être documentée, \cad{} que son rédacteur peut justifier ses choix d'encodage. Disposer d'un schéma et de sa documentation est un élément extrêmement important pour un projet en humanités numériques : c'est en effet une assurance pour la pérennité des données qu'il a rassemblées et structurées. Celles-ci ne sont plus dépendantes des ingénieur(e)s ou des structures institutionnelles et peuvent être réutilisées par d'autres projets\footcite[p. 61]{jolivet}.
 
