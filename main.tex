@@ -42,6 +42,34 @@
 \usepackage{multirow}
 \usepackage{array}
 
+\usepackage{shorttoc}
+
+% Code
+\usepackage{listings}
+\usepackage{color}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape
+}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type, n, facs}
+}
+
+
 % Shortcuts
 \newcommand\ajd{aujourd'hui}
 \newcommand\ann{Annexe}
@@ -97,12 +125,19 @@
 \include{front/titlepage}
 \clearpage
 \thispagestyle{empty}
+\clearpage
+\thispagestyle{empty}
 \cleardoublepage
 \include{front/abstract}
 \clearpage
 \thispagestyle{empty}
 \cleardoublepage
 \include{front/abrev}
+\clearpage
+\thispagestyle{empty}
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Sommaire}
+\shorttoc{Sommaire}{0}
 \clearpage
 \thispagestyle{empty}
 \cleardoublepage
@@ -124,17 +159,21 @@
 \cleardoublepage
 \include{main/conclusion}
 
-% Appendeix
+% Appendix
 \backmatter
 \include{back/appendix}
+\cleardoublepage
+\include{back/appendixB}
+\cleardoublepage
+\include{back/appendixC}
 
 \cleardoublepage
 
 % List of figures
-\listoffigures
+\addcontentsline{toc}{chapter}{Table des figures}\listoffigures
 
 % Table of contents
-\tableofcontents
+\addcontentsline{toc}{chapter}{Table des matières}\tableofcontents
 
 \newpage
 \thispagestyle{empty}

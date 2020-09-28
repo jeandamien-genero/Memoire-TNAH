@@ -30,7 +30,7 @@ Un des principaux apport du \iiif{} pourrait être le traitement des objets grap
 
 Pour rendre cela possible, il faudrait disposer d'une évaluation du taux de détection des figures. Ce chiffre n'est pas connu, mais des relevés aléatoires laissent penser qu'il risque d'être inférieur à 60\%. Les tableaux sont les figures qui ont posé le plus de problème au script, nous y reviendrons.
 
-Parmi les autres, plusieurs n'ont été que partiellement détectées. La carte de la page 439 de la monographie \no{} 90\footcite{mono090a} est ainsi parfaitement détectée et transposée dans un élément \texttt{<figure>} (\fig{} \ref{fig:odmfig90439}). À l'inverse, le plan d'une \og habitation cambodgienne à Pnom-Penh \fg{} est détecté en double --- peut-être en raison de la superposition d'une vue de face de l'habitation et de son plan --- et le titre de la figure est transcrit comme du texte (\fig{} \ref{fig:odmfig90453}). Dans la monographie suivante\footcite{mono090b}, la photographie pleine page \og Cambodgiens et amanites \fg{}, insérée entre les pages 484 et 485, a été retirée du texte et n'est pas présente dans les fichiers sous quelque forme que ce soit.
+Parmi les autres, plusieurs n'ont été que partiellement détectées. La carte de la page 439 de la monographie \no{}90\footcite{mono090a} est ainsi parfaitement détectée et transposée dans un élément \texttt{<figure>} (\fig{} \ref{fig:odmfig90439}). À l'inverse, le plan d'une \og habitation cambodgienne à Pnom-Penh \fg{} est détecté en double --- peut-être en raison de la superposition d'une vue de face de l'habitation et de son plan --- et le titre de la figure est transcrit comme du texte (\fig{} \ref{fig:odmfig90453}). Dans la monographie suivante\footcite{mono090b}, la photographie pleine page \og Cambodgiens et amanites \fg{}, insérée entre les pages 484 et 485, a été retirée du texte et n'est pas présente dans les fichiers sous quelque forme que ce soit.
 
 \begin{figure}
     \centering
@@ -45,7 +45,7 @@ Parmi les autres, plusieurs n'ont été que partiellement détectées. La carte 
      \caption{Page 453 : détection en double et transcription du titre.}
      \label{fig:odmfig90453}
     \end{subfigure}
-    \caption{Figures dans la monographie \no{} 90.}
+    \caption{Figures dans la monographie \no{}90.}
     \label{fig:odmfig90}
 \end{figure}
 
@@ -82,7 +82,7 @@ La valorisation des objets graphiques n'est donc pas chose aisée. Elle peut se 
 
 \section{La qualité de l'\ocr}
 
-L'extrême majorité des données des \odm{} est composée de texte. Ce texte peut être le support de différentes études, qui se basent toutes sur la lecture. La lecture par l'\oe{}il humain --- le corpus n'est pas réellement important et un chercheur ou une chercheuse peut en prendre intégralement connaissance ---, mais aussi la lecture par une machine, \cad{} l'analyse automatique. Ces deux opérations ne nécessitent pas un même niveau de qualité de l'\ocr{} et ne s'adressent pas au même public --- la première est accessible à un large groupe, la seconde requiert l'assistance technique d'un ingénieur et l'exécution par une machine.
+L'extrême majorité des données des \odm{} est composée de texte. Ce texte peut être le support de différentes études, qui se basent toutes sur la lecture. La lecture par l'\oe{}il humain --- le corpus n'est pas réellement important et un chercheur ou une chercheuse peut en prendre intégralement connaissance ---, mais aussi la lecture par une machine, \cad{} l'analyse automatique. Ces deux opérations ne nécessitent pas un même niveau de qualité de l'\ocr{} et ne s'adressent pas au même public --- la première est accessible à un large groupe, la seconde requiert l'assistance technique d'un(e) ingénieur(e) et l'exécution par une machine.
 
 La qualité d'une \ocr{} peut être mesurée par différents indices, au niveau du caractère (\textit{character error rate}, CER) ou du mot (\textit{word error rate}, WER).  Le CER est obtenu grâce la formule suivante :
 
@@ -94,13 +94,6 @@ où \textit{S} représente le nombre de substitutions (caractères dont la recon
 
 Dans les \odm{} comme dans de nombreux autres corpus\footcite[p. 1]{sagot}, elles se concentrent sur les entités nommées. Au premier rang de ces dernières figurent les patronymes et les toponymes (\fig{} \ref{fig:mono-56-page-4-code}); les \og expressions temporelles et les expressions de quantité \fg{} ou encore \og les nombres, les formules chimiques, les unités monétaires \fg{} sont également concernés\footnote{Les entités nommées sont définies dans le domaine du traitement automatique du langage comme des \og unités faisant référence à une entité unique et concrète et réalisées par des noms propres (noms de personnes, d’organisations, d’artefacts ou de lieux) \fg{} : \cite[p. 4]{sagot}}. Ces entités sont très peu représentées dans les fichiers de vérité terrain sur lesquels le logiciel s'entraîne ; pour augmenter leur détection, un entraînement spécifique et focalisé serait nécessaire.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=16cm]{img/schema_index.png}
-    \caption{Arbre XML simplifié montrant l'organisation d'une entrée d'index.}
-    \label{fig:index_tree}
-\end{figure}
-
 \section{Indexer les individus}
 
 
@@ -108,7 +101,7 @@ Cette défaillance dans la détection des entités nommées pose problème dans 
 
 Un projet de recherche mené par le CMH et le CHR concerne ces enquêtés et souhaite les indexer en relevant les informations biographiques données par les monographes. Ce travail d'indexation des familles enquêtées est mené par Alain Cottereau et Stéphane Baciocchi (CRH, EHESS), avec Anne Lhuissier (CMH, INRAE). Ils  cherchent notamment à lever l'anonymat  des individus et à compléter (voire corriger) les informations biographiques délivrées dans les monographies, grâce à l'exploitation des fonds d'archives départementaux ou municipaux.
 
-Anne Lhuissier et Stéphane Baciocchi se sont ainsi rendus aux Archives départementales de l'Isère pour trouver des informations sur le gantier Théodore  G., sujet principal de la monographie \no{} 55\footcite{mono055a}. Théodore  G. est présenté comme un gantier vivant à Biviers, à 9km de Grenoble. Son père, mort avant le début de l'enquête, était un riche cultivateur ; les frères de Théodore cultivent toujours, au moment de l'enquête, les terres familiales. Le monographe explique que Théodore, doté \og d'une forte constitution \fg{}, a lui-même \og pris part jusqu'à l'âge de vingt-cinq ans aux travaux de l'agriculture \fg{}\footcite[p. 471]{mono055a}.
+Anne Lhuissier et Stéphane Baciocchi se sont ainsi rendus aux Archives départementales de l'Isère pour trouver des informations sur le gantier Théodore  G., sujet principal de la monographie \no{}55\footcite{mono055a}. Théodore  G. est présenté comme un gantier vivant à Biviers, à 9km de Grenoble. Son père, mort avant le début de l'enquête, était un riche cultivateur ; les frères de Théodore cultivent toujours, au moment de l'enquête, les terres familiales. Le monographe explique que Théodore, doté \og d'une forte constitution \fg{}, a lui-même \og pris part jusqu'à l'âge de vingt-cinq ans aux travaux de l'agriculture \fg{}\footcite[p. 471]{mono055a}.
 
 Son service militaire l'amène ensuite à participer au siège de Sébastopol lors de la guerre de Crimée en 1855\footcite[p. 471]{mono055a}. Cependant, son père \og l'a racheté et rappelé auprès de lui \fg{}, \cad{} qu'il a payé un remplaçant qui a effectué la fin de son service militaire à sa place\footcite[p. 471]{mono055a}. C'est alors que, en dépit du fait qu'il \og passait à juste titre pour un des ouvriers les plus intelligents et les plus certains de réussir \fg{} dans l'agriculture, relate le monographe, \og il n'a pu résister au désir d'apprendre la profession de gantier \fg{}\footcite[p. 471]{mono055a}. Théodore est ainsi le seul homme de sa fratrie à ne pas être devenu agriculteur.
 
@@ -116,9 +109,23 @@ Or Anne Lhuissier et Stéphane Baciocchi, en exploitant les archives des séries
 
 Une tableau prosopographique au format CSV était déjà établi au moment de notre stage. Huit cent quarante-deux individus y étaient identifiés et décrits selon leur état civil et des critères sociaux. Les chercheurs et les chercheuses nous ont demandé de procéder, dans un premier temps, à la transformation de ce tableau en un  index XML et, dans un second temps, à la liaison entre chaque entrée et l'individu correspondant dans les monographies (\ann{} \ref{ann:feuille_route}, \issue{} 4). Du point de vue de l'ingénierie, cela se traduisait par la constitution automatique de l'index puis par l'implémentation dans les fichiers TEI des identifiants des individus cités dans le deuxième paragraphe.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=16cm]{img/schema_index.png}
+    \caption{Arbre XML simplifié montrant l'organisation d'une entrée d'index.}
+    \label{fig:index_tree}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{img/entree_index.png}
+    \caption{Exemple d'une entrée d'index.}
+    \label{fig:entree_index}
+\end{figure}
+
 Un fichier d'index au format XML repose sur un \texttt{<body>} dans lequel une ou plusieurs listes de personnes (\texttt{<listPerson>}) sont établies, les individus y étant indexés au sein d'éléments \texttt{<person>}. Nous avons constitué une liste de personnes unique, car aucun besoin particulier ne nous a été transmis quant à cette fonctionnalité de la TEI. On pourrait néanmoins imaginer des listes en fonction des sexes et, à l'intérieur de celles-ci, des sous-listes relatives aux rôles sociaux des individus. 
 
-Nous nous sommes concentrés sur les différentes catégories à faire figurer dans l'index et sur les balises pouvant les traduire (\fig{} \ref{fig:index_tree}).
+Nous nous sommes concentrés sur les différentes catégories à faire figurer dans l'index et sur les balises pouvant les traduire (\fig{} \ref{fig:index_tree} et \ref{fig:entree_index}).
 
 L'identifiant de l'individu --- formé de celui de la monographie, de la lettre \textit{E} pour \textit{enquêté} et du numéro d'apparition --- constitue la valeur de l'attribut \texttt{xml:id} de la balise \texttt{<person>}. L'état civil se trouve ensuite dans un ensemble \texttt{<persName>} où le nom figure dans \texttt{<surname>} et le prénom dans \texttt{<forename>}.
 
@@ -133,21 +140,22 @@ La situation matrimoniale est décrite par la balise \texttt{<desc>} dans un ens
 Dans chaque volume, le paragraphe \og État civil de la famille \fg{} commence par une liste standardisée des membres de la famille. Les figures \ref{fig:mono-56-page-4} et \ref{fig:mono-56-page-4-code} montrent une comparaison entre le texte d'origine de la monographie 56, sa transcription et son encodage par \lse\footcite[p. 4]{mono056a}. Les erreurs concernant la reconnaissance des entités nommées y apparaissent clairement : sur quatre prénoms, tous sont transcrits avec une distance d'édition importante et le nom de famille \og B*** \fg{} n'est absolument pas reconnu.
 
 \begin{figure}[ht]
+    \centering
     \includegraphics[width=14cm]{img/mono-23-page-209.jpg}
-    \caption[Liste d'individus au début du paragraphe 2 (\no{} 23)]{Liste d'individus et son encodage (série 1, volume 3, monographie \no{} 23, page 209).}
+    \caption[Liste d'individus au début du paragraphe 2 (\no{}23)]{Liste d'individus (série 1, volume 3, monographie \no{}23, page 209).}
     \label{fig:mono-23-page-209}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=14cm]{img/mono-56-page-4.jpg}
-    \caption[Liste d'individus au début du paragraphe 2 (\no{} 56)]{Liste d'individus (série 2, volume 2, monographie \no{} 56, page 4).}
+    \caption[Liste d'individus au début du paragraphe 2 (\no{}56)]{Liste d'individus (série 2, volume 2, monographie \no{}56, page 4).}
     \label{fig:mono-56-page-4}
 \end{figure}
 
 \begin{figure}[ht]
     \includegraphics[width=14cm]{img/mono-56-page-4-code.png}
-    \caption[Encodage de la liste d'individus (\no{} 56)]{Encodage de la liste d'individus, monographie \no{} 56 (\texttt{s2t2\_chapt\_5.xml}).}
+    \caption[Encodage de la liste d'individus (\no{}56)]{Encodage de la liste d'individus, monographie \no{}56 (\texttt{s2t2\_chapt\_5.xml}).}
     \label{fig:mono-56-page-4-code}
 \end{figure}
 
@@ -184,7 +192,7 @@ Nous nous sommes donc intéressés à la librairie Python \texttt{pyspellchecker
 
 Un test sur les cinq premiers \texttt{<p>} de la figure \ref{fig:mono-56-page-4-code} a donné de bons résultats (tabl. \ref{tabl:pyspellchecker-1}). Le script en question extrait le texte des balises \texttt{<p>} grâce à la librairie \texttt{BeautifulSoup} et le nettoie en enlevant les signes de ponctuation. Ces derniers induisent en effet le correcteur en erreur : un mot suivi d'un point sera ainsi considéré comme un seul ensemble et jugé faux\footcite[p. 60]{chiffoleau}. Le correcteur analyse ensuite chaque mot et retourne les mots faux ; nous l'avons paramétré de manière à ce qu'il propose une correction et des candidats de correction.
 
-Le tableau \ref{tabl:pyspellchecker-1} montre que, sur sept transcriptions fausses, \texttt{pyspellchecker} permet d'en corriger quatre de manière exacte (\textit{Félicité} à deux reprises, \textit{Joseph} et \textit{Marguerite}). La vérité terrain est presque approchée pour \textit{Josèphe} : le \textit{e} final et l'accent grave manquent. En revanche, lorsque le même test est effectué sur une monographie où les prénoms ne se trouvent pas forcément dans un lexique français, par exemple la \no{} 25 consacrée à un parfumeur du bazar El Attharin-el-kebar de Tunis\footcite{mono025a}, le taux chute à un prénom corrigé sur sept erreurs (tabl. \ref{tabl:pyspellchecker-2}). La graphie de la vérité terrain \textit{Aïcha} figure bien dans la liste des candidats, mais c'est la forme \textit{Aisha} qui est choisie comme correction. On voit également que le dernier prénom, \textit{Kouka}, est transcrit avec une distance d'édition si importante (\textit{oul}, soit trois suppressions et une insertion) qu'il est improbable que le script puisse trouver le mot d'origine.
+Le tableau \ref{tabl:pyspellchecker-1} montre que, sur sept transcriptions fausses, \texttt{pyspellchecker} permet d'en corriger quatre de manière exacte (\textit{Félicité} à deux reprises, \textit{Joseph} et \textit{Marguerite}). La vérité terrain est presque approchée pour \textit{Josèphe} : le \textit{e} final et l'accent grave manquent. En revanche, lorsque le même test est effectué sur une monographie où les prénoms ne se trouvent pas forcément dans un lexique français, par exemple la \no{}25 consacrée à un parfumeur du bazar El Attharin-el-kebar de Tunis\footcite{mono025a}, le taux chute à un prénom corrigé sur sept erreurs (tabl. \ref{tabl:pyspellchecker-2}). La graphie de la vérité terrain \textit{Aïcha} figure bien dans la liste des candidats, mais c'est la forme \textit{Aisha} qui est choisie comme correction. On voit également que le dernier prénom, \textit{Kouka}, est transcrit avec une distance d'édition si importante (\textit{oul}, soit trois suppressions et une insertion) qu'il est improbable que le script puisse trouver le mot d'origine.
 
 \begin{table}
 \begin {center}
@@ -214,7 +222,7 @@ Une autre librairie Python, \texttt{pygrammalecte}, peut être utilisée pour g�
 
 On le voit, il est possible de développer des solutions en interne pour corriger une \ocr. Si elles n'automatisent pas totalement cette correction, elles permettent de réduire son coût budgétaire en épargnant le recours à un prestataire externe ou l'achat d'un logiciel dédié. Elle peuvent néanmoins se traduire par le recours à un vacataire pour le temps de la correction, ce qui représente tout de même un poste de dépense.
 
-Durant notre stage, nous avons contourné le problème en ajoutant, au début des deuxièmes paragraphes, un commentaire contenant les identités des individus cités et leurs identifiants. Un commentaire est dans un fichier informatique une section du code destinée à la lecture par un humain et non par une machine, qui de fait l'ignore au moment de l'interprétation du fichier. En XML, le commentaire est délimité par les symboles \texttt{<!--} et \texttt{-->}. Dans la monographie \no{} 56, cela donne cette ligne :
+Durant notre stage, nous avons contourné le problème en ajoutant, au début des deuxièmes paragraphes, un commentaire contenant les identités des individus cités et leurs identifiants. Un commentaire est dans un fichier informatique une section du code destinée à la lecture par un humain et non par une machine, qui de fait l'ignore au moment de l'interprétation du fichier. En XML, le commentaire est délimité par les symboles \texttt{<!--} et \texttt{-->}. Dans la monographie \no{}56, cela donne cette ligne :
 
 \begin{quote}
     \texttt{<!-{}- Individus cités : Louis-Joseph B*** (\no{}056aE1) - Félicité-Josèphe B*** (\no{} 056aE2) - Gaspardine-Marguerite B*** (\no{} 056aE3) - Louise\-Félicité B*** (\no{} 056aE4) -{}->}
@@ -232,7 +240,7 @@ Dans le programme \timeus{}, l'édition numérique des \odm{} a éveillé l'int�
 
 On le voit, les objectifs poursuivis par ces entités sont très divers. Les matériaux qui permettront de les réaliser le sont tout autant : le LARHRA et ALMAnaCH ont besoin de données brutes issues des tableaux statistiques (des chiffres) et du texte (des mots), tandis que le CRH agrège des métadonnées inédites qui proviennent de plusieurs corpus ; il dispose notamment d'un exemplaire des deuxième et troisième séries encore à l'état de fascicules non reliés. Le LARHRA a également besoin d'une transcription de qualité pour s'assurer de la viabilité des informations prosopographiques du second paragraphe.
 
-Cette pluralité de directions illustre la tension qui traverse les éditions numériques : elles portent avant tout sur un document et non sur une \oe{}uvre\footnote{\og \textit{Two decades of making digital editions, and recent papers about digital editions, have moved the needle away from the “work” to the “document”, to the point where we might need only think of “documents”} \fg{} : \cite[p. 107]{robinson}}. Cette distinction est issue de la triade document, texte, \oe{}uvre (\textit{document}, \textit{text}, \textit{work}) qui désigne les dimensions matérielle, linguistique et intellectuelle d'un écrit\footnote{\og \textit{Work} désigne le texte de l’auteur, éventuellement le texte correspondant à la volonté de l’auteur, et implique la notion d’authenticité ; \textit{text} dénomme la séquence linguistique attestée dans un document transmettant l’œuvre ; enfin \textit{document} est une manifestation physique d’un text \fg{} : \cite[p. 15-16]{duval}.}. De fait, l'encodage que nous avons décrit dans la partie précédente fait la part belle au document \odm{} de l'Université de Toronto, digitalisé par \ia. \transkribus{} et le script \lse{} mobilisent la TEI pour conduire sa reproduction fidèle grâce à des ensembles \texttt{<facsimile>}\footcite[p. 124]{robinson}. L'\oe{}uvre n'est pas pour autant oubliée. Elle se rencontre dans la structure logique leplaysienne, là encore reproduite fidèlement par le biais des divisions et des titres.
+Cette pluralité de directions illustre la tension qui traverse les éditions numériques : elles portent avant tout sur un document et non sur une \oe{}uvre\footnote{\og \textit{Two decades of making digital editions, and recent papers about digital editions, have moved the needle away from the “work” to the “document”, to the point where we might need only think of “documents”} \fg{} : \cite[p. 107]{robinson}}. Cette distinction est issue de la triade document, texte, \oe{}uvre (\textit{document}, \textit{text}, \textit{work}) qui désigne les dimensions matérielle, linguistique et intellectuelle d'un écrit\footnote{\og \textit{Work} désigne le texte de l’auteur, éventuellement le texte correspondant à la volonté de l’auteur, et implique la notion d’authenticité ; \textit{text} dénomme la séquence linguistique attestée dans un document transmettant l’œuvre ; enfin \textit{document} est une manifestation physique d’un text \fg{} : \cite[p. 15-16]{duval}.}. De fait, l'encodage que nous avons décrit dans la partie précédente fait la part belle au document \odm{} de l'Université de Toronto, numérisé par \ia. \transkribus{} et le script \lse{} mobilisent la TEI pour conduire sa reproduction fidèle grâce à des ensembles \texttt{<facsimile>}\footcite[p. 124]{robinson}. L'\oe{}uvre n'est pas pour autant oubliée. Elle se rencontre dans la structure logique leplaysienne, là encore reproduite fidèlement par le biais des divisions et des titres.
 
 Cette coexistence apparente et inégale n'a cependant pas vocation à durer : dans la vision de \timeus, c'est bien l'\oe{}uvre et non le document qui doit prendre le dessus. Il n'est pas question de concevoir un support de consultation qui présenterait des échantillons successifs correspondant au contenu d'une page. Cela reviendrait à reproduire l'interface de visualisation d'\ia, tout en donnant une réalité concrète à l'hypertexte qui est \og en gestation dans les tables, index et diverses aides à la lecture de consultation déjà présentes \fg{} dans les volumes\footcite[p. 19]{duval}.
 
@@ -273,13 +281,15 @@ Ces apports se bornent aux métadonnées, l'encodage produit par \lse{} et amél
 
 Une question demeure au sujet des fichiers des \odm{} : quel avenir pour eux, non pas dans une mise en scène quelconque, mais en tant que données brutes ? Le choix de recourir au format XML-TEI montre que \timeus{} entend assurer la conservation des fichiers. La TEI est en effet maintenue par une communauté active. En rédigeant une cartographie du corpus et surtout une ODD, nous avons documenté la pratique éditoriale et favorisé sa compréhension par d'autres chercheurs et chercheuses ou projets qui souhaiteraient réutiliser l'encodage. Le dépôt en ligne sur le \gitlab{} de l'Inria assure la conservation de l'historique de nos interventions.
 
-Néanmoins, le dépôt \gitlab{} est aujourd'hui en accès restreint, aussi le corpus n'est-il pas en accessible librement (\openaccess). Cette restriction est bien évidemment due au fait que le travail n'est pas achevé et sera levée à la fin du programme ANR. Pour autant, \timeus{} souhaite démultiplier les espaces de conservation en clonant le dépôt \gitlab{} sur \github. Ces deux sites offrent des services d'hébergement utilisant la technologie git, à la différence que \github{} est une entreprise commerciale possédée par Microsoft, aussi ne dépend-t-elle pas d'une institution publique dont les orientations budgétaires peuvent changer. Des procédures de migration existent entre les deux plates-formes et concernent les \commits{} comme les \issues{} et les \mergerequests.
+Néanmoins, le dépôt \gitlab{} est aujourd'hui en accès restreint. Cette restriction est due au fait que le travail n'est pas achevé et sera levée à la fin du programme ANR. Pour autant, \timeus{} souhaite démultiplier les espaces de conservation en clonant le dépôt \gitlab{} sur \github. Ces deux sites offrent des services d'hébergement utilisant la technologie git, à la différence que \github{} est une entreprise commerciale possédée par Microsoft, aussi ne dépend-t-elle pas d'une institution publique dont les orientations budgétaires peuvent changer. Des procédures de migration existent entre les deux plates-formes et concernent les \commits{} comme les \issues{} et les \mergerequests.
 
 Le CRH veut également verser les fichiers XML et peut-être, par sécurité, les images, dans l'entrepôt de données de l'EHESS, \textit{Didomena}\footnote{\textit{Le projet Didomena : une plate-forme moderne au service de la gestion des données de la recherche en sciences humaines et sociales} (\url{https://didomena.ehess.fr/informations}, consulté le \today).}. Cette application traite les données sur deux niveaux. Le logiciel \textit{Hyrax} reçoit d'abord les fichiers, les stocke et leur agrège des métadonnées dont les descriptions respectent le standard \textit{Portland Common Data Model}\footnote{Présentation accessible à \url{https://github.com/duraspace/pcdm/wiki} (consulté le \today).} ; elles sont ainsi assurées d'être interopérables. La seconde dimension est la couche applicative, soutenue par le logiciel \textit{Solr}, qui organise des vues logiques et permet des recherches à facettes dans les données comme dans les métadonnées. Le point faible est que la consultation n'est pas libre : il faut disposer d'un compte dans un établissement d'enseignement supérieur ou de recherche pour se connecter sur la plate-forme.
 
 Ces différentes pistes montrent que les données des \odm, déjà standardisées, documentées et pérennisées, bientôt en \textit{open access}, sont assurées d'être indépendantes de toutes les mises en scène auxquelles elles pourraient se prêter\footcite[p. 63]{jolivet}.
 
-Ces dernières années, l'écosystème de la donnée s'est néanmoins tourné vers la mise en relation de celles-ci\footcite[p. 66]{jolivet}. Une des conditions pour réaliser cela est l'interopérabilité. Les fichiers des \odm{} satisfont-ils à cette demande ? En d'autres termes, la question est de déterminer si les données qu'ils contiennent peuvent être enrichies par des informations venues d'autres formats, ou bien si elles peuvent être réutilisées par des programmes de recherche ou avec d'autres corpus dont le standard n'est peut-être pas la TEI, ou qui n'ont pas le même usage de la TEI. C'est là où le bât blesse : la TEI, du fait de son extrême souplesse, permet des pratiques éditoriales qui peuvent être très éloignées. Ce que les corpus gagnent en précision et en fidélité par rapport au(x) document(s) d'origine, ils le perdent en interopérabilité\footcite[p. 61-62]{jolivet}.
+L'écosystème du numérique se tourne aujourd'hui vers la mise en relation des données\footcite[p. 66]{jolivet}. Une des conditions pour réaliser cela est l'interopérabilité. Les fichiers des \odm{} satisfont-ils à cette demande ? En d'autres termes, la question est de déterminer si les données qu'ils contiennent peuvent être enrichies par des informations venues d'autres formats, ou bien si elles peuvent être réutilisées par des programmes de recherche ou avec d'autres corpus dont le standard n'est peut-être pas la TEI, ou qui n'ont pas le même usage de la TEI. C'est là où le bât blesse : la TEI, du fait de son extrême souplesse, permet des pratiques éditoriales qui peuvent être très éloignées. Ce que les corpus gagnent en précision et en fidélité par rapport au(x) document(s) d'origine, ils le perdent en interopérabilité\footcite[p. 61-62]{jolivet}.
+
+Notons néanmoins que \timeus{} n'a pas fait montre d'une volonté expérimentale dans la structuration de ses fichiers --- ceux des \odm, mais aussi ceux issus de la presse lyonnaise ou des registres prud'homaux. La TEI qui s'y trouve n'est pas aventureuse et cherche à se conformer aux lignes directrices. L'interopérabilité est donc possible à l'échelle du programme : gageons qu'elle existe également par rapport à d'autres ensembles documentaires. La volonté de \timeus{} de voir sa production utilisée dans le plus grand nombre des champs de recherche des sciences humaines et sociales trouvera ainsi satisfaction.
 
 \newpage
 \thispagestyle{empty}
