@@ -1,0 +1,192 @@
+\renewcommand{\thesection}{C.1}
+\chapter{C. Feuille de route et typologie des erreurs}
+
+\section{Feuille de route}
+\label{ann:feuille_route}
+
+Cette liste reprend le texte des \issues{} ouvertes dans le \gitlab{} des \odm{} au commencement du stage.
+
+\begin{enumerate}
+        \item \textit{Trier et renommer les fichiers} :
+    \begin{itemize}
+        \item  Identifier les fichiers de monographies et les fichiers de paratexte ;
+        \item  Donner un identifiant aux fichiers de monographies en fonction des identifiants déjà existant dans le fichier de référence ;
+        \item  Créer un identifiant pour les fichiers de paratexte ;
+        \item  Ajouter ces identifiants aux \texttt{@xml:id} de chaque fichier ;
+        \item  Créer un \textit{mapping} de l’ensemble des fichiers sous la forme d’un CSV avec le nom du fichier et son identifiant ;
+        \item  Créer un fichier \texttt{master.xml} contenant des renvois vers les autres fichiers grâce à des \texttt{<xi:includes>}.
+    \end{itemize}
+
+    \item \textit{Mettre à jour l’attribut \texttt{@url} dans la balise \texttt{<graphic>}} :
+    \begin{itemize}
+        \item  Les images des pages sont stockées localement sur Humanum, mais également en ligne sur Internet Archives.
+        \item  Trouver l’url de chaque page de chaque volume sur \ia ;
+        \item  Remplacer automatiquement le chemin local par l’url de l’image dans chaque fichier.
+    \end{itemize}
+
+    \item \textit{Tester la conformité du schéma} :
+    \begin{itemize}
+        \item  Écrire un script pour tester la validité des arbres XML de chaque fichier ;
+        \item  Corriger les erreurs qui seraient signalées par ce script.
+    \end{itemize}
+
+    \item \textit{Intégrer les métadonnées des « enquêtés »} :
+    \begin{itemize}
+        \item  Créer un fichier référentiel de personnes (XML) à partir du fichier CSV de prosopographie ;
+        \item  Ajouter aux paragraphes 2 des monographies ("§2. - Etat civil de la famille") des \texttt{@refs} au référentiel de personnes.
+    \end{itemize}
+
+    \item \textit{Intégrer modèle de citation dans les chapitres et créer un système de référence bibliographique} :
+    \begin{itemize}
+        \item  Pour chaque niveau de la structure d'une monographie  ;
+        \item  Pour chaque chapitre (sans descendre dans les niveaux) ;
+        \item  Par exemple en utilisant DTS.
+    \end{itemize}
+
+    \item \textit{Corrections des transcriptions} :
+    \begin{itemize}
+        \item  Paragraphe par paragraphe, implémenter une correction automatique des transcriptions.
+    \end{itemize}
+
+    \item \textit{Corriger le passage de source vers split} :
+    \begin{itemize}
+        \item  Corriger le script python de transformation des fichiers sources en une suite de fichiers XML TEI.
+        \item  Éliminer les traces de teiCorpus.
+    \end{itemize}
+
+    \item \textit{Simplifier l'implémentation de la structure logique} :
+    \begin{itemize}
+        \item Aplatir la structure des monographies :
+        \begin{itemize}
+            \item  Est-il vraiment nécessaire d'utiliser les div enchâssées ? Une structure à plat avec des marqueurs signalant le début d'une nouvelle section ne suffirait-elle pas ?
+            \item  Comment gérer l'articulation entre l'arbre principal (un arbre pour l'ensemble des monographies) et les sous-arbres (un sous-arbre par monographie) ? L'ensemble du corpus n'a pas de front/back mais chaque volume possède un front et un back et chaque monographie a potentiellement un front et un back.
+            \item  Avec quelles restrictions peut-on créer une structure similaire à celle d'un fichier \LaTeX{} avec ses imports ?
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\clearpage
+\renewcommand{\thesection}{C.2}
+\section{Relevé des erreurs dans la structure
+logique}\label{ann:releve_erreurs}
+
+Jean-Damien Généro, 8 juillet 2020\footnote{Reproduction d'une synthèse mise en ligne sur une issue \textit{GitLab}.}.
+
+\subsection{Déficit dans la
+transcription}\label{ann:deficit-transcr}
+
+\begin{itemize}
+\item
+  \emph{Déficit partiel :} \texttt{s1t2\_chapt\_11} et \texttt{s1t3\_chapt\_10} (manque
+  début §7), \texttt{s1t2\_ch\-apt\_4} (manquent quatre pages de la note A), \texttt{\texttt{s2t3\_chapt\_14}} (manquent vingt lignes).
+\item
+  \emph{Déficit majeur :} \texttt{s1t4\_chapt\_8}, \texttt{11}, \texttt{15} et \texttt{s1t5\_chapt\_13} et
+  14 (seules les notes ont été transcrites, le reste se trouve dans des
+  \texttt{\textless{}figure\textgreater{}}), \texttt{s1t5\_chapt\_12}
+  (transcription à partir du §14, le reste dans des
+  \texttt{\textless{}figure\textgreater{}}).
+\end{itemize}
+
+\subsection[Titres non imprimés]{Titres manquants parce que non imprimés dans les exemplaires
+d'\ia}\label{ann:titre-non-imprimes}
+
+\begin{itemize}
+\item
+  \texttt{s1t1\_chapt\_12} : manque le titre de la s/section II.3 \textit{Mode
+  d'existence\ldots{}} ;
+\item
+  \texttt{s2t1\_chapt\_5} : manque le titre de la s/section II.4 \textit{Histoire
+  de\ldots{}} ;
+\item
+  \texttt{s2t1\_chapt\_20} : manque les titres des s/sections II.3 \textit{Mode
+  d'existence\ldots{}} et II.4 \textit{Histoire de\ldots{}} (mais ce titre
+  est repris dans l'intitulé du §12 qui suit) ;
+\item
+  \texttt{s2t4\_chapt\_9} : manque les titres de la s/section II.1 \textit{Définition
+  du lieu\ldots{}} ;
+\item
+  \texttt{s3t1\_chapt\_3} : manque le titre des s/sections II.2 \textit{Moyens
+  d'existence\ldots{}}, II.3 \textit{Mode d'existence\ldots{}} et II.4
+  \textit{Histoire de\ldots{}} (mais ce titre est repris dans l'intitulé du
+  §12 qui suit) ;
+\item
+  \texttt{s2t5\_chapt\_15} : manque le titre de la s/section II.4 \textit{Histoire
+  de\ldots{}}.
+\end{itemize}
+
+\subsection{Structure allégée}\label{ann:structure-allegee}
+
+Titres de s/s/section intégrés au début de paragraphe + certains titres
+non utilisés (spec. §16).
+
+\begin{itemize}
+\item
+  \texttt{s2t2\_chapt\_7} (précis) : pas de s/s/section §16 et de titre pour la
+  partie \textit{Notes} (composée d'une seule \emph{nota}) ;
+\item
+  \texttt{s2t2\_chapt\_9} (précis) : pas de titre de section II\textit{ Observations
+  préliminaires\ldots{}} et pas de s/s/section §16 ;
+\item
+  \texttt{s2t2\_chapt\_11} (précis) : pas de titre de section II \textit{Observations
+  préliminaires\ldots{}}, pas de titre pour les s/s/sections (sauf les
+  paragraphes de budget §14 et §15), pas de s/s/section §16, pas de
+  section \textit{Notes}.
+\item
+  \texttt{s2t3\_chapt\_7} (précis) : pas de titre de section II \textit{Observations
+  préliminaires\ldots{}}, pas de s/s/section §16, les titres des
+  s/s/sections sont en début de paragraphe ;
+\item
+  \texttt{s2t5\_chapt\_9} (précis) : dans la section II, tous les titres des
+  s/s/sections sont en début de paragraphe (à l'exception des
+  paragraphes de budget §14 et §15), il n'y a pas de s/s/section §16 ;
+\item
+  \texttt{s2t5\_chapt\_16} (précis) : pas de s/s/section dans la s/section II.4
+  \textit{Histoire de\ldots{}}, pas de s/s/section §16, la section \textit{Notes} est
+  occupée par la traduction d'un document.
+\end{itemize}
+
+\subsection{Pas de s/s/section §16 et pas de section
+\textit{Notes}}\label{ann:no-notes-no-16}
+
+\begin{itemize}
+\item
+  (voir \emph{supra} \texttt{s2t2\_chapt\_11}) ;
+\item
+  \texttt{s2t1\_chapt\_6} et \texttt{s2t5\_chapt\_12}.
+\end{itemize}
+
+\subsection{Remarques et cas
+particuliers}\label{ann:remarques-et-cas-particuliers}
+
+\begin{itemize}
+\item
+  Dans \texttt{s1t5\_chapt\_9}, \texttt{10} et \texttt{11}, une section des notes est intitulée
+  \textit{Précis de monographie} et organisée comme un précis (càd avec des
+  sections et des titres). Néanmoins il ne s'agit pas de précis tels
+  qu'on en trouve dans les séries 2 et 3, puisqu'ils ne constituent pas
+  un ensemble logique indépendant de la monographie (il y a des
+  paragraphes avant et des paragraphes après). Donc le précis est
+  considéré comme une sub\_sub\_section et ses divisions comme des
+  sub\_sub\_sub\_section.
+\item
+  \texttt{s2t5\_chapt\_17} et \texttt{18} découpés chacun en deux fichiers (table
+  analytique et table des matières).
+\item
+  \texttt{s3t1\_chapt\_2} (\textit{Société générale\ldots{}}) et \texttt{s3t2\_chapt\_10}
+  (\textit{Usine hydraulique\ldots{}}) sont des cas particuliers avec des
+  structures totalement différentes des autres monographies. En plus de
+  l'en-tête, le premier se divise en trois grandes sections :
+  observations préliminaires (sorte d'intro), première partie, deuxième
+  partie, troisième partie, conclusion et appendices ; le second est
+  plus succinct avec l'en-tête, une grande section avec des s/sections
+  numérotées et ensuite des appendices.
+\item
+  Dans \texttt{s3t2\_chapt\_9} se trouve une partie \textit{Note} sur l'état de la
+  famille en 1905 entre le §13 et §14, que j'ai structurée comme une
+  s/s/section.
+\item
+  La s/section II.5, consacrée aux budgets (§14, §15, §16), n'est pas
+  titrée sauf dans les précis de monographies \texttt{s2t1\_chapt\_6},
+  \texttt{s2t2\_chapt\_9} et 11, \texttt{s2t3\_chapt\_7} et 14, \texttt{s2t5\_chapt\_9} et 13,
+  \texttt{s3t1\_chapt\_4} (le titre est \textit{Budget domestique annuel}).
+\end{itemize}
