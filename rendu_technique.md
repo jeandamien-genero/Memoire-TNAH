@@ -7,20 +7,20 @@ Jean-Damien Généro, *Valoriser le traitement automatique des données : Le cas
 Mémoire/
 	|
 	|- 0_corpus-od2m-fixture#7/
-	|				|
-	|				|- copie de la branche fixture#7 = dépôt GitLab au début du stage (avril 2020).
+	|		|
+	|		|- copie de la branche fixture#7 = dépôt GitLab au début du stage (avril 2020).
 	|
 	|- 1_corpus-od2m-master/
-	|				|
-	|				|- copie de la branche master = dépôt GitLab à la fin du stage (sept. 2020).
+	|		|
+	|		|- copie de la branche master = dépôt GitLab à la fin du stage (sept. 2020).
 	|
 	|- repository_GitLab/
-	|				|
-	|				|- corpus-od2m = clone du dépôt Gitlab avec les branches master et fixture#7.
+	|		|
+	|		|- corpus-od2m = clone du dépôt Gitlab avec les branches master et fixture#7.
 	|
 	|- Les_Ouvriers_des_deux_mondes_Toronto/
-	|				|
-	|				|- volumes au format PDF téléchargés d'Internet archive
+	|		|
+	|		|- volumes au format PDF téléchargés d'Internet archive
 	|
 	|- GENERO_Memoire_TNAH_OD2M.pdf/
 ```
@@ -48,7 +48,7 @@ corpus-od2m
 	|					|
 	|					|- out/ schéma RNG
 	|
-	|- script/ script python (cf section "scrip" dans ce document)
+	|- script/ scripts python
 	|
 	|- metadata/
 		|
@@ -76,7 +76,7 @@ corpus-od2m
 
 * `basic_iteration.py` : permet d'itérer sur l'ensemble des fichiers pour faire des rechercher/remplacer basiques (toutes les issues).
 
-* `change_atype_in_graphic_to_figure.py` : permet de changer de niveau l'attribut @type qui passe de `<graphic>` à `<figure>` (révision de la structure logique).P
+* `change_atype_in_graphic_to_figure.py` : permet de changer de niveau l'attribut @type qui passe de `<graphic>` à `<figure>` (révision de la structure logique).
 
 * `change_xml_id.py` : permet d'insérer les IDs des fichiers dans le @xml:id de `<TEI>` et le @ana de `<div>` (révision de la structure logique).
 
