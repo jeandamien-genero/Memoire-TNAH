@@ -6,7 +6,9 @@
 
 :black_nib: Jean-Damien Généro
 
-:calendar: 2020 (🦠)
+:star: dirigé par @alix-tz et @architexte
+
+:calendar: sept. 2020 (🦠)
 
 ### Résumé
 *Le programme ANR Time Us s’intéresse aux ouvriers et aux ouvrières du textile de la fin du XVIIIe siècle au début du XXe siècle et rassemble pour cela une large documentation composée de documents manuscrits et d'imprimés. Au sein de ces derniers se trouvent les monographies de familles des* Ouvriers des deux mondes *publiées de 1857 à 1930 par Frédéric Le Play (1806-1882) et la Société internationale des études pratiques d’économie sociale.*
