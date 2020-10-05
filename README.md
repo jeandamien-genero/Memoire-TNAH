@@ -2,7 +2,7 @@
 
 ## Le cas des *Ouvriers des deux mondes*
  
-:mortar_board: Memoire pour le Master TNAH de l'École nationale des chartes
+:mortar_board: Mémoire pour le [Master TNAH de l'École nationale des chartes](http://www.chartes.psl.eu/fr/cursus/master-technologies-numeriques-appliquees-histoire)
 
 :black_nib: Jean-Damien Généro
 
