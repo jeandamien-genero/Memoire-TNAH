@@ -63,4 +63,4 @@ Memoire-TNAH/
 
 ### Citation
 
-Jean-Damien Généro, *Valoriser le traitementautomatique des données : Le cas des Ouvriers des deux mondes*, mémoire du Master «&nbsp;Technologies numériques appliquées à l’histoire&nbsp;», dir. A. Chagué et V. Jolivet, École nationale des chartes, 2020.
+Jean-Damien Généro, *Valoriser le traitement automatique des données : Le cas des Ouvriers des deux mondes*, mémoire du Master «&nbsp;Technologies numériques appliquées à l’histoire&nbsp;», dir. A. Chagué et V. Jolivet, École nationale des chartes, 2020.
