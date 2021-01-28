@@ -31,7 +31,7 @@ II. Une structuration à reprendre
 
 III. Des données à valoriser.
 
-*A. Données graphiques, données chiffrées. — B. Données textuelles, données scientifiques. — C. Une valorisation pluriel.*
+*A. Données graphiques, données chiffrées. — B. Données textuelles, données scientifiques. — C. Une valorisation plurielle.*
 
 ### Arborescence
 
